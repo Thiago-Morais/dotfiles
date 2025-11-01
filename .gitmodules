@@ -1,0 +1,3 @@
+[submodule ".config/mpv/scripts/celebi"]
+	path = .config/mpv/scripts/celebi
+	url = git@github.com:po5/celebi.git
