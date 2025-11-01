@@ -1,0 +1,22 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "9a52857"
+hash = "56fdabc96fc1f4d53c96eb884b02a5be"
+
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "2093ab7"
+hash = "16a10359fc2a3cd8cc8bcfbe00f744d3"
+
+[[plugin.deps]]
+use = "uhs-robert/recycle-bin"
+rev = "03f6c4a"
+hash = "f14a951bf376d7fe73033c4a48aa5fa4"
+
+[[plugin.deps]]
+use = "AnirudhG07/rich-preview"
+rev = "831234e"
+hash = "ed3363e256e210593f0f8e4cec3e36a9"
+
+[flavor]
+deps = []
