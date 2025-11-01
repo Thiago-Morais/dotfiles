@@ -1,7 +1,8 @@
 /*
 
 # Allow standard github files
-!/.gitignore
+!.gitignore
+!README.md
 
 # Allow directories without their children
 !.config/
@@ -12,5 +13,17 @@
 .share/*
 
 # Allow specific files
-!/.config/waybar
-
+!.config/waybar
+!.config/hypr
+!.config/alacritty
+!.config/cava
+!.config/mpv
+!.config/nvim
+!.config/wlogout
+!.config/yazi
+!.config/YouTube\ Music
+!.config/chromium-flags.conf
+!.config/electron-flags.conf
+!.config/edge-flags.conf
+!.config/mimeapps.list
+!.config/youtube-music-flags.conf
