@@ -1,3 +1,6 @@
 [submodule ".config/mpv/scripts/celebi"]
 	path = .config/mpv/scripts/celebi
 	url = git@github.com:po5/celebi.git
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = git@github.com:Thiago-Morais/kickstart.nvim.git
