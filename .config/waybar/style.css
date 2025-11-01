@@ -1,0 +1,392 @@
+* {
+  /* font-family: "Fira Sans Semibold", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
+  /* font-size: 14px; */
+  /* Slightly smaller font size */
+  /* font-weight: 900; */
+  /* margin: 0; */
+  /* padding: 0; */
+  /* transition-property: background-color; */
+  /* transition-duration: 0.5s; */
+}
+
+/* @define-color bg-color #111827; */
+@define-color bg-color rgba(17, 24, 39, .7);
+@define-color good-color #26a65b;
+@define-color selected-color #025939;
+@define-color hover-color #333333;
+@define-color firefox-color #FE7C3A;
+@define-color code-color #75BA74;
+@define-color obsidian-color #a88bfa;
+@define-color whatsapp-color #2CD46B;
+@define-color non-empty-color #80B0FF;
+
+/* Reset all styles */
+* {
+  border: none;
+  border-radius: 0 0 0.3em 0.3em;
+  min-height: 0;
+  margin: 0;
+  font-family: "JetBrainsMonoNL NFP";
+  font-weight: 700;
+  font-size: 15px;
+  padding: 0;
+}
+
+/* The whole bar */
+#waybar {
+  background-color: transparent;
+  /* background-color: #fff; */
+  /* color: #ffffff; */
+  color: @foreground;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  margin: 0;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+/* tooltip { */
+/* background-color: @bg-color; */
+/* background: rgba(43, 48, 59, 0.1); */
+/* border: 1px solid rgba(100, 114, 125, 0.5); */
+/* } */
+
+/* tooltip label { */
+/*   color: white; */
+/* } */
+
+#workspaces {
+  /* background-color: @bg-color; */
+  background: transparent;
+}
+
+#workspaces button {
+  /* padding: 0; */
+  /* margin: 0em; */
+  /* border: 0; */
+  color: @non-empty-color;
+  background-color: @bg-color;
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:nth-child(2) {
+  color: @obsidian-color;
+}
+
+#workspaces button:nth-child(3) {
+  color: @code-color;
+}
+
+#workspaces button:nth-child(4) {
+  color: @firefox-color;
+}
+
+#workspaces button:nth-child(5) {
+  color: @whatsapp-color;
+}
+
+#workspaces button.active {
+  /* color: @foreground; */
+  background: @selected-color;
+}
+
+#workspaces button:hover {
+  background: @hover-color;
+}
+
+#workspaces button.urgent {
+  background-color: #eb4d4b;
+}
+
+#workspaces button.empty {
+  color: @foreground;
+}
+
+#firefox-icon {
+  color: #f00;
+}
+
+#window {
+  background-color: @bg-color;
+  font-size: 15px;
+  /* Slightly smaller font size */
+  font-weight: 800;
+  /* font-family: "DejaVu Sans"; */
+  /* font-stretch: ultra-expanded; */
+  /* font-stretch: normal; */
+  /* font-stretch: ultra-condensed; */
+  /* font-stretch: condensed; */
+  /* color: @foreground; */
+  /* border-radius: 14px; */
+  /* padding: 3px 6px; */
+  /* Reduced padding */
+  /* margin: 2px; */
+  opacity: 1;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#mode,
+#idle_inhibitor,
+#mpd,
+#cava,
+#custom-cava,
+#bluetooth,
+#custom-hyprPicker,
+#custom-power-menu,
+#custom-spotify,
+#custom-storage-home,
+#custom-storage-root,
+#custom-weather,
+#custom-weather.severe,
+#custom-weather.sunnyDay,
+#custom-weather.clearNight,
+#custom-weather.cloudyFoggyDay,
+#custom-weather.cloudyFoggyNight,
+#custom-weather.rainyDay,
+#custom-weather.rainyNight,
+#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyNight,
+#custom-weather.default {
+  background-color: @bg-color;
+  /* background-color: #fff; */
+  padding: 0 0.4em;
+  /* Adjusted padding */
+}
+
+#custom-screenshot_t {
+  background-color: @bg-color;
+  /* padding: 6px; */
+}
+
+#custom-spotify {
+  background-color: @bg-color;
+  /* padding: 3px 12px; */
+}
+
+#custom-cava {
+  font-family: FantasqueSansM Nerd Font Mono;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#tray {
+  background-color: @bg-color;
+  /* padding: 6px; */
+  /* Adjusted padding */
+}
+
+#cpu {
+  color: #fb958b;
+  background-color: @bg-color;
+  /* padding: 6px; */
+}
+
+#memory {
+  color: #ebcb8b;
+  background-color: @bg-color;
+  /* padding: 6px; */
+}
+
+#custom-power {
+  background-color: @bg-color;
+  /* padding: 6px; */
+}
+
+#custom-storage-home,
+#custom-storage-root {
+  background-color: @bg-color;
+  /* padding: 6px; */
+}
+
+#custom-launcher {
+  background-color: #1b242b;
+  color: #6a92d7;
+  /* padding: 3px 6px; */
+  /* Adjusted padding */
+}
+
+#custom-weather.severe {
+  color: #eb937d;
+}
+
+#custom-weather.sunnyDay {
+  color: #c2ca76;
+}
+
+#custom-weather.clearNight {
+  color: #cad3f5;
+}
+
+#custom-weather.cloudyFoggyDay,
+#custom-weather.cloudyFoggyNight {
+  color: #c2ddda;
+}
+
+#custom-weather.rainyDay,
+#custom-weather.rainyNight {
+  color: #5aaca5;
+}
+
+#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyNight {
+  color: #d6e7e5;
+}
+
+#custom-weather.default {
+  color: #dbd9d8;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child {
+  margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child {
+  margin-right: 1em;
+}
+
+#pulseaudio {
+  color: #7d9bba;
+}
+
+#backlight {
+  color: #8fbcbb;
+}
+
+#clock {
+  /* color: #c8d2e0; */
+}
+
+#battery {
+  color: #c0caf5;
+}
+
+#battery.charging,
+#battery.full,
+#battery.plugged {
+  color: @good-color;
+}
+
+@keyframes blink {
+  to {
+    background-color: rgba(30, 34, 42, 0.5);
+    color: #abb2bf;
+  }
+}
+
+#battery.critical:not(.charging) {
+  color: #f53c3c;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  /* animation-timing-function: linear; */
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+label {
+  font-family: inherit;
+  font-stretch: inherit;
+}
+label:focus {
+  background-color: #000000;
+}
+
+#disk {
+  background-color: #964b00;
+}
+
+#bluetooth {
+  color: #707d9d;
+}
+
+#bluetooth.disconnected {
+  color: #f53c3c;
+}
+
+#network {
+  color: #b48ead;
+}
+
+#network.disconnected {
+  color: #f53c3c;
+}
+
+#custom-media {
+  background-color: #66cc99;
+  color: #2a5c45;
+  min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+  background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+  background-color: #ffa000;
+}
+
+#temperature {
+  background-color: #f0932b;
+}
+
+#temperature.critical {
+  background-color: #eb4d4b;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
+}
+
+#idle_inhibitor {
+  background-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+  background-color: #ecf0f1;
+  color: #2d3436;
+}
+
+#language {
+  background: #00b093;
+  color: #740864;
+  padding: 0 0px;
+  margin: 0 5px;
+  min-width: 16px;
+}
+
+#keyboard-state {
+  background: #97e1ad;
+  color: #000000;
+  padding: 0 0px;
+  margin: 0 5px;
+  min-width: 16px;
+}
+
+#keyboard-state > label {
+  padding: 0 0px;
+}
+
+#keyboard-state > label.locked {
+  background: rgba(0, 0, 0, 0.2);
+}

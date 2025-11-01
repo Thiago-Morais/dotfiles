@@ -1,0 +1,16 @@
+/*
+
+# Allow standard github files
+!/.gitignore
+
+# Allow directories without their children
+!.config/
+.config/*
+!.local/
+.local/*
+!.share/
+.share/*
+
+# Allow specific files
+!/.config/waybar
+
