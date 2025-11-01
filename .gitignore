@@ -21,9 +21,16 @@
 !.config/nvim
 !.config/wlogout
 !.config/yazi
-!.config/YouTube\ Music
 !.config/chromium-flags.conf
 !.config/electron-flags.conf
 !.config/edge-flags.conf
 !.config/mimeapps.list
 !.config/youtube-music-flags.conf
+**/*[Cc]ache*
+
+# Specifically pear-desktop files
+!.config/YouTube\ Music/
+.config/YouTube\ Music/*
+!.config/YouTube\ Music/Preferences
+!.config/YouTube\ Music/config.json
+!.config/YouTube\ Music/themes
