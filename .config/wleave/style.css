@@ -1,0 +1,104 @@
+@import "colors.css";
+
+:root {
+  --view-bg-color: @secondary_container5;
+  --view-fg-color: @on_secondary_container;
+  --accent-bg-color: @secondary_container;
+  --accent-fg-color: @on_secondary_container;
+}
+
+window {
+  background-color: @surface8;
+}
+
+button {
+  color: var(--view-fg-color);
+  background-color: var(--view-bg-color);
+  border: none;
+  margin: 1.5rem 2rem;
+  transition: transform 0.2s ease;
+}
+
+/* button:focus, */
+button:hover {
+  background-color: var(--accent-bg-color);
+  color: var(--accent-fg-color);
+  transform: scale(1.3);
+}
+
+button label.action-name {
+  font-size: 2em;
+}
+
+button label.keybind {
+  font-size: 2em;
+  font-family:
+    JetBrainsMonoNL NFP,
+    monospace;
+}
+
+/* button:focus label.keybind, */
+button:hover label.keybind {
+  opacity: 1;
+}
+
+button#shutdown {
+  --view-fg-color: @red;
+}
+
+/* button#shutdown:focus, */
+button#shutdown:active,
+button#shutdown:hover {
+  --accent-fg-color: @on_red_container;
+  --accent-bg-color: @red_container;
+}
+
+button#hibernate {
+  --view-fg-color: @blue;
+}
+
+/* button#hibernate:focus, */
+button#hibernate:hover {
+  --accent-fg-color: @on_blue_container;
+  --accent-bg-color: @blue_container;
+}
+
+button#reboot {
+  --view-fg-color: @lime;
+}
+
+/* button#reboot:focus, */
+button#reboot:hover {
+  --accent-fg-color: @on_lime_container;
+  --accent-bg-color: @lime_container;
+}
+
+button#lock {
+  --view-fg-color: @yellow;
+}
+
+/* button#lock:focus, */
+button#lock:hover {
+  --accent-fg-color: @on_yellow_container;
+  --accent-bg-color: @yellow_container;
+}
+
+button#logout {
+  --view-fg-color: @orange;
+}
+
+/* button#logout:focus, */
+button#logout:hover {
+  --accent-fg-color: @on_orange_container;
+  --accent-bg-color: @orange_container;
+}
+
+button#suspend {
+  --view-fg-color: @purple;
+}
+
+/* button#suspend:focus, */
+button#suspend:hover {
+  --accent-fg-color: @on_purple_container;
+  --accent-bg-color: @purple_container;
+}
