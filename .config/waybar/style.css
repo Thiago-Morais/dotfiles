@@ -1,19 +1,12 @@
-* {
-  /* font-family: "Fira Sans Semibold", "Font Awesome 6 Free", FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
-  /* font-size: 14px; */
-  /* Slightly smaller font size */
-  /* font-weight: 900; */
-  /* margin: 0; */
-  /* padding: 0; */
-  /* transition-property: background-color; */
-  /* transition-duration: 0.5s; */
-}
+@import "themes/colors.css";
 
-/* @define-color bg-color #111827; */
-@define-color bg-color rgba(17, 24, 39, .7);
+@define-color bg-color @secondary_container5;
+@define-color text-color @on_secondary_container;
 @define-color good-color #26a65b;
-@define-color selected-color #025939;
-@define-color hover-color #333333;
+@define-color selected-color @tertiary_container;
+@define-color on-selected-color @on_tertiary_container;
+@define-color hover-color @surface;
+@define-color on-hover-color @on_surface;
 @define-color firefox-color #FE7C3A;
 @define-color code-color #75BA74;
 @define-color obsidian-color #a88bfa;
@@ -35,9 +28,8 @@
 /* The whole bar */
 #waybar {
   background-color: transparent;
-  /* background-color: #fff; */
-  /* color: #ffffff; */
-  color: @foreground;
+  background-color: @blur_background;
+  color: @primary;
   transition-property: background-color;
   transition-duration: 0.5s;
   margin: 0;
@@ -47,27 +39,13 @@ window#waybar.hidden {
   opacity: 0.2;
 }
 
-/* tooltip { */
-/* background-color: @bg-color; */
-/* background: rgba(43, 48, 59, 0.1); */
-/* border: 1px solid rgba(100, 114, 125, 0.5); */
-/* } */
-
-/* tooltip label { */
-/*   color: white; */
-/* } */
-
 #workspaces {
-  /* background-color: @bg-color; */
   background: transparent;
 }
 
 #workspaces button {
-  /* padding: 0; */
-  /* margin: 0em; */
-  /* border: 0; */
-  color: @non-empty-color;
   background-color: @bg-color;
+  color: @text-color;
   transition: all 0.3s ease-in-out;
 }
 
@@ -88,12 +66,13 @@ window#waybar.hidden {
 }
 
 #workspaces button.active {
-  /* color: @foreground; */
   background: @selected-color;
+  color: @on-selected-color;
 }
 
 #workspaces button:hover {
   background: @hover-color;
+  color: @on-hover-color;
 }
 
 #workspaces button.urgent {
@@ -110,19 +89,9 @@ window#waybar.hidden {
 
 #window {
   background-color: @bg-color;
+  color: @text-color;
   font-size: 15px;
-  /* Slightly smaller font size */
   font-weight: 800;
-  /* font-family: "DejaVu Sans"; */
-  /* font-stretch: ultra-expanded; */
-  /* font-stretch: normal; */
-  /* font-stretch: ultra-condensed; */
-  /* font-stretch: condensed; */
-  /* color: @foreground; */
-  /* border-radius: 14px; */
-  /* padding: 3px 6px; */
-  /* Reduced padding */
-  /* margin: 2px; */
   opacity: 1;
 }
 
@@ -160,19 +129,19 @@ window#waybar.hidden {
 #custom-weather.snowyIcyNight,
 #custom-weather.default {
   background-color: @bg-color;
-  /* background-color: #fff; */
+  color: @text-color;
   padding: 0 0.4em;
   /* Adjusted padding */
 }
 
 #custom-screenshot_t {
   background-color: @bg-color;
-  /* padding: 6px; */
+  color: @text-color;
 }
 
 #custom-spotify {
   background-color: @bg-color;
-  /* padding: 3px 12px; */
+  color: @text-color;
 }
 
 #custom-cava {
@@ -185,37 +154,35 @@ window#waybar.hidden {
 
 #tray {
   background-color: @bg-color;
-  /* padding: 6px; */
-  /* Adjusted padding */
+  color: @text-color;
 }
 
 #cpu {
   color: #fb958b;
   background-color: @bg-color;
-  /* padding: 6px; */
+  color: @text-color;
 }
 
 #memory {
   color: #ebcb8b;
   background-color: @bg-color;
-  /* padding: 6px; */
+  color: @text-color;
 }
 
 #custom-power {
   background-color: @bg-color;
-  /* padding: 6px; */
+  color: @text-color;
 }
 
 #custom-storage-home,
 #custom-storage-root {
   background-color: @bg-color;
-  /* padding: 6px; */
+  color: @text-color;
 }
 
 #custom-launcher {
   background-color: #1b242b;
   color: #6a92d7;
-  /* padding: 3px 6px; */
   /* Adjusted padding */
 }
 
@@ -293,7 +260,6 @@ window#waybar.hidden {
   color: #f53c3c;
   animation-name: blink;
   animation-duration: 0.5s;
-  /* animation-timing-function: linear; */
   animation-timing-function: steps(12);
   animation-iteration-count: infinite;
   animation-direction: alternate;
