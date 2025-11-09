@@ -8,7 +8,7 @@
 @define-color hover-color @surface;
 @define-color on-hover-color @on_surface;
 @define-color firefox-color #FE7C3A;
-@define-color code-color #75BA74;
+@define-color code-color @green;
 @define-color obsidian-color #a88bfa;
 @define-color whatsapp-color #2CD46B;
 @define-color non-empty-color #80B0FF;
@@ -39,6 +39,8 @@ window#waybar.hidden {
   opacity: 0.2;
 }
 
+/* Workspaces */
+
 #workspaces {
   background: transparent;
 }
@@ -49,30 +51,14 @@ window#waybar.hidden {
   transition: all 0.3s ease-in-out;
 }
 
-#workspaces button:nth-child(2) {
-  color: @obsidian-color;
-}
-
-#workspaces button:nth-child(3) {
-  color: @code-color;
-}
-
-#workspaces button:nth-child(4) {
-  color: @firefox-color;
-}
-
-#workspaces button:nth-child(5) {
-  color: @whatsapp-color;
+#workspaces button:hover {
+  background: @hover-color;
+  color: @on-hover-color;
 }
 
 #workspaces button.active {
   background: @selected-color;
   color: @on-selected-color;
-}
-
-#workspaces button:hover {
-  background: @hover-color;
-  color: @on-hover-color;
 }
 
 #workspaces button.urgent {
@@ -81,6 +67,26 @@ window#waybar.hidden {
 
 #workspaces button.empty {
   color: @foreground;
+}
+
+#workspaces button:nth-child(2),
+#workspaces button:nth-child(2).active {
+  color: @obsidian-color;
+}
+
+#workspaces button:nth-child(3),
+#workspaces button:nth-child(3).active {
+  color: @code-color;
+}
+
+#workspaces button:nth-child(4),
+#workspaces button:nth-child(4).active {
+  color: @firefox-color;
+}
+
+#workspaces button:nth-child(5),
+#workspaces button:nth-child(5).active {
+  color: @whatsapp-color;
 }
 
 #firefox-icon {
