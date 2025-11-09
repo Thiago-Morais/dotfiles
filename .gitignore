@@ -12,7 +12,7 @@
 !.share/
 .share/*
 
-# Allow specific files
+# Allow specific directories
 !.config/waybar
 !.config/hypr
 !.config/alacritty
@@ -21,6 +21,8 @@
 !.config/nvim
 !.config/wlogout
 !.config/yazi
+!.config/matugen
+# Allow specific files
 !.config/chromium-flags.conf
 !.config/electron-flags.conf
 !.config/edge-flags.conf
