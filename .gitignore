@@ -36,3 +36,8 @@
 !.config/YouTube\ Music/Preferences
 !.config/YouTube\ Music/config.json
 !.config/YouTube\ Music/themes
+
+.config/hypr/colors.conf
+.config/waybar/themes/colors.css
+.config/wleave/colors.css
+
