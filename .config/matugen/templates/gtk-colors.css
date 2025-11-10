@@ -22,8 +22,8 @@
 @define-color sidebar_backdrop_color @window_bg_color;
 
 <* for name, value in colors *>
-    @define-color {{name}} {{value.default.hex}};
-    @define-color {{name}}8 {{value.default.rgba | set_alpha: 0.8}};
-    @define-color {{name}}5 {{value.default.rgba | set_alpha: 0.5}};
-    @define-color {{name}}3 {{value.default.rgba | set_alpha: 0.3}};
+@define-color {{name}} {{value.default.hex}};
+@define-color {{name}}8 {{value.default.rgba | set_alpha: 0.8}};
+@define-color {{name}}5 {{value.default.rgba | set_alpha: 0.5}};
+@define-color {{name}}3 {{value.default.rgba | set_alpha: 0.3}};
 <* endfor *>
