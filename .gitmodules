@@ -4,3 +4,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = git@github.com:Thiago-Morais/kickstart.nvim.git
+[submodule ".config/matugen/matugen-themes"]
+	path = .config/matugen/matugen-themes
+	url = git@github.com:InioX/matugen-themes.git
