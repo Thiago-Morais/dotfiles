@@ -84,6 +84,10 @@ output_path = '~/.config/wlogout/colors.css'
 input_path = '~/.config/matugen/templates/colors.css'
 output_path = '~/.config/wleave/colors.css'
 
+[templates.alacritty]
+input_path = '~/.config/matugen/matugen-themes/templates/alacritty.toml'
+output_path = '~/.config/alacritty/colors.toml'
+
 [templates.swaync]
 input_path = '~/.config/matugen/templates/colors.css'
 output_path = '~/.config/swaync/colors.css'
