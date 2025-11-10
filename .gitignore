@@ -37,6 +37,7 @@
 !.config/YouTube\ Music/config.json
 !.config/YouTube\ Music/themes
 
+# Remove matugen generated colors from repository
 .config/hypr/colors.conf
 .config/waybar/themes/colors.css
 .config/wleave/colors.css
