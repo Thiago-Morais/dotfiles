@@ -41,4 +41,5 @@
 .config/hypr/colors.conf
 .config/waybar/themes/colors.css
 .config/wleave/colors.css
+.config/alacritty/colors.toml
 .mozilla/firefox/1w8d6mnz.default-release/prefs.js
