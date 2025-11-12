@@ -28,14 +28,12 @@
         //"hyprland/window"
     ],
     "modules-center": [
-        "cava",
         "hyprland/workspaces"
         // "custom/weather"
         //"custom/gammastep"
     ],
     "modules-right": [
         //"network",
-        "cava",
         "custom/storage-root",
         "custom/storage-home",
         "memory",
