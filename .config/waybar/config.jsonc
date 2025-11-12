@@ -75,7 +75,9 @@
             "8": "8",
             "9": "9",
             "10": "10",
-            "music": "󰎆",
+            // "music": "󰎆",
+            // "music": "<span foreground='red'>󰝚</span>",
+            "music": "<span foreground='#f06'>󰝚</span>",
         },
         "persistent-workspaces": {
             "*": 5,
