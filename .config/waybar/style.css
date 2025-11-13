@@ -3,8 +3,8 @@
 @define-color bg-color @secondary_container5;
 @define-color text-color @on_secondary_container;
 @define-color good-color #26a65b;
-@define-color selected-color @tertiary5;
-@define-color on-selected-color @on_tertiary_container;
+@define-color selected-color @tertiary;
+@define-color on-selected-color @on_tertiary;
 @define-color hover-color @surface;
 @define-color on-hover-color @on_surface;
 @define-color firefox-color #FE7C3A;
@@ -108,33 +108,29 @@ window#waybar.hidden {
   color: @on-hover-color;
 }
 
-#workspaces button.active {
-  background: @selected-color;
-  color: @on-selected-color;
-}
-
 #workspaces button.urgent {
   background-color: #eb4d4b;
 }
 
-#workspaces button:nth-child(2),
-#workspaces button:nth-child(2).active {
+#workspaces button:nth-child(2) {
   color: @obsidian-color;
 }
 
-#workspaces button:nth-child(3),
-#workspaces button:nth-child(3).active {
+#workspaces button:nth-child(3) {
   color: @code-color;
 }
 
-#workspaces button:nth-child(4),
-#workspaces button:nth-child(4).active {
+#workspaces button:nth-child(4) {
   color: @firefox-color;
 }
 
-#workspaces button:nth-child(5),
-#workspaces button:nth-child(5).active {
+#workspaces button:nth-child(5) {
   color: @whatsapp-color;
+}
+
+#workspaces button.active {
+  background: @selected-color;
+  color: @on-selected-color;
 }
 
 /* Empty value must be the last so that it has priority and gets applied */
