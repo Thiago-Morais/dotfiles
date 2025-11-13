@@ -85,11 +85,11 @@ input_path = '~/.config/matugen/templates/colors.css'
 output_path = '~/.config/wleave/colors.css'
 
 [templates.alacritty]
-input_path = '~/.config/matugen/matugen-themes/templates/alacritty.toml'
+input_path = '~/.config/matugen/templates/alacritty.toml'
 output_path = '~/.config/alacritty/colors.toml'
 
 [templates.yazi]
-input_path = '~/.config/matugen/matugen-themes/templates/yazi-theme.toml'
+input_path = '~/.config/matugen/templates/yazi-theme.toml'
 output_path = '~/.config/yazi/theme.toml'
 
 [templates.swaync]
