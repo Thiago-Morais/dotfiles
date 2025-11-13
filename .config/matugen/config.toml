@@ -20,7 +20,7 @@ arguments = ["hyprpaper", "reload", ","]
 "lime" = "#00ff00"
 "yellow" = "#ffff00"
 
-"maroon" = "#800000"
+"brown" = "#800000"
 "navy" = "#000080"
 "green" = "#008000"
 
@@ -88,6 +88,10 @@ output_path = '~/.config/wleave/colors.css'
 input_path = '~/.config/matugen/matugen-themes/templates/alacritty.toml'
 output_path = '~/.config/alacritty/colors.toml'
 
+[templates.yazi]
+input_path = '~/.config/matugen/matugen-themes/templates/yazi-theme.toml'
+output_path = '~/.config/yazi/theme.toml'
+
 [templates.swaync]
 input_path = '~/.config/matugen/templates/colors.css'
 output_path = '~/.config/swaync/colors.css'
@@ -120,3 +124,8 @@ output_path = '~/.config/ml4w/colors/onsurface'
 input_path = '~/.config/matugen/templates/ohmyposh-colors.json'
 output_path = '~/.config/ohmyposh/colors.json'
 post_hook = "jq --slurpfile palette ~/.config/ohmyposh/colors.json '. + $palette[0]' ~/.config/ohmyposh/EDM115-newline.omp.json > /tmp/new_theme.json && mv /tmp/new_theme.json ~/.config/ohmyposh/EDM115-newline.omp.json"
+
+[templates.neovim]
+input_path = '~/.config/matugen/templates/neovim.lua'
+output_path = '~/.config/nvim/matugen.lua'
+post_hook = 'pkill -SIGUSR1 nvim'
