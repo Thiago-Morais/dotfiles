@@ -4,7 +4,7 @@ require("mini.base16").setup({
 		--  Default Background
 		base00 = "{{ colors.surface_container_low.default.hex }}",
 		--  Lighter Background (Used for status bars, line number and folding marks)
-		base01 = "{{ colors.surface_container.default.hex }}",
+		base01 = "{{ colors.surface_container_high.default.hex }}",
 		--  Selection Background
 		base02 = "{{ colors.outline_variant.default.hex }}",
 		--  Comments, Invisibles, Line Highlighting
@@ -39,6 +39,7 @@ require("mini.base16").setup({
 		base0F = "{{ colors.brown_container.default.hex | auto_lightness: 20.0 }}",
 	},
 	use_cterm = true,
+	transparent = true,
 	plugins = {
 		default = true,
 		-- default = false,
@@ -82,4 +83,8 @@ set_hl_mutliple({ "TSComment", "Comment" }, {
 vim.api.nvim_set_hl(0, "MsgArea", {
 	bg = "{{ colors.inverse_on_surface.default.hex }}",
 	fg = "{{ colors.primary.default.hex }}",
+})
+
+set_hl_mutliple({ "NormalFloat", "Normal", "NonText" }, {
+	bg = "NONE",
 })
