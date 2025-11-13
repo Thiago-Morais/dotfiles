@@ -3,7 +3,7 @@
 @define-color bg-color @secondary_container5;
 @define-color text-color @on_secondary_container;
 @define-color good-color #26a65b;
-@define-color selected-color @tertiary_container;
+@define-color selected-color @tertiary5;
 @define-color on-selected-color @on_tertiary_container;
 @define-color hover-color @surface;
 @define-color on-hover-color @on_surface;
