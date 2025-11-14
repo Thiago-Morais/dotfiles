@@ -103,15 +103,6 @@ window#waybar.hidden {
   /* border-width: 0.2em 0; */
 }
 
-#workspaces button:hover {
-  background: @hover-color;
-  color: @on-hover-color;
-}
-
-#workspaces button.urgent {
-  background-color: #eb4d4b;
-}
-
 #workspaces button:nth-child(2) {
   color: @obsidian-color;
 }
@@ -128,14 +119,23 @@ window#waybar.hidden {
   color: @whatsapp-color;
 }
 
-#workspaces button.active {
-  background: @selected-color;
-  color: @on-selected-color;
+#workspaces button:hover {
+  background: @hover-color;
+  color: @on-hover-color;
 }
 
 /* Empty value must be the last so that it has priority and gets applied */
 #workspaces button.empty {
   color: @foreground;
+}
+
+#workspaces button.urgent {
+  background-color: #eb4d4b;
+}
+
+#workspaces button.active {
+  background: @selected-color;
+  color: @on-selected-color;
 }
 
 #window {
