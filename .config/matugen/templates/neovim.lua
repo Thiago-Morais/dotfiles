@@ -119,3 +119,22 @@ set_hl_mutliple({
 }, {
 	bg = "NONE",
 })
+
+vim.api.nvim_set_hl(0, "DiffAdd", {
+	bg = "{{ colors.lime_container.default.hex }}",
+	fg = "{{ colors.lime.default.hex }}",
+})
+
+vim.api.nvim_set_hl(0, "DiffDelete", {
+	bg = "{{ colors.red_container.default.hex }}",
+	fg = "{{ colors.red.default.hex }}",
+})
+
+vim.api.nvim_set_hl(0, "DiffChange", {
+	bg = "{{ colors.orange_container.default.hex }}",
+	fg = "{{ colors.orange.default.hex }}",
+})
+
+vim.api.nvim_set_hl(0, "DiffText", {
+	bg = "NONE",
+})
