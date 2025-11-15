@@ -175,10 +175,9 @@
     },
     "backlight": {
         "device": "intel_backlight",
-        "format": "<span font-family=\"Font Awesome 7 Free,Font Awesome 7 Free Solid\">{icon}</span> {percent:3}%",
-        "format-alt": "{percent:3}% <span font-family=\"Font Awesome 7 Free,Font Awesome 7 Free Solid\">{icon}</span>",
+        "format": "{icon} {percent:3}%",
+        "format-alt": "{percent:3}% {icon}",
         "format-alt-click": "click-right",
-        //"format-icons": ["", ""],
         "format-icons": [
             "",
             "",
@@ -202,10 +201,9 @@
     },
     "backlight#compact": {
         "device": "intel_backlight",
-        "format": "<span font-family=\"Font Awesome 7 Free,Font Awesome 7 Free Solid\">{icon}</span>",
-        "format-alt": "<span font-family=\"Font Awesome 7 Free,Font Awesome 7 Free Solid\">{icon}</span>",
+        "format": "{icon}",
+        "format-alt": "{icon} {percent:3}%",
         "format-alt-click": "click-right",
-        //"format-icons": ["", ""],
         "format-icons": [
             "",
             "",
