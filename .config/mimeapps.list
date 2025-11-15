@@ -30,3 +30,4 @@ x-scheme-handler/chrome=firefox.desktop
 x-scheme-handler/hayase=hayase.desktop
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
+x-scheme-handler/discord=vesktop.desktop
