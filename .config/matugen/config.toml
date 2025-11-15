@@ -75,6 +75,7 @@ output_path = '~/.config/gtk-4.0/colors.css'
 [templates.pywalfox]
 input_path = '~/.config/matugen/templates/pywalfox-colors.json'
 output_path = '~/.cache/wal/colors.json'
+post_hook = 'pywalfox update'
 
 [templates.wlogout]
 input_path = '~/.config/matugen/templates/colors.css'
@@ -129,3 +130,4 @@ post_hook = "jq --slurpfile palette ~/.config/ohmyposh/colors.json '. + $palette
 input_path = '~/.config/matugen/templates/neovim.lua'
 output_path = '~/.config/nvim/matugen.lua'
 post_hook = 'pkill -SIGUSR1 nvim'
+
