@@ -44,3 +44,4 @@
 .config/alacritty/colors.toml
 .config/yazi/theme.toml
 .mozilla/firefox/1w8d6mnz.default-release/prefs.js
+.config/waybar/themes/extra-colors.css

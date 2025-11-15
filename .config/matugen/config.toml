@@ -51,6 +51,10 @@ input_path = '~/.config/matugen/templates/hyprland-colors.conf'
 output_path = '~/.config/hypr/colors.conf'
 post_hook = 'hyprctl reload'
 
+[templates.waybar-extra]
+input_path = '~/.config/matugen/templates/waybar-extra-colors.css'
+output_path = '~/.config/waybar/themes/extra-colors.css'
+
 [templates.waybar]
 input_path = '~/.config/matugen/templates/colors.css'
 output_path = '~/.config/waybar/themes/colors.css'

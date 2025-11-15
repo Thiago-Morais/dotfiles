@@ -1,17 +1,12 @@
 @import "themes/colors.css";
+@import "themes/extra-colors.css";
 
 @define-color bg-color @secondary_container5;
 @define-color text-color @on_secondary_container;
-@define-color good-color #26a65b;
 @define-color selected-color @tertiary;
 @define-color on-selected-color @on_tertiary;
 @define-color hover-color @surface;
 @define-color on-hover-color @on_surface;
-@define-color firefox-color #FE7C3A;
-@define-color code-color @green;
-@define-color obsidian-color #a88bfa;
-@define-color whatsapp-color #2CD46B;
-@define-color non-empty-color #80B0FF;
 
 /* Reset all styles */
 * {
@@ -55,6 +50,7 @@ window#waybar.hidden {
 #cava,
 #custom-cava,
 #bluetooth,
+#tray,
 #workspaces button,
 #custom-hyprPicker,
 #custom-power-menu,
@@ -162,31 +158,23 @@ window#waybar.hidden {
 }
 
 #tray {
-  background-color: @bg-color;
-  color: @text-color;
 }
 
 #cpu {
-  color: #fb958b;
-  background-color: @bg-color;
-  color: @text-color;
 }
 
 #memory {
-  color: #ebcb8b;
-  background-color: @bg-color;
-  color: @text-color;
+  background-color: @memory-color-bg;
+  color: @memory-color;
 }
 
 #custom-power {
-  background-color: @bg-color;
-  color: @text-color;
 }
 
 #custom-storage-home,
 #custom-storage-root {
-  background-color: @bg-color;
-  color: @text-color;
+  background-color: @storage-color-bg;
+  color: @storage-color;
 }
 
 #custom-launcher {
@@ -241,11 +229,11 @@ window#waybar.hidden {
 }
 
 #backlight {
-  color: #8fbcbb;
+  background-color: @backlight-color-bg;
+  color: @backlight-color;
 }
 
 #clock {
-  /* color: #c8d2e0; */
 }
 
 #battery {
@@ -255,6 +243,7 @@ window#waybar.hidden {
 #battery.charging,
 #battery.full,
 #battery.plugged {
+  background-color: @good-color-bg;
   color: @good-color;
 }
 
@@ -266,7 +255,7 @@ window#waybar.hidden {
 }
 
 #battery.critical:not(.charging) {
-  color: #f53c3c;
+  color: @bad-color;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: steps(12);
