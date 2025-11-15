@@ -80,11 +80,42 @@ set_hl_mutliple({ "TSComment", "Comment" }, {
 --   fg = "{{ colors.primary.default.hex }}",
 -- })
 --
+
 vim.api.nvim_set_hl(0, "MsgArea", {
 	bg = "{{ colors.inverse_on_surface.default.hex }}",
 	fg = "{{ colors.primary.default.hex }}",
 })
 
-set_hl_mutliple({ "NormalFloat", "Normal", "NonText" }, {
+set_hl_mutliple({
+	"NormalFloat",
+	"Normal",
+	"NonText",
+	"BufferInactive",
+	"NormalNC",
+	-- "Comment",
+	-- "Constant",
+	-- "Special",
+	-- "Identifier",
+	-- "Statement",
+	-- "PreProc",
+	-- "Type",
+	-- "Underlined",
+	-- "Todo",
+	-- "String",
+	-- "Function",
+	-- "Conditional",
+	-- "Repeat",
+	-- "Operator",
+	-- "Structure",
+	-- "LineNr",
+	-- "SignColumn",
+	"CursorLine",
+	-- "CursorLineNr",
+	-- "StatusLine",
+	-- "StatusLineNC",
+	-- "EndOfBuffer",
+	"NeoTreeNormal",
+	"NeoTreeNormalNC",
+}, {
 	bg = "NONE",
 })
