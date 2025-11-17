@@ -132,6 +132,7 @@ window#waybar.hidden {
 #workspaces button.active {
   background: @selected-color;
   color: @on-selected-color;
+  border-color: @text-color;
 }
 
 #window {
@@ -169,6 +170,13 @@ window#waybar.hidden {
 }
 
 #custom-power {
+  margin: -1rem -0.8rem;
+  font-size: 2rem;
+  text-shadow:
+    0 0 0.2rem @primary_container,
+    0 0 0.2rem @primary_container,
+    0 0 0.2rem @primary_container;
+  color: @on_primary_container;
 }
 
 #custom-storage-home,
