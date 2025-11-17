@@ -1,5 +1,5 @@
 @define-color good-color-bg {{ colors.springgreen_container.default.rgba | auto_lightness: -10.0  | set_alpha: 0.7 }};
-@define-color good-color {{ colors.on_springgreen_container.default.hex | auto_lightness: 20.0 }};
+@define-color good-color {{ colors.springgreen_source.default.hex | auto_lightness: 10.0 }};
 @define-color bad-color {{ colors.red.default.hex }};
 @define-color non-empty-color #80B0FF;
 
@@ -16,3 +16,17 @@
 @define-color storage-color {{ colors.on_orange_container.default.hex | auto_lightness: 00.0 }};
 @define-color backlight-color-bg {{ colors.aqua_container.default.rgba | auto_lightness: -05.0  | set_alpha: 0.5 }};
 @define-color backlight-color {{ colors.on_aqua_container.default.hex | auto_lightness: 00.0 }};
+
+
+
+/* #9bd4a0: {{ colors.chartreuse.default.hex }} chartreuse */
+/* #95d5a7: {{ colors.lime.default.hex }} lime */
+/* #95d5a7: {{ colors.green.default.hex }} green */
+/* #92d5ab: {{ colors.palegreen.default.hex }} palegreen */
+/* #8cd5b4: {{ colors.springgreen.default.hex }} springgreen */
+/* #a7f2cf: {{ colors.on_springgreen_container.default.hex }} on_springgreen_container */
+/* #adf2c6: {{ colors.on_palegreen_container.default.hex }} on_palegreen_container */
+/* #b0f1c2: {{ colors.on_green_container.default.hex }} on_green_container */
+/* #b0f1c2: {{ colors.on_lime_container.default.hex }} on_lime_container */
+/* #b7f1ba: {{ colors.on_chartreuse_container.default.hex }} on_chartreuse_container */
+/* #b7f1ba: {{ colors.springgreen_source.default.hex }} springgreen_source */
