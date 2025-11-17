@@ -28,7 +28,7 @@ require("mini.base16").setup({
 		--  Classes, Markup Bold, Search Text Background
 		base0A = "{{ colors.blue.default.hex | auto_lightness: 20.0 }}",
 		--  Strings, Inherited Class, Markup Code, Diff Inserted
-		base0B = "{{ colors.yellow.default.hex | auto_lightness: 10.0 }}",
+		base0B = "{{ colors.on_khaki_container.default.hex | auto_lightness: 10.0 }}",
 		--  Support, Regular Expressions, Escape Characters, Markup Quotes
 		base0C = "{{ colors.blueviolet.default.hex | auto_lightness: 10.0 }}",
 		--  Functions, Methods, Attribute IDs, Headings
@@ -64,7 +64,8 @@ vim.api.nvim_set_hl(0, "Visual", {
 })
 
 set_hl_mutliple({ "TSComment", "Comment" }, {
-	fg = "{{ colors.red.default.hex | auto_lightness: 30.0 }}",
+	bg = "{{ colors.red_container.default.hex | auto_lightness: -25.0 }}",
+	fg = "{{ colors.red_source.default.hex | auto_lightness: -10.0 }}",
 })
 
 -- set_hl_mutliple({ "TSMethod", "Method" }, {
