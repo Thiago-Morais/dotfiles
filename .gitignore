@@ -37,6 +37,14 @@
 !.config/YouTube\ Music/config.json
 !.config/YouTube\ Music/themes
 
+# Specifically zen files
+!.zen/
+.zen/*
+!.zen/fii5rp1a.Default\ \(release\)/
+.zen/fii5rp1a.Default\ \(release\)/*
+!.zen/fii5rp1a.Default\ \(release\)/prefs.js
+!.zen/fii5rp1a.Default\ \(release\)/zen-keyboard-shortcuts.json
+
 # Remove matugen generated colors from repository
 .config/hypr/colors.conf
 .config/waybar/themes/colors.css
