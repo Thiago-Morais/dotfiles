@@ -1,4 +1,4 @@
-@define-color good-color-bg {{ colors.springgreen_container.default.rgba | auto_lightness: -10.0  | set_alpha: 0.7 }};
+@define-color good-color-bg {{ colors.springgreen_container.default.hex | auto_lightness: -00.0 }};
 @define-color good-color {{ colors.springgreen_source.default.hex | auto_lightness: 10.0 }};
 @define-color bad-color {{ colors.red.default.hex }};
 @define-color non-empty-color #80B0FF;
@@ -10,11 +10,11 @@
 @define-color whatsapp-color #2CD46B;
 
 /* Modules */
-@define-color memory-color-bg {{ colors.yellow_container.default.rgba | auto_lightness: -05.0  | set_alpha: 0.5 }};
+@define-color memory-color-bg {{ colors.yellow_container.default.hex | auto_lightness: -05.0 }};
 @define-color memory-color {{ colors.on_yellow_container.default.hex | auto_lightness: 00.0 }};
-@define-color storage-color-bg {{ colors.orange_container.default.rgba | auto_lightness: -05.0  | set_alpha: 0.5 }};
+@define-color storage-color-bg {{ colors.orange_container.default.hex | auto_lightness: -05.0 }};
 @define-color storage-color {{ colors.on_orange_container.default.hex | auto_lightness: 00.0 }};
-@define-color backlight-color-bg {{ colors.aqua_container.default.rgba | auto_lightness: -05.0  | set_alpha: 0.5 }};
+@define-color backlight-color-bg {{ colors.aqua_container.default.hex | auto_lightness: -05.0 }};
 @define-color backlight-color {{ colors.on_aqua_container.default.hex | auto_lightness: 00.0 }};
 
 
