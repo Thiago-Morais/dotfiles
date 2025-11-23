@@ -121,21 +121,45 @@ set_hl_mutliple({
 	bg = "NONE",
 })
 
-vim.api.nvim_set_hl(0, "DiffAdd", {
-	bg = "{{ colors.lime_container.default.hex }}",
-	fg = "{{ colors.lime.default.hex }}",
+vim.api.nvim_set_hl(0, "DiffText", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "DiffAdd", { bg = "{{ colors.lime_container.default.hex }}" })
+vim.api.nvim_set_hl(0, "DiffDelete", { bg = "{{ colors.red_container.default.hex }}" })
+vim.api.nvim_set_hl(0, "DiffChange", { bg = "{{ colors.orange_container.default.hex | auto_lightness: -5.0 }}" })
+
+vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDelete", {
+	bg = "{{ colors.red_source.default.hex | auto_lightness: 25.0 }}",
+	fg = "{{ colors.red_source.default.hex | auto_lightness: 40.0 }}",
+})
+vim.api.nvim_set_hl(0, "DiffviewDiffAdd", {
+	bg = "{{ colors.lime_container.default.hex | auto_lightness: 10.0 }}",
+	fg = "{{ colors.on_lime_container.default.hex | auto_lightness: -10.0 }}",
 })
 
-vim.api.nvim_set_hl(0, "DiffDelete", {
-	bg = "{{ colors.red_container.default.hex }}",
-	fg = "{{ colors.red.default.hex }}",
-})
+-- Be sure to add this hook on the Diffview setup:
+-- require('diffview').setup {
+--   hooks = {
+--     -- Taken from this example: https://github.com/sindrets/diffview.nvim/pull/258#issuecomment-1408689220
+--     diff_buf_win_enter = function(bufnr, winid, ctx)
+--       if ctx.layout_name:match '^diff2' then
+--         if ctx.symbol == 'a' then
+--           vim.opt_local.winhl = table.concat({
+--             'DiffText:DiffviewDiffAddAsDelete',
+--             'DiffChange:DiffviewLineChangeDiffDelete',
+--           }, ',')
+--         elseif ctx.symbol == 'b' then
+--           vim.opt_local.winhl = table.concat({
+--             'DiffText:DiffviewDiffAdd',
+--             'DiffChange:DiffviewLineChangeDiffAdd',
+--           }, ',')
+--         end
+--       end
+--     end,
+--   },
+-- }
 
-vim.api.nvim_set_hl(0, "DiffChange", {
-	bg = "{{ colors.orange_container.default.hex }}",
-	fg = "{{ colors.orange.default.hex }}",
+vim.api.nvim_set_hl(0, "DiffviewLineChangeDiffDelete", {
+	bg = "{{ colors.red_container.default.hex | auto_lightness: -10.0 }}",
 })
-
-vim.api.nvim_set_hl(0, "DiffText", {
-	bg = "NONE",
+vim.api.nvim_set_hl(0, "DiffviewLineChangeDiffAdd", {
+	bg = "{{ colors.lime_container.default.hex | auto_lightness: -07.0 }}",
 })
