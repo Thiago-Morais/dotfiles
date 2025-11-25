@@ -1,0 +1,6 @@
+[default]
+duration = '10m'
+exec = '~/.config/wpaperd/scripts/run-matugen.sh'
+
+[any]
+path = '~/Pictures/wallpapers/static'
