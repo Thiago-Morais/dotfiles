@@ -22,6 +22,8 @@
 !.config/wleave
 !.config/yazi
 !.config/matugen
+!.config/wpaperd
+
 # Allow specific files
 !.config/chromium-flags.conf
 !.config/electron-flags.conf
