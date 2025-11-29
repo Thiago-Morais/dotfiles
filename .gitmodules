@@ -7,3 +7,6 @@
 [submodule ".config/matugen/matugen-themes"]
 	path = .config/matugen/matugen-themes
 	url = git@github.com:InioX/matugen-themes.git
+[submodule ".config/YouTube Music"]
+	path = .config/YouTube Music
+	url = https://github.com/Thiago-Morais/dotfiles-pear-desktop
