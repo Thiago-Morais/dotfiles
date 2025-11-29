@@ -46,6 +46,7 @@
 .zen/fii5rp1a.Default\ \(release\)/*
 !.zen/fii5rp1a.Default\ \(release\)/prefs.js
 !.zen/fii5rp1a.Default\ \(release\)/zen-keyboard-shortcuts.json
+!.zen/fii5rp1a.Default\ \(release\)/chrome
 
 # Remove matugen generated colors from repository
 .config/hypr/colors.conf
