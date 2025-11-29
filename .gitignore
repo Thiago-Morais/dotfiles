@@ -23,6 +23,7 @@
 !.config/yazi
 !.config/matugen
 !.config/wpaperd
+!.config/YouTube\ Music/
 
 # Allow specific files
 !.config/chromium-flags.conf
@@ -31,13 +32,6 @@
 !.config/mimeapps.list
 !.config/youtube-music-flags.conf
 **/*[Cc]ache*
-
-# Specifically pear-desktop files
-!.config/YouTube\ Music/
-.config/YouTube\ Music/*
-!.config/YouTube\ Music/Preferences
-!.config/YouTube\ Music/config.json
-!.config/YouTube\ Music/themes
 
 # Specifically zen files
 !.zen/
