@@ -10,3 +10,6 @@
 [submodule ".config/YouTube Music"]
 	path = .config/YouTube Music
 	url = https://github.com/Thiago-Morais/dotfiles-pear-desktop
+[submodule ".zen/fii5rp1a.Default (release)"]
+	path = .zen/fii5rp1a.Default (release)
+	url = https://github.com/Thiago-Morais/dotfiles-zen-browser
