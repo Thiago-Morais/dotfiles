@@ -24,6 +24,7 @@
 !.config/matugen
 !.config/wpaperd
 !.config/YouTube\ Music/
+!.config/keyd
 
 # Allow specific files
 !.config/chromium-flags.conf
