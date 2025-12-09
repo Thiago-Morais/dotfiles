@@ -1,5 +1,6 @@
 [Added Associations]
 application/pdf=zen-browser.desktop;firefox-2.desktop;firefox.desktop;org.inkscape.Inkscape.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice.desktop;
 application/x-extension-htm=firefox.desktop;
 application/x-extension-html=firefox.desktop;
 application/x-extension-shtml=firefox.desktop;
@@ -17,6 +18,7 @@ x-scheme-handler/https=zen.desktop;firefox.desktop;
 
 [Default Applications]
 application/pdf=zen-browser.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice.desktop;
 application/x-extension-htm=zen.desktop
 application/x-extension-html=zen.desktop
 application/x-extension-shtml=zen.desktop
