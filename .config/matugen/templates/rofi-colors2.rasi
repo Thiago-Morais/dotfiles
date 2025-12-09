@@ -1,0 +1,8 @@
+* {
+<* for name, value in colors *>
+{{name}} : {{value.default.hex}};
+{{name}}8: {{value.default.rgba | set_alpha: 0.8}};
+{{name}}5: {{value.default.rgba | set_alpha: 0.5}};
+{{name}}3: {{value.default.rgba | set_alpha: 0.3}};
+<* endfor *>
+}

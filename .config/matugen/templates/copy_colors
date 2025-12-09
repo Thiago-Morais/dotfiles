@@ -3,55 +3,56 @@
 ================================================
 Grayscale 
 
-{{ colors.surface_container_lowest.default.hex }}: surface_container_lowest
-{{ colors.surface_container_low.default.hex }}: surface_container_low
-{{ colors.surface.default.hex }}: surface
-{{ colors.surface_dim.default.hex }}: surface_dim
-{{ colors.surface_container.default.hex }}: surface_container
-{{ colors.surface_container_high.default.hex }}: surface_container_high
-{{ colors.inverse_on_surface.default.hex }}: inverse_on_surface
-{{ colors.surface_container_highest.default.hex }}: surface_container_highest
-{{ colors.surface_bright.default.hex }}: surface_bright
-{{ colors.surface_variant.default.hex }}: surface_variant
-{{ colors.outline_variant.default.hex }}: outline_variant
+{{ colors.shadow.default.hex }} :shadow
+{{ colors.scrim.default.hex }} :scrim
+{{ colors.surface_container_lowest.default.hex }} :surface_container_lowest
+{{ colors.surface_container_low.default.hex }} :surface_container_low
+{{ colors.surface.default.hex }} :surface
+{{ colors.surface_dim.default.hex }} :surface_dim
+{{ colors.surface_container.default.hex }} :surface_container
+{{ colors.surface_container_high.default.hex }} :surface_container_high
+{{ colors.inverse_on_surface.default.hex }} :inverse_on_surface
+{{ colors.surface_container_highest.default.hex }} :surface_container_highest
+{{ colors.surface_bright.default.hex }} :surface_bright
+{{ colors.surface_variant.default.hex }} :surface_variant
+{{ colors.outline_variant.default.hex }} :outline_variant
 
-{{ colors.outline.default.hex }}: outline
-{{ colors.surface_tint.default.hex }}: surface_tint
-{{ colors.on_surface_variant.default.hex }}: on_surface_variant
-{{ colors.on_surface.default.hex }}: on_surface
-{{ colors.inverse_surface.default.hex }}: inverse_surface
+{{ colors.outline.default.hex }} :outline
+{{ colors.surface_tint.default.hex }} :surface_tint
+{{ colors.on_surface_variant.default.hex }} :on_surface_variant
+{{ colors.on_surface.default.hex }} :on_surface
+{{ colors.inverse_surface.default.hex }} :inverse_surface
 ================================================
 Primary Gradient
 
-{{ colors.on_primary_fixed.default.hex }}: on_primary_fixed
-{{ colors.on_primary.default.hex }}: on_primary
-{{ colors.primary_container.default.hex }}: primary_container
-{{ colors.on_primary_fixed_variant.default.hex }}: on_primary_fixed_variant
-{{ colors.inverse_primary.default.hex }}: inverse_primary
-{{ colors.primary.default.hex }}: primary
-{{ colors.primary_fixed_dim.default.hex }}: primary_fixed_dim
-{{ colors.on_primary_container.default.hex }}: on_primary_container
-{{ colors.primary_fixed.default.hex }}: primary_fixed
+{{ colors.on_primary_fixed.default.hex }} :on_primary_fixed
+{{ colors.on_primary.default.hex }} :on_primary
+{{ colors.primary_container.default.hex }} :primary_container
+{{ colors.on_primary_fixed_variant.default.hex }} :on_primary_fixed_variant
+{{ colors.inverse_primary.default.hex }} :inverse_primary
+{{ colors.primary.default.hex }} :primary
+{{ colors.primary_fixed_dim.default.hex }} :primary_fixed_dim
+{{ colors.on_primary_container.default.hex }} :on_primary_container
+{{ colors.primary_fixed.default.hex }} :primary_fixed
 ================================================
 Secondary Gradient
 
-{{ colors.on_secondary_fixed.default.hex }}: on_secondary_fixed
-{{ colors.on_secondary.default.hex }}: on_secondary
-{{ colors.secondary_container.default.hex }}: secondary_container
-{{ colors.on_secondary_fixed_variant.default.hex }}: on_secondary_fixed_variant
-{{ colors.secondary.default.hex }}: secondary
-{{ colors.secondary_fixed_dim.default.hex }}: secondary_fixed_dim
-{{ colors.on_secondary_container.default.hex }}: on_secondary_container
-{{ colors.secondary_fixed.default.hex }}: secondary_fixed
-
+{{ colors.on_secondary_fixed.default.hex }} :on_secondary_fixed
+{{ colors.on_secondary.default.hex }} :on_secondary
+{{ colors.secondary_container.default.hex }} :secondary_container
+{{ colors.on_secondary_fixed_variant.default.hex }} :on_secondary_fixed_variant
+{{ colors.secondary.default.hex }} :secondary
+{{ colors.secondary_fixed_dim.default.hex }} :secondary_fixed_dim
+{{ colors.on_secondary_container.default.hex }} :on_secondary_container
+{{ colors.secondary_fixed.default.hex }} :secondary_fixed
 ================================================
 Tertiary Gradient
 
-{{ colors.on_tertiary_fixed.default.hex }}: on_tertiary_fixed
-{{ colors.on_tertiary.default.hex }}: on_tertiary
-{{ colors.tertiary_container.default.hex }}: tertiary_container
-{{ colors.on_tertiary_fixed_variant.default.hex }}: on_tertiary_fixed_variant
-{{ colors.tertiary.default.hex }}: tertiary
-{{ colors.tertiary_fixed_dim.default.hex }}: tertiary_fixed_dim
-{{ colors.on_tertiary_container.default.hex }}: on_tertiary_container
-{{ colors.tertiary_fixed.default.hex }}: tertiary_fixed
+{{ colors.on_tertiary_fixed.default.hex }} :on_tertiary_fixed
+{{ colors.on_tertiary.default.hex }} :on_tertiary
+{{ colors.tertiary_container.default.hex }} :tertiary_container
+{{ colors.on_tertiary_fixed_variant.default.hex }} :on_tertiary_fixed_variant
+{{ colors.tertiary.default.hex }} :tertiary
+{{ colors.tertiary_fixed_dim.default.hex }} :tertiary_fixed_dim
+{{ colors.on_tertiary_container.default.hex }} :on_tertiary_container
+{{ colors.tertiary_fixed.default.hex }} :tertiary_fixed
