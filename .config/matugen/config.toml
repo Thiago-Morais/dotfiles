@@ -143,3 +143,6 @@ input_path = '~/.config/matugen/templates/neovim.lua'
 output_path = '~/.config/nvim/matugen.lua'
 post_hook = 'pkill -SIGUSR1 nvim'
 
+[templates.pear_desktop]
+input_path = '~/.config/matugen/templates/pear-desktop.css'
+output_path = '~/.config/YouTube Music/themes/colors.css'
