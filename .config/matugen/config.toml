@@ -41,6 +41,10 @@ arguments = ["hyprpaper", "reload", ","]
 "palegreen" = "#80ff80"
 "khaki" = "#ffff80"
 
+[templates.copy_colors]
+input_path = '~/.config/matugen/templates/copy_colors'
+output_path = '~/.config/matugen/cached_colors'
+
 # [templates.kitty]
 # input_path = '~/.config/matugen/templates/kitty-colors.conf'
 # output_path = '~/.config/kitty/colors-matugen.conf'
