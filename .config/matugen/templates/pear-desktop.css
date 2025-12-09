@@ -1,0 +1,28 @@
+html:not(.style-scope) {
+  --cust-ytmusic-play-nav-color: #f00;
+  --cust-ytmusic-dark-background: #0f0;
+  --cust-ytmusic-dark-foreground: #00f;
+
+  --cust-ytmusic-light-text-1: #f80;
+  --cust-ytmusic-light-2: #f08;
+  --cust-ytmusic-light-3: #f88;
+  --cust-ytmusic-light-4: #ff8; /* Search bar text*/
+  --cust-ytmusic-light-5: #f8f;
+
+  --cust-ytmusic-medium-1: #800;
+  --cust-ytmusic-medium-2: #808;
+  --cust-ytmusic-medium-3: #880;
+  --cust-ytmusic-medium-4: #8f8;
+  --cust-ytmusic-medium-5: #80f;
+
+  --cust-ytmusic-subscribe-color: #88f;
+  --cust-ytmusic-playbutton-color: #8ff;
+  --cust-ytmusic-tertiary-nav-button-color: #088;
+  --cust-ytmusic-nowplaying-color: #008;
+
+  --cust-ytmusic-main-text-1: #080;
+  --cust-ytmusic-header-text-1: #08f;
+  --cust-ytmusic-header-text-2: #fff;
+
+  --cust-ytmusic-scroll-width: 0px;
+}
