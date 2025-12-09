@@ -1,0 +1,11 @@
+[soe][Compressor#0]
+attack=0
+bypass=true
+knee=0
+mode=1
+ratio=1.5
+sidechainLookahead=20
+sidechainMode=1
+sidechainReactivity=250
+stereoSplit=true
+threshold=0
