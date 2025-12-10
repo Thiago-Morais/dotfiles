@@ -28,6 +28,7 @@
 !.config/YouTube\ Music/
 !.config/keyd
 !.config/easyeffects
+!.config/wofi
 !.local/share/easyeffects
 
 # Allow specific files

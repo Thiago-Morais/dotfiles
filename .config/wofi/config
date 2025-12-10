@@ -1,0 +1,13 @@
+# Visual
+# normal_window=true
+allow_images=true
+# hide_scroll=true
+
+# Interaction
+insensitive=true
+mode=drun
+
+# Others
+no_actions=false
+term=alacritty
+--show
