@@ -1,13 +1,17 @@
 # Visual
-# normal_window=true
 allow_images=true
-# hide_scroll=true
+image_size=48 # 32 * 1.5
+dynamic_lines=true # no effect
 
 # Interaction
+matching=multi-contains
 insensitive=true
-mode=drun
+key_up=Up,Ctrl-k
+key_down=Down,Ctrl-j
+key_left=Left,Ctrl-h
+key_right=Right,Ctrl-l
+key_expand=Ctrl-space
 
 # Others
-no_actions=false
+mode=drun
 term=alacritty
---show
