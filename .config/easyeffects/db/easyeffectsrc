@@ -16,4 +16,5 @@ visiblePlugin=bass_loudness#0
 height=963
 outputAutoloadingFallbackPreset=bass-smoother
 outputAutoloadingUsesFallback=true
+visiblePresetSheetPage=autoloadingPage
 width=1600
