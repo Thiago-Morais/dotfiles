@@ -3,7 +3,7 @@ band0AttackThreshold=0
 band0AttackTime=0
 band0CompressionMode=1
 band0Knee=0
-band0Ratio=1.2
+band0Ratio=1.6
 band0SidechainLookahead=20
 band0SidechainReactivity=250
 band1AttackThreshold=0
@@ -29,7 +29,7 @@ band5CompressorEnable=false
 band6CompressorEnable=false
 band7CompressorEnable=false
 compressorMode=2
-outputGain=-3
+outputGain=-6
 stereoSplit=true
 
 [soe][MultibandCompressor#1]

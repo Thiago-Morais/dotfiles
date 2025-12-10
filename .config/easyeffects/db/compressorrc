@@ -1,9 +1,9 @@
 [soe][Compressor#0]
 attack=0
 bypass=true
-knee=0
-mode=1
-ratio=1.5
+knee=-5
+outputGain=-5
+ratio=2
 sidechainLookahead=20
 sidechainMode=1
 sidechainReactivity=250
