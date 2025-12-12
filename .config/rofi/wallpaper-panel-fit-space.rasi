@@ -1,7 +1,3 @@
-* {
-    wallpaper-image: url("~/.local/state/wpaperd/wallpapers/eDP-2", both);
-}
-
 wallpaper-panel {
     children:         ["empty", "wallpaper-container", "empty"];
     background-color: transparent;

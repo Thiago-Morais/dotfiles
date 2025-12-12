@@ -1,47 +1,46 @@
 @import "~/.config/rofi/colors.rasi"
 * {
-    // Current path used for `wallpaper-image`: "~/.local/state/wpaperd/wallpapers/eDP-2"
-    // This path is used on the following files:
-    // ./wallpaper-panel-fit-space.rasi
-
-    wallpaper-width:             400px;
-    wallpaper-border:            2px;
-    // `wallpaper-height` formula:
+    wallpaper-image:  url("~/.local/state/wpaperd/wallpapers/eDP-2", both);
+    wallpaper-width:  400px;
+    wallpaper-border: 2px;
+    // wallpaper-height formula:
     // wallpaper-width * ratio - wallpaper-border * 1.24
     // Why multiply by 1.24 works? I don't know. It just did.
-    wallpaper-height:            calc(400px * (10 / 16) - 2px * 1.24);
+    wallpaper-height: calc(400px * (10 / 16) - 2px * 1.24);
 
-    active-background:           var(background);
-    active-foreground:           var(blue);
+    // Normal
     normal-background:           var(background);
     normal-foreground:           var(foreground);
-    urgent-background:           var(background);
-    urgent-foreground:           var(red);
-    alternate-active-background: var(lightbg);
-    alternate-active-foreground: var(blue);
     alternate-normal-background: var(lightbg);
-    alternate-normal-foreground: var(foreground);
-    alternate-urgent-background: var(lightbg);
-    alternate-urgent-foreground: var(red);
-    selected-active-background:  var(blue);
-    selected-active-foreground:  var(background);
+    alternate-normal-foreground: var(lightfg);
     selected-normal-background:  var(selectedbg);
     selected-normal-foreground:  var(selectedfg);
-    selected-urgent-background:  var(red);
+    // Active
+    active-background:           var(background);
+    active-foreground:           var(active-color);
+    alternate-active-background: var(lightbg);
+    alternate-active-foreground: var(active-color);
+    selected-active-background:  var(active-color);
+    selected-active-foreground:  var(background);
+    // Urgent
+    urgent-background:           var(background);
+    urgent-foreground:           var(urgent-color);
+    alternate-urgent-background: var(lightbg);
+    alternate-urgent-foreground: var(urgent-color);
+    selected-urgent-background:  var(urgent-color);
     selected-urgent-foreground:  var(background);
 
-    blue:                        rgba ( 38, 139, 210, 100 % );
-    red:                         rgba ( 220, 50, 47, 100 % );
-    spacing:                     2;
+    spacing: 0;
 }
 
 window {
     children:         ["wallpaper-panel","mainbox"];
-    padding:          5px;
     width:            55%;
-    background-color: var(background);
-    border:           3px;
+    padding:          5px;
+    spacing:          5px;
+    border:           1px;
     border-radius:    5px;
+    background-color: var(background);
     orientation:      horizontal;
 }
 mainbox {
