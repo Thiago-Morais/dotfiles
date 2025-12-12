@@ -3,10 +3,10 @@
 }
 
 wallpaper-panel {
-    children: ["empty", "wallpaper-container", "empty"];
-    width: var(wallpaper-width);
-    expand: false;
+    children:         ["empty", "wallpaper-container", "empty"];
     background-color: transparent;
+    width:            var(wallpaper-width);
+    expand:           false;
 }
 
 empty {
@@ -14,17 +14,16 @@ empty {
 }
 
 wallpaper-container {
-    // enabled: false;
-    children: ["icon-wallpaper"];
-    expand: false;
-    border: var(wallpaper-border);
-    border-color: @outline;
-    orientation: horizontal;
+    children:      ["icon-wallpaper"];
+    border:        var(wallpaper-border);
     border-radius: 10px;
+    border-color:  @outline;
+    orientation:   horizontal;
+    expand:        false;
 }
 // It needs to be an 'icon-' element so that we can use the size property
 icon-wallpaper {
     background-image: var(wallpaper-image);
-    size: var(wallpaper-height);
-    squared: false;
+    size:             var(wallpaper-height);
+    squared:          false;
 }

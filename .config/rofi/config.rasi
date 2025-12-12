@@ -34,9 +34,9 @@ configuration {
     // display-keys: ;
     // display-recursivebrowser: ;
     display-emoji: "😐️";
+    // icon-theme: ;
     me-select-entry: "";
     me-accept-entry: "MousePrimary";
-    // icon-theme: ;
     global-kb: true;
     window-thumbnail: true;
 
