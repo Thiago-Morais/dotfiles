@@ -1,5 +1,5 @@
 * {
-    background:               {{colors.on_secondary.default.rgba | set_alpha: 0.9}};
+    background:               {{colors.on_secondary.default.rgba | set_alpha: 0.3}};
 
     on-primary-fixed:         {{colors.on_primary_fixed.default.hex}};
     on-primary:               {{colors.on_primary.default.hex}};
