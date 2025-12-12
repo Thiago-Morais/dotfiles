@@ -29,6 +29,7 @@
 !.config/keyd
 !.config/easyeffects
 !.config/rofi
+!.config/mako
 !.local/share/easyeffects
 
 # Allow specific files
@@ -57,3 +58,4 @@
 .mozilla/firefox/1w8d6mnz.default-release/prefs.js
 .config/waybar/themes/extra-colors.css
 .config/rofi/colors.rasi
+.config/mako/mako-colors
