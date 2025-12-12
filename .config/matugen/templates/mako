@@ -1,0 +1,15 @@
+# Material You colors
+
+background-color={{colors.on_primary.default.hex}}
+text-color={{colors.tertiary.default.hex}}
+text-color={{colors.on_tertiary_container.default.hex}}
+border-color={{colors.tertiary_container.default.hex}}
+# Per-mode settings
+# Enable with  `makoctl mode -a do-not-disturb`
+# Disable with `makoctl mode -r do-not-disturb`
+# Toggle with  `makoctl mode -t do-not-disturb`
+
+[urgency=high]
+border-color={{colors.error_container.default.hex}}
+border-size=4
+

@@ -150,3 +150,8 @@ post_hook = 'pkill -SIGUSR1 nvim'
 [templates.pear_desktop]
 input_path = '~/.config/matugen/templates/pear-desktop.css'
 output_path = '~/.config/YouTube Music/themes/colors.css'
+
+[templates.mako]
+input_path = '~/.config/matugen/templates/mako'
+output_path = '~/.config/mako/mako-colors'
+post_hook = 'makoctl reload'
