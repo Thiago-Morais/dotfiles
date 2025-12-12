@@ -1,7 +1,7 @@
 @theme "~/.config/rofi/theme.rasi"
 
 configuration {
-    modes: "window,run,ssh,drun,emoji,filebrowser";
+    modes: "window,run,ssh,drun";
     font: "JetBrainsMono NFP 24";
     show-icons: true;
     terminal: "alacritty";
