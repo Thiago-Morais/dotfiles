@@ -1,0 +1,30 @@
+* {
+    wallpaper-image: url("~/.local/state/wpaperd/wallpapers/eDP-2", both);
+}
+
+wallpaper-panel {
+    children: ["empty", "wallpaper-container", "empty"];
+    width: var(wallpaper-width);
+    expand: false;
+    background-color: transparent;
+}
+
+empty {
+    background-color: transparent;
+}
+
+wallpaper-container {
+    // enabled: false;
+    children: ["icon-wallpaper"];
+    expand: false;
+    border: var(wallpaper-border);
+    border-color: @outline;
+    orientation: horizontal;
+    border-radius: 10px;
+}
+// It needs to be an 'icon-' element so that we can use the size property
+icon-wallpaper {
+    background-image: var(wallpaper-image);
+    size: var(wallpaper-height);
+    squared: false;
+}

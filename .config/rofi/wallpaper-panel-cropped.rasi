@@ -1,0 +1,30 @@
+* {
+    wallpaper-image: url("~/.local/state/wpaperd/wallpapers/eDP-2", height);
+}
+
+wallpaper-panel {
+    children: ["icon-wallpaper"];
+    width: var(wallpaper-width);
+    expand: false;
+    // padding: 1ch;
+}
+
+wallpaper-container {
+    // children: ["void", "wallpaper-workaround", "void"];
+    // children: ["wallpaper-workaround"];
+    children: ["icon-wallpaper"];
+    expand: false;
+    border: var(wallpaper-border);
+    border-color: @outline;
+    orientation: horizontal;
+    border-radius: 10px;
+}
+// It needs to be an 'icon-' element so that we can use the size property
+icon-wallpaper {
+    // filename: "~/.local/state/wpaperd/wallpapers/eDP-2";
+
+    background-image: var(wallpaper-image);
+    background-repeat: false;
+    // size: var(wallpaper-height);
+    // squared: false;
+}

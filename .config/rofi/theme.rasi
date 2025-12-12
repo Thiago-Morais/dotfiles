@@ -1,5 +1,16 @@
 @import "~/.config/rofi/colors.rasi"
 * {
+    // Current path used for `wallpaper-image`: "~/.local/state/wpaperd/wallpapers/eDP-2"
+    // This path is used on the following files:
+    // ./wallpaper-panel-fit-space.rasi
+
+    wallpaper-width:             400px;
+    wallpaper-border:            2px;
+    // `wallpaper-height` formula:
+    // wallpaper-width * ratio - wallpaper-border * 1.24
+    // Why multiply by 1.24 works? I don't know. It just did.
+    wallpaper-height:            calc(400px * (10 / 16) - 2px * 1.24);
+
     active-background:           var(background);
     active-foreground:           var(blue);
     normal-background:           var(background);
@@ -34,18 +45,35 @@
     red:                         rgba ( 220, 50, 47, 100 % );
     separatorcolor:              var(foreground);
     spacing:                     2;
-
-    wallpaper-width:             500px;
-    wallpaper-border:            2px;
-    // `wallpaper-height` formula:
-    // wallpaper-width * ratio - wallpaper-border * 1.24
-    // Why multiply by 1.24 works? I don't know. It just did.
-    wallpaper-height:            calc(500px * (10 / 16) - 2px * 1.24);
 }
+
+// ================================================
+// Grayscale
+//
+// shadow:                      #000000
+// scrim:                       #000000
+// surface_container_lowest:    #0a0f12
+// surface_container_low:       #181c1f
+// surface:                     #0f1417
+// surface_dim:                 #0f1417
+// surface_container:           #1c2024
+// surface_container_high:      #262b2e
+// inverse_on_surface:          #2c3135
+// surface_container_highest:   #313539
+// surface_bright:              #353a3d
+// surface_variant:             #41484d
+//
+// outline_variant:             #41484d
+// outline:                     #8b9198
+// surface_tint:                #91cef5
+// on_surface_variant:          #c1c7ce
+// on_surface:                  #dfe3e7
+// inverse_surface:             #dfe3e7
 
 window {
     padding:            5px;
     background-color:   var(background);
+    // background-color:   var(surface);
     border:             3px;
     border-radius:      5px;
     orientation: horizontal;
@@ -54,6 +82,7 @@ window {
     // children: ["icon-wallpaper","mainbox"];
     // children: ["box","mainbox"];
     width: 66%;
+    width: 55%;
 }
 mainbox {
     padding: 0;
@@ -182,8 +211,6 @@ element-text {
     text-color:       inherit;
 }
 
-// mode-switcher{
-// }
 button {
     cursor:     pointer;
     spacing:    0;
@@ -194,34 +221,8 @@ button selected {
     text-color:       var(selected-normal-foreground);
 }
 
-// icon {
-//     squared: false;
-//     squared: true;
-// }
-wallpaper-panel {
-    children: ["void", "wallpaper-container", "void"];
-    width: var(wallpaper-width);
-    expand: false;
-    // padding: 1ch;
-}
-
-wallpaper-container {
-    // children: ["void", "wallpaper-workaround", "void"];
-    // children: ["wallpaper-workaround"];
-    children: ["icon-wallpaper"];
-    expand: false;
-    border: var(wallpaper-border);
-    border-color: @outline;
-    orientation: horizontal;
-    border-radius: 10px;
-}
-// It needs to be an 'icon-' element so that we can use the size property
-icon-wallpaper {
-    // filename: "~/.local/state/wpaperd/wallpapers/eDP-2";
-    background-image: url("~/.local/state/wpaperd/wallpapers/eDP-2", both);
-    size: var(wallpaper-height);
-    squared: false;
-}
+@import "./wallpaper-panel-fit-space.rasi"
+// @import "./wallpaper-panel-cropped.rasi"
 
 scrollbar {
     padding:                0;
