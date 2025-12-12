@@ -1,0 +1,131 @@
+-location [number]                      Location on screen
+-yoffset [number]                       Y-offset relative to location. *DEPRECATED* see rofi-theme manpage for new option
+-xoffset [number]                       X-offset relative to location. *DEPRECATED* see rofi-theme manpage for new option
+-[no-]fixed-num-lines                   Always show number of lines
+-[no-]show-icons                        Whether to load and show icons
+-preview-cmd [string]                   Custom command to generate preview icons
+-on-selection-changed [string]          Custom command to call when menu selection changes
+-on-mode-changed [string]               Custom command to call when menu mode changes
+-on-entry-accepted [string]             Custom command to call when menu entry is accepted
+-on-menu-canceled [string]              Custom command to call when menu is canceled
+-on-menu-error [string]                 Custom command to call when menu finds errors
+-on-screenshot-taken [string]           Custom command to call when menu screenshot is taken
+-terminal [string]                      Terminal to use
+-ssh-client [string]                    Ssh client to use
+-ssh-command [string]                   Ssh command to execute
+-run-command [string]                   Run command to execute
+-run-list-command [string]              Command to get extra run targets
+-run-shell-command [string]             Run command to execute that runs in shell
+-window-command [string]                Command to executed when -kb-accept-alt binding is hit on selected window 
+-window-match-fields [string]           Window fields to match in window mode
+-icon-theme [string]                    Theme to use to look for icons
+-drun-match-fields [string]             Desktop entry fields to match in drun
+-drun-categories [string]               Only show Desktop entry from these categories
+-drun-exclude-categories [string]       Exclude Desktop entries from these categories
+-[no-]drun-show-actions                 Desktop entry show actions.
+-drun-display-format [string]           DRUN format string. (Supports: generic,name,comment,exec,categories)
+-drun-url-launcher [string]             Command to open a Desktop Entry that is a Link.
+-[no-]disable-history                   Disable history in run/ssh
+-ignored-prefixes [string]              Programs ignored for history
+-sorting-method [string]                Choose sort strategy: normal (levenshtein) or fzf.
+-[no-]case-sensitive                    Set case-sensitivity
+-[no-]case-smart                        Set smartcase like vim (determine case-sensitivity by input)
+-[no-]cycle                             Cycle through the results list
+-[no-]sidebar-mode                      Enable sidebar-mode
+-[no-]hover-select                      Enable hover-select
+-eh [number]                            Row height (in chars)
+-[no-]auto-select                       Enable auto select mode
+-[no-]parse-hosts                       Parse hosts file for ssh mode
+-[no-]parse-known-hosts                 Parse known_hosts file for ssh mode
+-combi-modes [string]                   Set the modes to combine in combi mode
+-matching [string]                      Set the matching algorithm. (normal, regex, glob, fuzzy, prefix)
+-[no-]tokenize                          Tokenize input string
+-m [string]                             Monitor id to show on
+-filter [string]                        Pre-set filter
+-dpi [number]                           DPI
+-threads [number]                       Threads to use for string matching
+-window-format [string]                 Window Format. w (desktop name), t (title), n (name), r (role), c (class)
+-[no-]click-to-exit                     Click outside the window to exit
+-[no-]global-kb                         Click outside the window to exit
+-max-history-size [number]              Max history size (WARNING: can cause slowdowns when set too high).
+-combi-display-format [string]          Combi format string. (Supports: mode, text)
+-cache-dir [string]                     Directory where history and temporary files are stored.
+-[no-]window-thumbnail                  Show window thumbnail (if available) as icon in window switcher.
+-[no-]drun-reload-desktop-cache         DRUN: If enabled, reload the cache with desktop file content.
+-[no-]normalize-match                   Normalize string when matching (disables match highlighting).
+-application-fallback-icon [string]     Fallback icon to use when the application icon is not found in run/drun.
+-refilter-timeout-limit [number]        When filtering takes  more then this time (in ms) switch to delayed filter.
+-completer-mode [string]                What completer to use for drun/run.
+-[no-]imdkit                            Whether to enable imdkit
+-pid [string]                           Pidfile location
+-display-window [string]                The display name of this browser
+-display-run [string]                   The display name of this browser
+-display-ssh [string]                   The display name of this browser
+-display-drun [string]                  The display name of this browser
+-display-combi [string]                 The display name of this browser
+-display-keys [string]                  The display name of this browser
+-display-filebrowser [string]           The display name of this browser
+-display-recursivebrowser [string]      The display name of this browser
+-display-emoji [string]                 The display name of this browser
+-kb-primary-paste [string]              Paste primary selection
+-kb-secondary-paste [string]            Paste clipboard
+-kb-secondary-copy [string]             Copy to clipboard
+-kb-clear-line [string]                 Clear input line
+-kb-move-front [string]                 Beginning of line
+-kb-move-end [string]                   End of line
+-kb-move-word-back [string]             Move back one word
+-kb-move-word-forward [string]          Move forward one word
+-kb-move-char-back [string]             Move back one char
+-kb-move-char-forward [string]          Move forward one char
+-kb-remove-word-back [string]           Delete previous word
+-kb-remove-word-forward [string]        Delete next word
+-kb-remove-char-forward [string]        Delete next char
+-kb-remove-char-back [string]           Delete previous char
+-kb-remove-to-eol [string]              Delete till the end of line
+-kb-remove-to-sol [string]              Delete till the start of line
+-kb-accept-entry [string]               Accept entry
+-kb-accept-custom [string]              Use entered text as command (in ssh/run modes)
+-kb-accept-custom-alt [string]          Use entered text as command (in ssh/run modes)
+-kb-accept-alt [string]                 Use alternate accept command.
+-kb-delete-entry [string]               Delete entry from history
+-kb-mode-next [string]                  Switch to the next mode.
+-kb-mode-previous [string]              Switch to the previous mode.
+-kb-mode-complete [string]              Start completion for mode.
+-kb-row-left [string]                   Go to the previous column
+-kb-row-right [string]                  Go to the next column
+-kb-row-up [string]                     Select previous entry
+-kb-row-down [string]                   Select next entry
+-kb-element-next [string]               Go to next element (in logical order).
+-kb-page-prev [string]                  Go to the previous page
+-kb-page-next [string]                  Go to the next page
+-kb-row-first [string]                  Go to the first entry
+-kb-row-last [string]                   Go to the last entry
+-kb-row-select [string]                 Set selected item as input text
+-kb-screenshot [string]                 Take a screenshot of the rofi window
+-kb-toggle-case-sensitivity [string]    Toggle case sensitivity
+-kb-toggle-sort [string]                Toggle sort
+-kb-cancel [string]                     Quit rofi
+-kb-custom-1 [string]                   Custom keybinding 1
+-kb-custom-2 [string]                   Custom keybinding 2
+-kb-custom-3 [string]                   Custom keybinding 3
+-kb-custom-4 [string]                   Custom keybinding 4
+-kb-custom-5 [string]                   Custom Keybinding 5
+-kb-custom-6 [string]                   Custom keybinding 6
+-kb-custom-7 [string]                   Custom Keybinding 7
+-kb-custom-8 [string]                   Custom keybinding 8
+-kb-custom-9 [string]                   Custom keybinding 9
+-kb-custom-10 [string]                  Custom keybinding 10
+-kb-custom-11 [string]                  Custom keybinding 11
+-kb-custom-12 [string]                  Custom keybinding 12
+-kb-custom-13 [string]                  Custom keybinding 13
+-kb-custom-14 [string]                  Custom keybinding 14
+-kb-custom-15 [string]                  Custom keybinding 15
+-kb-custom-16 [string]                  Custom keybinding 16
+-kb-custom-17 [string]                  Custom keybinding 17
+-kb-custom-18 [string]                  Custom keybinding 18
+-kb-custom-19 [string]                  Custom Keybinding 19
+-kb-select-1 [string]                   Select row 1
+-kb-select-2 [string]                   Select row 2
+-kb-select-3 [string]                   Select row 3
+-kb-select-4 [string]                   Select row 4
+-kb-select-5 [string]                   Select row 5
