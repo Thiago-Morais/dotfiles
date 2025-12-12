@@ -25,25 +25,13 @@
     alternate-urgent-foreground: var(red);
     selected-active-background:  var(blue);
     selected-active-foreground:  var(background);
-    selected-normal-background:  var(lightfg);
-    selected-normal-foreground:  var(lightbg);
+    selected-normal-background:  var(selectedbg);
+    selected-normal-foreground:  var(selectedfg);
     selected-urgent-background:  var(red);
     selected-urgent-foreground:  var(background);
 
-    // background-color:            transparent;
-    background-color:            var(surface);
-    foreground:                  var(on-surface);
-    foreground:                  var(on-surface-variant);
-    // foreground:                  var(outline);
-    lightbg:                     var(surface-variant);
-    lightbg:                     var(surface-container);
-    lightbg:                     var(surface-container-high);
-    lightfg:                     var(on-surface-variant);
-    border-color:                var(foreground);
-    border-color:                var(primary);
     blue:                        rgba ( 38, 139, 210, 100 % );
     red:                         rgba ( 220, 50, 47, 100 % );
-    separatorcolor:              var(foreground);
     spacing:                     2;
 }
 
