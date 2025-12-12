@@ -1,15 +1,15 @@
 [Added Associations]
 application/pdf=zen-browser.desktop;firefox-2.desktop;firefox.desktop;org.inkscape.Inkscape.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice.desktop;
-application/x-extension-htm=firefox.desktop;
-application/x-extension-html=firefox.desktop;
-application/x-extension-shtml=firefox.desktop;
-application/x-extension-xht=firefox.desktop;
-application/x-extension-xhtml=firefox.desktop;
+application/x-extension-htm=zen.desktop;firefox.desktop;
+application/x-extension-html=zen.desktop;firefox.desktop;
+application/x-extension-shtml=zen.desktop;firefox.desktop;
+application/x-extension-xht=zen.desktop;firefox.desktop;
+application/x-extension-xhtml=zen.desktop;firefox.desktop;
 application/x-shellscript=kitty-open.desktop;nvim.desktop;
-application/xhtml+xml=firefox.desktop;
 image/png=vipsdisp-3.desktop;vipsdisp-2.desktop;vipsdisp.desktop;
-text/html=firefox.desktop;
+application/xhtml+xml=zen.desktop;firefox.desktop;
+text/html=zen.desktop;firefox.desktop;
 text/plain=code-3.desktop;code-2.desktop;code.desktop;
 video/mp4=mpv-2.desktop;
 x-scheme-handler/chrome=zen.desktop;firefox.desktop;
