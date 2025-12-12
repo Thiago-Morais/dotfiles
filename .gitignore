@@ -28,7 +28,7 @@
 !.config/YouTube\ Music/
 !.config/keyd
 !.config/easyeffects
-!.config/wofi
+!.config/rofi
 !.local/share/easyeffects
 
 # Allow specific files
@@ -56,3 +56,4 @@
 .config/yazi/theme.toml
 .mozilla/firefox/1w8d6mnz.default-release/prefs.js
 .config/waybar/themes/extra-colors.css
+.config/rofi/colors.rasi
