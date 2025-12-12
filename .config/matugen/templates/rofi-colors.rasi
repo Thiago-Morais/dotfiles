@@ -65,6 +65,12 @@
     // Background selected element
     selectedbg:       {{colors.outline.default.rgba | set_alpha: 0.3}};
     selectedfg:       {{colors.on_surface.default.rgba | set_alpha: 1.0}};
+
+    active-color:     rgba ( 38, 139, 210, 100 % );
+    urgent-color:     rgba ( 220, 50, 47, 100 % );
+    active-color:     {{colors.blue.default.rgba | set_alpha: 1.0}};
+    urgent-color:     {{colors.red.default.rgba | set_alpha: 1.0}};
+
     border-color:     {{colors.primary.default.rgba | set_alpha: 1.0}};
     separatorcolor:   var(foreground);
 }
