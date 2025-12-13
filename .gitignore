@@ -27,7 +27,6 @@
 !.config/wpaperd
 !.config/YouTube\ Music/
 !.config/keyd
-!.config/easyeffects
 !.config/rofi
 !.config/mako
 !.local/share/easyeffects
@@ -40,7 +39,7 @@
 !.config/youtube-music-flags.conf
 **/*[Cc]ache*
 
-# Specifically zen files
+# Specific zen files
 !.zen/
 .zen/*
 !.zen/fii5rp1a.Default\ \(release\)/
@@ -48,6 +47,13 @@
 !.zen/fii5rp1a.Default\ \(release\)/prefs.js
 !.zen/fii5rp1a.Default\ \(release\)/zen-keyboard-shortcuts.json
 !.zen/fii5rp1a.Default\ \(release\)/chrome
+
+# Specific easyeffects files
+!.config/easyeffects/
+.config/easyeffects/*
+!.config/easyeffects/db/
+.config/easyeffects/db/*
+.config/easyeffects/db/*.lock
 
 # Remove matugen generated colors from repository
 .config/hypr/colors.conf
