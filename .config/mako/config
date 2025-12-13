@@ -5,7 +5,9 @@ on-touch=invoke-default-action
 on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
 
 # [ STYLE OPTIONS ]
-font=JetBrainsMono NFP 10
+font=JetBrainsMono NFP 11
+height=200
+width=350
 margin=0
 padding=10
 border-size=2
@@ -25,6 +27,10 @@ max-visible=10
 include=~/.config/mako/mako-colors
 
 # [ MODES OPTIONS ]
+# Enable with  `makoctl mode -a do-not-disturb`
+# Disable with `makoctl mode -r do-not-disturb`
+# Toggle with  `makoctl mode -t do-not-disturb`
+
 [mode=do-not-disturb]
 invisible=1
 on-notify=none
