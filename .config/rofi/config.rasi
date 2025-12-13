@@ -2,7 +2,7 @@
 
 configuration {
     modes: "window,run,ssh,drun";
-    font: "JetBrainsMono NFP 24";
+    font: "JetBrainsMono NFP 22";
     show-icons: true;
     terminal: "alacritty";
     // drun-match-fields: "name,generic,exec,categories,keywords";
@@ -24,6 +24,8 @@ configuration {
     window-format: "{w} · {n} · {c} · {t}";
     cache-dir: "~/.config/rofi/cache";
     // normalize-match: true;
+    // Format: `{name} ({generic}) {categories}`
+    drun-display-format: "{name}[<span weight='light' size='small'><i> ({generic})</i></span>][<span weight='ultralight' size='xx-small'><i> {categories}</i></span>]";
 
     display-window: "";
     display-run: " ";

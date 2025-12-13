@@ -21,14 +21,14 @@
     alternate-active-background: var(lightbg);
     alternate-active-foreground: var(active-color);
     selected-active-background:  var(active-color);
-    selected-active-foreground:  var(background);
+    selected-active-foreground:  var(selectedfg);
     // Urgent
     urgent-background:           var(background);
     urgent-foreground:           var(urgent-color);
     alternate-urgent-background: var(lightbg);
     alternate-urgent-foreground: var(urgent-color);
     selected-urgent-background:  var(urgent-color);
-    selected-urgent-foreground:  var(background);
+    selected-urgent-foreground:  var(selectedfg);
 
     spacing: 0;
 }
@@ -36,6 +36,8 @@
 window {
     children:         ["wallpaper-panel","mainbox"];
     width:            55%;
+    location:         south;
+    y-offset:         -25%;
     padding:          5px;
     spacing:          5px;
     border:           1px;
@@ -113,12 +115,14 @@ listview {
     spacing:      2px ;
     fixed-height: 0;
     scrollbar:    true;
-    lines: 6;
+    lines: 7;
+    children: ["scrollbar", "element"];
 }
 element {
-    padding: 1px ;
+    padding: 0px ;
     cursor:  pointer;
     spacing: 5px ;
+    spacing: 0px ;
     border:  0;
 }
 element normal.normal {

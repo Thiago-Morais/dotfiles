@@ -57,29 +57,31 @@
     source: {{colors.source_color.default.hex}};
 
     // Background of input bar and one of the result elements
-    background-color: {{colors.surface.default.rgba                   | set_alpha: 0.3}};
-    foreground:       {{colors.on_surface_variant.default.rgba        | set_alpha: 1.0}};
+    background-color: {{colors.surface.default.rgba                   | set_alpha: 0.1}};
+    foreground:       {{colors.outline.default.rgba                   | set_alpha: 1.0}};
     // Secondary result elements
-    lightbg:          {{colors.surface_container_highest.default.rgba | set_alpha: 0.3}};
-    lightfg:          {{colors.on_surface_variant.default.rgba        | set_alpha: 1.0}};
+    lightbg:          {{colors.surface_container_highest.default.rgba | set_alpha: 0.2}};
+    lightfg:          {{colors.outline.default.rgba                   | set_alpha: 1.0}};
     // Selected element
-    selectedbg:       {{colors.outline.default.rgba                   | set_alpha: 0.3}};
-    selectedfg:       {{colors.on_surface.default.rgba                | set_alpha: 1.0}};
+    selectedbg:       {{colors.on_tertiary_container.default.rgba     | set_alpha: 0.4}};
+    selectedfg:       {{colors.on_tertiary_fixed.default.rgba         | set_alpha: 1.0}};
 
-    active-color:     rgba ( 38, 139, 210, 100 % );
-    urgent-color:     rgba ( 220, 50, 47, 100 % );
-    active-color:     {{colors.blue.default.rgba    | set_alpha: 1.0}};
-    urgent-color:     {{colors.red.default.rgba     | set_alpha: 1.0}};
+    active-color:     {{colors.blue.default.hex}};
+    urgent-color:     {{colors.red.default.hex}};
 
     border-color:     {{colors.primary.default.rgba | set_alpha: 1.0}};
     separatorcolor:   var(foreground);
 }
 
 element-text {
-    highlight: underline bold {{colors.on_tertiary_container.default.hex}};
+    highlight: underline bold {{colors.tertiary.default.hex}}cc;
 }
 
 element-text selected {
+    highlight: underline bold {{colors.tertiary.default.hex}};
+}
+element-text selected.active,
+element-text selected.urgent {
     highlight: underline bold {{colors.on_tertiary_fixed.default.hex}};
 }
 
