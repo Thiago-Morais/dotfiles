@@ -23,7 +23,7 @@ configuration {
     scroll-method: 1;
     window-format: "{w} · {n} · {c} · {t}";
     cache-dir: "~/.config/rofi/cache";
-    normalize-match: true;
+    // normalize-match: true;
 
     display-window: "";
     display-run: " ";
