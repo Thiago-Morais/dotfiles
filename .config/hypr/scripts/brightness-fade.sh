@@ -115,19 +115,6 @@ if [ $DIFF -eq 0 ]; then
     exit 0
 fi
 
-readonly STEPS_PER_SECOND=40
-STEPS=$((DURATION * STEPS_PER_SECOND / 1000))
-if [ $STEPS -eq 0 ]; then
-    STEPS=1
-fi
-STEP_DELAY="$(awk "BEGIN {print 1 / $STEPS_PER_SECOND}")"
-STEP_SIZE=$((DIFF / STEPS))
-
-# Ensure change on small DIFF
-if [ $STEP_SIZE -eq 0 ]; then
-    STEP_SIZE=$((DIFF > 0 ? 1 : -1))
-fi
-
 progress_bar() {
     if $QUIET; then
         return 0
@@ -194,6 +181,19 @@ get_eased_diff() {
 
     echo $diff
 }
+
+readonly STEPS_PER_SECOND=40
+STEPS=$((DURATION * STEPS_PER_SECOND / 1000))
+if [ $STEPS -eq 0 ]; then
+    STEPS=1
+fi
+STEP_SIZE=$((DIFF / STEPS))
+STEP_DELAY="$(awk "BEGIN {print 1 / $STEPS_PER_SECOND}")"
+
+# Ensure change on small DIFF
+if [ $STEP_SIZE -eq 0 ]; then
+    STEP_SIZE=$((DIFF > 0 ? 1 : -1))
+fi
 
 fade() {
     local steps=$STEPS
