@@ -104,65 +104,18 @@ if ! command -v brightnessctl &> /dev/null; then
     exit 1
 fi
 
-CURRENT=$(brightnessctl --device="$DEVICE" get)
-MAX=$(brightnessctl --device="$DEVICE" max)
-TARGET=$((TARGET_BRIGHTNESS * MAX / 100))
-DIFF=$((TARGET - CURRENT))
 readonly PRESSISION=1000
+readonly CURRENT=$(brightnessctl --device="$DEVICE" get)
+readonly MAX=$(brightnessctl --device="$DEVICE" max)
+readonly TARGET=$((TARGET_BRIGHTNESS * MAX / 100))
+readonly DIFF=$((TARGET - CURRENT))
 
 # Already at target
 if [ $DIFF -eq 0 ]; then
     exit 0
 fi
 
-get_eased_change() {
-    local i=$1
-    local s=$2
-    local eased_change=$DIFF
-
-    case $CURVE in
-        ease-in)
-            # Quadratic ease-in: progress²
-            # (i/steps)²
-            local t=$((PRESSISION * i*i / (s*s)))
-            eased_change=$((DIFF * t / PRESSISION))
-            ;;
-        ease-out)
-            # Quadratic ease-out: 1 - (1-progress)²
-            # 1 - (1 - i/s)²
-            # 1 - (1 - 2i/s + i²/s²) # (a - b)² = a² - 2ab + b²
-            # 1 -  1 + 2i/s - i²/s²
-            # 2i/s - i²/s²
-            # 2i*s/s² - i²/s²
-            # (2i*s - i²)/s²
-            local t=$((PRESSISION * (2*i*s - i*i) / (s*s)))
-            eased_change=$((DIFF * t / PRESSISION))
-            ;;
-        ease-in-cubed)
-            # Quadratic ease-in: progress³
-            # (i/steps)³
-            local t=$((PRESSISION * i*i*i / (s*s*s)))
-            eased_change=$((DIFF * t / PRESSISION))
-            ;;
-        ease-out-cubed)
-            # Cubic ease-out: 1 - (1-progress)³
-            # 1 - (1 - i/s)³
-            # 1 - (1 - 3i/s + 3i²/s² - i³/s³) # (a - b)³ = a³ - 3a²b + 3ab² - b³
-            # 1 -  1 + 3i/s - 3i²/s² + i³/s³
-            # 3i/s - 3i²/s² + i³/s³
-            # 3is²/s³ - 3i²s/s³ + i³/s³
-            # (3is² - 3i²s + i³)/s³
-            local t=$((PRESSISION * (3*i*s*s - 3*i*i*s + i*i*i) / (s*s*s)))
-            eased_change=$((DIFF * t / PRESSISION))
-            ;;
-        linear|*)
-            eased_change=$((DIFF * i / s))
-            ;;
-    esac
-    echo $eased_change
-}
-
-STEPS_PER_SECOND=40
+readonly STEPS_PER_SECOND=40
 STEPS=$((DURATION * STEPS_PER_SECOND / 1000))
 if [ $STEPS -eq 0 ]; then
     STEPS=1
@@ -184,14 +137,62 @@ progress_bar() {
     local total_steps=$2
     local value=$3
 
-    local bar_length=20
-    local filled=$(( step * bar_length / total_steps ))
-    local empty=$(( bar_length - filled ))
+    local readonly BAR_LENGTH=20
+    local filled=$((step * BAR_LENGTH / total_steps))
+    local empty=$((BAR_LENGTH - filled))
     if [ $empty -eq 0 ]; then
-        printf "\r[%-*s] %d" "$bar_length" "$(printf '#%.0s' $(seq 1 $bar_length))" "$value"
+        printf "\r[%-*s] %d" "$BAR_LENGTH" "$(printf '#%.0s' $(seq 1 $BAR_LENGTH))" "$value"
     else
-        printf "\r[%-*s] %d" "$bar_length" "$(printf '#%.0s' $(seq 1 $filled))$(printf ' %.0s' $(seq 1 $empty))" "$value"
+        printf "\r[%-*s] %d" "$BAR_LENGTH" "$(printf '#%.0s' $(seq 1 $filled))$(printf ' %.0s' $(seq 1 $empty))" "$value"
     fi
+}
+
+get_eased_diff() {
+    local diff=$1
+    local i=$2
+    local s=$3
+
+    case $CURVE in
+        ease-in)
+            # Quadratic ease-in: progress²
+            # (i/steps)²
+            local t=$((PRESSISION * i*i / (s*s)))
+            diff=$((diff * t / PRESSISION))
+            ;;
+        ease-out)
+            # Quadratic ease-out: 1 - (1-progress)²
+            # 1 - (1 - i/s)²
+            # 1 - (1 - 2i/s + i²/s²) # (a - b)² = a² - 2ab + b²
+            # 1 -  1 + 2i/s - i²/s²
+            # 2i/s - i²/s²
+            # 2i*s/s² - i²/s²
+            # (2i*s - i²)/s²
+            local t=$((PRESSISION * (2*i*s - i*i) / (s*s)))
+            diff=$((diff * t / PRESSISION))
+            ;;
+        ease-in-cubed)
+            # Quadratic ease-in: progress³
+            # (i/steps)³
+            local t=$((PRESSISION * i*i*i / (s*s*s)))
+            diff=$((diff * t / PRESSISION))
+            ;;
+        ease-out-cubed)
+            # Cubic ease-out: 1 - (1-progress)³
+            # 1 - (1 - i/s)³
+            # 1 - (1 - 3i/s + 3i²/s² - i³/s³) # (a - b)³ = a³ - 3a²b + 3ab² - b³
+            # 1 -  1 + 3i/s - 3i²/s² + i³/s³
+            # 3i/s - 3i²/s² + i³/s³
+            # 3is²/s³ - 3i²s/s³ + i³/s³
+            # (3is² - 3i²s + i³)/s³
+            local t=$((PRESSISION * (3*i*s*s - 3*i*i*s + i*i*i) / (s*s*s)))
+            diff=$((diff * t / PRESSISION))
+            ;;
+        linear|*)
+            diff=$((diff * i / s))
+            ;;
+    esac
+
+    echo $diff
 }
 
 fade() {
@@ -199,7 +200,7 @@ fade() {
     local current=$CURRENT
 
     for ((i=0; i<steps; i++)); do
-        local eased_change=$(get_eased_change $i $steps)
+        local eased_change=$(get_eased_diff $DIFF $i $steps)
         current=$((CURRENT + eased_change))
 
         if [ $current -lt 0 ]; then
