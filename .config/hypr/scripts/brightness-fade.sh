@@ -110,8 +110,7 @@ readonly MAX=$(brightnessctl --device="$DEVICE" max)
 readonly TARGET=$((TARGET_BRIGHTNESS * MAX / 100))
 readonly DIFF=$((TARGET - CURRENT))
 
-# Already at target
-if [ $DIFF -eq 0 ]; then
+if [ $CURRENT -eq $TARGET ]; then
     exit 0
 fi
 
