@@ -9,23 +9,26 @@ Usage: $0 TARGET_BRIGHTNESS [OPTIONS]
 Set screen brightness with smooth transitions.
 
 Arguments:
-  TARGET_BRIGHTNESS         Target brightness (0-100)
-                            Examples: 50, 25, 100
+  TARGET_BRIGHTNESS          Target brightness (0-100)
+                             Examples: 50, 25, 100
 
 Options:
-  -t, --target VALUE        Target brightness (alternative to positional argument)
-  -d, --duration MILLISECONDS Duration of transition in seconds (default: 1)
-  -c, --curve TYPE          Transition curve type: linear, ease-in, ease-out,
-                            ease-in-cubed, ease-out-cubed (default: linear)
-  -e, --device DEVICE       Backlight device name (default: intel_backlight)
-  -q, --quiet BOOLEAN       Backlight device name (default: intel_backlight)
-  -h, --help                Show this help message
+  -t, --target VALUE         Target brightness (alternative to positional argument)
+  -d, --duration MILLISECONDS
+                             Duration of transition in milliseconds (default: 1000)
+  -c, --curve TYPE           Transition curve type: linear, ease-in, ease-out,
+                             ease-in-cubed, ease-out-cubed (default: ease-in-cubed)
+  -e, --device DEVICE        Backlight device name (default: intel_backlight)
+  -q, --quiet FLAG           Hide progress bar (default: false)
+  -h, --help                 Show this help message
 
 Examples:
-  $0 50                     Set brightness to 50% with 1 second linear transition
-  $0 -t 75 -d 2500          Set brightness to 75% over 2.5 seconds
-  $0 -c ease-out -t 30      Smooth transition to 30% with slow end curve
-  $0 --device acpi_video0 25 Use acpi_video0 device, set to 25%
+  $0 50                      Set brightness to 50% with 1 second ease-in-cubed
+                             transition
+  $0 -t 75 -d 2500           Set brightness to 75% over 2.5 seconds
+  $0 -c ease-out -t 30       Set brightness to 30% with slow end curve transition
+  $0 --device acpi_video0 25
+                             Set brightness of acpi_video0 device to 25%
 
 Note: Requires brightnessctl and proper permissions (usually in 'video' group)
 EOF
@@ -33,7 +36,7 @@ EOF
 
 TARGET_BRIGHTNESS=""
 DURATION="1000"
-CURVE="linear"
+CURVE="ease-in-cubed"
 DEVICE="intel_backlight"
 QUIET=false
 
