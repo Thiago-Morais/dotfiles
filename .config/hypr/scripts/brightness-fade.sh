@@ -17,8 +17,8 @@ Options:
   -d, --duration MILLISECONDS
                              Duration of transition in milliseconds (default: 1000)
   -c, --curve TYPE           Transition curve type: linear, ease-in, ease-out,
-                             ease-in-out, ease-in-cubed, ease-out-cubed
-                             (default: ease-in-cubed)
+                             ease-in-out, ease-in-cubed, ease-out-cubed,
+                             ease-in-out-cubed (default: ease-in-cubed)
   -e, --device DEVICE        Backlight device name (default: intel_backlight)
   -q, --quiet FLAG           Hide progress bar (default: false)
   -h, --help                 Show this help message
