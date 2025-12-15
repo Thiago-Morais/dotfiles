@@ -93,7 +93,7 @@ if [[ -z "$TARGET_BRIGHTNESS" ]]; then
     show_usage
     exit 1
 fi
-VALID_CURVES="linear ease-in ease-out ease-in-out ease-in-cubed ease-out-cubed"
+VALID_CURVES="linear ease-in ease-out ease-in-out ease-in-cubed ease-out-cubed ease-in-out-cubed"
 if ! [[ "$VALID_CURVES" =~ "$CURVE" ]]; then
     echo "Error: Invalid curve '$CURVE'. Vaild: $VALID_CURVES"
     exit 1
@@ -178,23 +178,24 @@ get_eased_diff() {
             diff=$((diff * t / PRESSISION))
             ;;
         ease-in-out)
-            # Quadratic ease-in-out: 2*progress² <0.5< 1 - (2 - 2*progress)² / 2
+            # Quadratic ease-in-out: 2*progress² <0.5< 1 - 2²*(1-progress)² / 2
             # 2 * (i/s)²
             # <0.5<
-            # 1 - (2 - 2p)² / 2
-            # 1 - (4 - 8p + 4p²) / 2 # (a - b)² = a² - 2ab + b²
-            # 1 - (2 + 2p² - 4p)
-            # 1 -  2 - 2p² + 4p
-            # -2p² + 4p - 1
-            # -2i²/s² + 4i/s - 1
-            # -2i²/s² + 4is/s² - 1s²/s²
-            # (-2i² + 4is - 1s²)/s²
+            # 1 - 4(1 - p)² / 2
+            # 1 - 4(1 - 4p + p²) / 2 # (a - b)² = a² - 2ab + b²
+            # 1 - 2(4 - 8p + 4p²)
+            # 1 -  (2 + 2p² - 4p)
+            # 1 -   2 - 2p² + 4p
+            # -1 - 2p² + 4p
+            # -1 - 2i²/s² + 4i/s
+            # -s²/s² - 2i²/s² + 4is/s²
+            # (-s² - 2i² + 4is)/s²
             local progress=$((PRESSISION * 10 * i/s))
             local half=$((PRESSISION * 5))
             if [ $progress -lt $half ]; then
                 local t=$((PRESSISION * 2*i*i / (s*s)))
             else
-                local t=$((PRESSISION * (-2*i*i + 4*i*s - 1*s*s) / (s*s)))
+                local t=$((PRESSISION * (-s*s - 2*i*i + 4*i*s) / (s*s)))
             fi
             diff=$((diff * t / PRESSISION))
             ;;
@@ -214,6 +215,28 @@ get_eased_diff() {
             # 3is²/s³ - 3i²s/s³ + i³/s³
             # (3is² - 3i²s + i³)/s³
             local t=$((PRESSISION * (3*i*s*s - 3*i*i*s + i*i*i) / (s*s*s)))
+            diff=$((diff * t / PRESSISION))
+            ;;
+        ease-in-out-cubed)
+            # Cubic ease-in-out: 4*progress³ <0.5< 1 - 2³*(1-progress)³ / 2
+            # 4 * (i/s)³
+            # <0.5<
+            # 1 - 8(1 - p)³ / 2
+            # 1 - 8(1 - 3p + 3p² - p³) / 2 # (a - b)³ = a³ - 3a²b + 3ab² - b³
+            # 1 - (8 - 24p + 24p² - 8p³) / 2
+            # 1 - (4 - 12p + 12p² - 4p³)
+            # 1 -  4 + 12p - 12p² + 4p³
+            # -3 + 12p - 12p² + 4p³
+            # -3 + 12i/s - 12i²/s² + 4i³/s³
+            # -3 + 12is²/s³ - 12i²s/s³ + 4i³/s³
+            # (-3s³ + 12is² - 12i²s + 4i³)/s³
+            local progress=$((PRESSISION * 10 * i/s))
+            local half=$((PRESSISION * 5))
+            if [ $progress -lt $half ]; then
+                local t=$((PRESSISION * 4*i*i*i / (s*s*s)))
+            else
+                local t=$((PRESSISION * (-3*s*s*s + 12*i*s*s - 12*i*i*s + 4*i*i*i) / (s*s*s)))
+            fi
             diff=$((diff * t / PRESSISION))
             ;;
         linear|*)
@@ -245,23 +268,20 @@ fade() {
         local eased_change=$(get_eased_diff $DIFF $i $steps)
         current=$((INITIAL + eased_change))
 
-        if [ $current -lt 0 ]; then
-            current=0
+        if [ $current -lt 1 ]; then
+            current=1
         elif [ $current -gt $MAX ]; then
             current=$MAX
         fi
 
         brightnessctl --device="$DEVICE" set "$current" > /dev/null
-        # progress_bar $i $steps $current
         progress_bar_precise $INITIAL $TARGET $current
 
         sleep $STEP_DELAY
     done
 
     brightnessctl --device="$DEVICE" set "$TARGET" > /dev/null
-    # progress_bar $STEPS $STEPS $TARGET
     progress_bar_precise $INITIAL $TARGET $TARGET
-    echo
 }
 
 fade
