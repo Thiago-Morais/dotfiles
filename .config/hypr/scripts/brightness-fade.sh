@@ -129,6 +129,8 @@ progress_bar() {
     local empty=$((BAR_LENGTH - filled))
     if [ $empty -eq 0 ]; then
         printf "\r[%-*s] %d" "$BAR_LENGTH" "$(printf '#%.0s' $(seq 1 $BAR_LENGTH))" "$value"
+    elif [ $filled -eq 0 ]; then
+        printf "\r[%-*s] %d" "$BAR_LENGTH" "$(printf ' %.0s' $(seq 1 $BAR_LENGTH))" "$value"
     else
         printf "\r[%-*s] %d" "$BAR_LENGTH" "$(printf '#%.0s' $(seq 1 $filled))$(printf ' %.0s' $(seq 1 $empty))" "$value"
     fi
@@ -148,6 +150,8 @@ progress_bar_precise() {
     local empty=$((BAR_LENGTH - filled))
     if [ $empty -eq 0 ]; then
         printf "\r[%-*s] %d" "$BAR_LENGTH" "$(printf '#%.0s' $(seq 1 $BAR_LENGTH))" "$current"
+    elif [ $filled -eq 0 ]; then
+        printf "\r[%-*s] %d" "$BAR_LENGTH" "$(printf ' %.0s' $(seq 1 $BAR_LENGTH))" "$current"
     else
         printf "\r[%-*s] %d" "$BAR_LENGTH" "$(printf '#%.0s' $(seq 1 $filled))$(printf ' %.0s' $(seq 1 $empty))" "$current"
     fi
