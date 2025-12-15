@@ -17,7 +17,8 @@ Options:
   -d, --duration MILLISECONDS
                              Duration of transition in milliseconds (default: 1000)
   -c, --curve TYPE           Transition curve type: linear, ease-in, ease-out,
-                             ease-in-cubed, ease-out-cubed (default: ease-in-cubed)
+                             ease-in-out, ease-in-cubed, ease-out-cubed
+                             (default: ease-in-cubed)
   -e, --device DEVICE        Backlight device name (default: intel_backlight)
   -q, --quiet FLAG           Hide progress bar (default: false)
   -h, --help                 Show this help message
@@ -92,7 +93,7 @@ if [[ -z "$TARGET_BRIGHTNESS" ]]; then
     show_usage
     exit 1
 fi
-VALID_CURVES="linear ease-in ease-out ease-in-cubed ease-out-cubed"
+VALID_CURVES="linear ease-in ease-out ease-in-out ease-in-cubed ease-out-cubed"
 if ! [[ "$VALID_CURVES" =~ "$CURVE" ]]; then
     echo "Error: Invalid curve '$CURVE'. Vaild: $VALID_CURVES"
     exit 1
@@ -105,12 +106,12 @@ if ! command -v brightnessctl &> /dev/null; then
 fi
 
 readonly PRESSISION=1000
-readonly CURRENT=$(brightnessctl --device="$DEVICE" get)
+readonly INITIAL=$(brightnessctl --device="$DEVICE" get)
 readonly MAX=$(brightnessctl --device="$DEVICE" max)
 readonly TARGET=$((TARGET_BRIGHTNESS * MAX / 100))
-readonly DIFF=$((TARGET - CURRENT))
+readonly DIFF=$((TARGET - INITIAL))
 
-if [ $CURRENT -eq $TARGET ]; then
+if [ $INITIAL -eq $TARGET ]; then
     exit 0
 fi
 
@@ -133,10 +134,29 @@ progress_bar() {
     fi
 }
 
+progress_bar_precise() {
+    if $QUIET; then
+        return 0
+    fi
+
+    local from=$1
+    local to=$2
+    local current=$3
+
+    local readonly BAR_LENGTH=20
+    local filled=$(((current - from) * BAR_LENGTH / (to - from)))
+    local empty=$((BAR_LENGTH - filled))
+    if [ $empty -eq 0 ]; then
+        printf "\r[%-*s] %d" "$BAR_LENGTH" "$(printf '#%.0s' $(seq 1 $BAR_LENGTH))" "$current"
+    else
+        printf "\r[%-*s] %d" "$BAR_LENGTH" "$(printf '#%.0s' $(seq 1 $filled))$(printf ' %.0s' $(seq 1 $empty))" "$current"
+    fi
+}
+
 get_eased_diff() {
     local diff=$1
-    local i=$2
-    local s=$3
+    local readonly i=$2
+    local readonly s=$3
 
     case $CURVE in
         ease-in)
@@ -147,26 +167,49 @@ get_eased_diff() {
             ;;
         ease-out)
             # Quadratic ease-out: 1 - (1-progress)²
-            # 1 - (1 - i/s)²
-            # 1 - (1 - 2i/s + i²/s²) # (a - b)² = a² - 2ab + b²
-            # 1 -  1 + 2i/s - i²/s²
+            # 1 - (1 - p)²
+            # 1 - (1 - 2p + p²) # (a - b)² = a² - 2ab + b²
+            # 1 -  1 + 2p - p²
+            # 2p - p²
             # 2i/s - i²/s²
             # 2i*s/s² - i²/s²
             # (2i*s - i²)/s²
             local t=$((PRESSISION * (2*i*s - i*i) / (s*s)))
             diff=$((diff * t / PRESSISION))
             ;;
+        ease-in-out)
+            # Quadratic ease-in-out: 2*progress² <0.5< 1 - (2 - 2*progress)² / 2
+            # 2 * (i/s)²
+            # <0.5<
+            # 1 - (2 - 2p)² / 2
+            # 1 - (4 - 8p + 4p²) / 2 # (a - b)² = a² - 2ab + b²
+            # 1 - (2 + 2p² - 4p)
+            # 1 -  2 - 2p² + 4p
+            # -2p² + 4p - 1
+            # -2i²/s² + 4i/s - 1
+            # -2i²/s² + 4is/s² - 1s²/s²
+            # (-2i² + 4is - 1s²)/s²
+            local progress=$((PRESSISION * 10 * i/s))
+            local half=$((PRESSISION * 5))
+            if [ $progress -lt $half ]; then
+                local t=$((PRESSISION * 2*i*i / (s*s)))
+            else
+                local t=$((PRESSISION * (-2*i*i + 4*i*s - 1*s*s) / (s*s)))
+            fi
+            diff=$((diff * t / PRESSISION))
+            ;;
         ease-in-cubed)
-            # Quadratic ease-in: progress³
+            # Cubic ease-in: progress³
             # (i/steps)³
             local t=$((PRESSISION * i*i*i / (s*s*s)))
             diff=$((diff * t / PRESSISION))
             ;;
         ease-out-cubed)
             # Cubic ease-out: 1 - (1-progress)³
-            # 1 - (1 - i/s)³
-            # 1 - (1 - 3i/s + 3i²/s² - i³/s³) # (a - b)³ = a³ - 3a²b + 3ab² - b³
-            # 1 -  1 + 3i/s - 3i²/s² + i³/s³
+            # 1 - (1 - p)³
+            # 1 - (1 - 3p + 3p² - p³) # (a - b)³ = a³ - 3a²b + 3ab² - b³
+            # 1 -  1 + 3p - 3p² + p³
+            # 3p - 3p² + p³
             # 3i/s - 3i²/s² + i³/s³
             # 3is²/s³ - 3i²s/s³ + i³/s³
             # (3is² - 3i²s + i³)/s³
@@ -196,11 +239,11 @@ fi
 
 fade() {
     local steps=$STEPS
-    local current=$CURRENT
+    local current=$INITIAL
 
     for ((i=0; i<steps; i++)); do
         local eased_change=$(get_eased_diff $DIFF $i $steps)
-        current=$((CURRENT + eased_change))
+        current=$((INITIAL + eased_change))
 
         if [ $current -lt 0 ]; then
             current=0
@@ -209,13 +252,16 @@ fade() {
         fi
 
         brightnessctl --device="$DEVICE" set "$current" > /dev/null
-        progress_bar $i $steps $current
+        # progress_bar $i $steps $current
+        progress_bar_precise $INITIAL $TARGET $current
 
         sleep $STEP_DELAY
     done
 
     brightnessctl --device="$DEVICE" set "$TARGET" > /dev/null
-    progress_bar $STEPS $STEPS $TARGET
+    # progress_bar $STEPS $STEPS $TARGET
+    progress_bar_precise $INITIAL $TARGET $TARGET
+    echo
 }
 
 fade
