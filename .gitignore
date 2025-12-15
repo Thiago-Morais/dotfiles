@@ -13,6 +13,8 @@
 .local/share/*
 !.share/
 .share/*
+!.gnupg/
+.gnupg/*
 
 # Allow specific directories
 !.config/waybar
@@ -37,6 +39,7 @@
 !.config/edge-flags.conf
 !.config/mimeapps.list
 !.config/youtube-music-flags.conf
+!.gnupg/dirmng.conf
 **/*[Cc]ache*
 
 # Specific zen files
