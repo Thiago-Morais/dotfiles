@@ -120,34 +120,13 @@ progress_bar() {
         return 0
     fi
 
-    local step=$1
-    local total_steps=$2
-    local value=$3
+    local readonly from=$1
+    local readonly to=$2
+    local readonly current=$3
 
     local readonly BAR_LENGTH=20
-    local filled=$((step * BAR_LENGTH / total_steps))
-    local empty=$((BAR_LENGTH - filled))
-    if [ $empty -eq 0 ]; then
-        printf "\r[%-*s] %d" "$BAR_LENGTH" "$(printf '#%.0s' $(seq 1 $BAR_LENGTH))" "$value"
-    elif [ $filled -eq 0 ]; then
-        printf "\r[%-*s] %d" "$BAR_LENGTH" "$(printf ' %.0s' $(seq 1 $BAR_LENGTH))" "$value"
-    else
-        printf "\r[%-*s] %d" "$BAR_LENGTH" "$(printf '#%.0s' $(seq 1 $filled))$(printf ' %.0s' $(seq 1 $empty))" "$value"
-    fi
-}
-
-progress_bar_precise() {
-    if $QUIET; then
-        return 0
-    fi
-
-    local from=$1
-    local to=$2
-    local current=$3
-
-    local readonly BAR_LENGTH=20
-    local filled=$(((current - from) * BAR_LENGTH / (to - from)))
-    local empty=$((BAR_LENGTH - filled))
+    local readonly filled=$(((current - from) * BAR_LENGTH / (to - from)))
+    local readonly empty=$((BAR_LENGTH - filled))
     if [ $empty -eq 0 ]; then
         printf "\r[%-*s] %d" "$BAR_LENGTH" "$(printf '#%.0s' $(seq 1 $BAR_LENGTH))" "$current"
     elif [ $filled -eq 0 ]; then
