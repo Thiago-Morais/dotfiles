@@ -52,7 +52,7 @@ while [[ $# -gt 0 ]]; do
             shift 2
             ;;
         -c|--curve)
-            CURVE="$2"  # linear, ease-in, ease-out
+            CURVE="$2"
             shift 2
             ;;
         -e|--device)
@@ -99,7 +99,7 @@ if ! [[ "$VALID_CURVES" =~ "$CURVE" ]]; then
     exit 1
 fi
 
-# Validate dependences
+# Validate dependencies
 if ! command -v brightnessctl &> /dev/null; then
     echo "Error: brightnessctl is not installed"
     exit 1
@@ -165,7 +165,7 @@ get_eased_diff() {
     case $CURVE in
         ease-in)
             # Quadratic ease-in: progress²
-            # (i/steps)²
+            # (i/s)²
             local t=$((PRESSISION * i*i / (s*s)))
             diff=$((diff * t / PRESSISION))
             ;;
@@ -176,8 +176,8 @@ get_eased_diff() {
             # 1 -  1 + 2p - p²
             # 2p - p²
             # 2i/s - i²/s²
-            # 2i*s/s² - i²/s²
-            # (2i*s - i²)/s²
+            # 2is/s² - i²/s²
+            # (2is - i²)/s²
             local t=$((PRESSISION * (2*i*s - i*i) / (s*s)))
             diff=$((diff * t / PRESSISION))
             ;;
@@ -187,19 +187,20 @@ get_eased_diff() {
             # <0.5<
             # 1 - 4(1 - p)² / 2
             # 1 - 4(1 - 4p + p²) / 2 # (a - b)² = a² - 2ab + b²
-            # 1 - 2(4 - 8p + 4p²)
-            # 1 -  (2 + 2p² - 4p)
-            # 1 -   2 - 2p² + 4p
-            # -1 - 2p² + 4p
-            # -1 - 2i²/s² + 4i/s
-            # -s²/s² - 2i²/s² + 4is/s²
-            # (-s² - 2i² + 4is)/s²
+            # 1 - 2(1 - 4p + p²)
+            # 1 -  (2 - 4p + 2p²)
+            # 1 -   2 + 4p - 2p²
+            # -1 + 4p - 2p²
+            # -1 + 4i/s - 2i²/s²
+            # -s²/s² + 4is/s² - 2i²/s²
+            # (-s² + 4is - 2i²)/s²
+            # 0.5 * 10 = 5 # We use this to simulate the 0.5 with integers
             local progress=$((PRESSISION * 10 * i/s))
             local half=$((PRESSISION * 5))
             if [ $progress -lt $half ]; then
                 local t=$((PRESSISION * 2*i*i / (s*s)))
             else
-                local t=$((PRESSISION * (-s*s - 2*i*i + 4*i*s) / (s*s)))
+                local t=$((PRESSISION * (-s*s + 4*i*s - 2*i*i) / (s*s)))
             fi
             diff=$((diff * t / PRESSISION))
             ;;
@@ -234,6 +235,7 @@ get_eased_diff() {
             # -3 + 12i/s - 12i²/s² + 4i³/s³
             # -3 + 12is²/s³ - 12i²s/s³ + 4i³/s³
             # (-3s³ + 12is² - 12i²s + 4i³)/s³
+            # 0.5 * 10 = 5 # We use this to simulate the 0.5 with integers
             local progress=$((PRESSISION * 10 * i/s))
             local half=$((PRESSISION * 5))
             if [ $progress -lt $half ]; then
@@ -279,13 +281,13 @@ fade() {
         fi
 
         brightnessctl --device="$DEVICE" set "$current" > /dev/null
-        progress_bar_precise $INITIAL $TARGET $current
+        progress_bar $INITIAL $TARGET $current
 
         sleep $STEP_DELAY
     done
 
     brightnessctl --device="$DEVICE" set "$TARGET" > /dev/null
-    progress_bar_precise $INITIAL $TARGET $TARGET
+    progress_bar $INITIAL $TARGET $TARGET
 }
 
 fade
