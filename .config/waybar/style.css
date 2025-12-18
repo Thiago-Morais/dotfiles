@@ -10,30 +10,30 @@
 
 /* Reset all styles */
 * {
-    border: none;
-    min-height: 0;
-    margin: 0;
-    font-family: "JetBrainsMonoNL NFP";
-    font-weight: 700;
-    font-size: 1.2rem;
-    padding: 0;
+  border: none;
+  min-height: 0;
+  margin: 0;
+  font-family: "JetBrainsMonoNL NFP";
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0;
 }
 
 /* The whole bar */
 #waybar {
-    background: linear-gradient(
-        alpha(@background, 0.8),
-        alpha(@background, 0.3) 60%,
-        transparent
-    );
-    color: @primary;
-    transition-property: background-color;
-    transition-duration: 0.5s;
-    margin: 0;
+  background: linear-gradient(
+    alpha(@background, 0.8),
+    alpha(@background, 0.3) 60%,
+    transparent
+  );
+  color: @primary;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  margin: 0;
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+  opacity: 0.2;
 }
 
 #clock,
@@ -71,66 +71,64 @@ window#waybar.hidden {
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight,
 #custom-weather.default {
-    background: linear-gradient(@bg-color 50%, transparent);
-    color: @text-color;
-    padding: 0 0.4rem;
-    /* Adjusted padding */
-    border: solid;
-    border-width: 0 0 0.2rem 0;
-    border-width: 0 0.05rem 0.2rem 0.05rem;
-    border-width: 0 0.05rem 0.1rem 0.01rem;
-    border-radius: 0.3em;
+  background: linear-gradient(@bg-color 50%, transparent);
+  color: @text-color;
+  padding: 0 0.4em;
+  /* Adjusted padding */
+  border: solid;
+  border-width: 0 0.05em 0.1em 0.01em;
+  border-radius: 0.3em;
 }
 
 /* Workspaces */
 
 #workspaces {
-    background: transparent;
+  background: transparent;
 }
 #workspaces label {
-    /* We reduce the height of the label so that we can increase the font size wihtout increasing the whole bar height */
-    font-size: 1.3em;
-    margin: -1rem 0;
+  /* We reduce the height of the label so that we can increase the font size wihtout increasing the whole bar height */
+  font-size: 1.3em;
+  margin: -1em 0;
 }
 #workspaces button {
-    background-color: @bg-color;
-    color: @primary;
-    transition: all 0.3s ease-in-out;
-    padding: 0 0.3rem;
-    /* border-width: 0.2em 0; */
+  background-color: @bg-color;
+  color: @primary;
+  transition: all 0.3s ease-in-out;
+  padding: 0 0.3em;
+  /* border-width: 0.2em 0; */
 }
 #workspaces button:nth-child(2) {
-    color: @obsidian-color;
+  color: @obsidian-color;
 }
 #workspaces button:nth-child(3) {
-    color: @code-color;
+  color: @code-color;
 }
 #workspaces button:nth-child(4) {
-    color: @firefox-color;
+  color: @firefox-color;
 }
 #workspaces button:nth-child(5) {
-    color: @whatsapp-color;
+  color: @whatsapp-color;
 }
 #workspaces button:hover {
-    background: @hover-color;
-    color: @on-hover-color;
+  background: @hover-color;
+  color: @on-hover-color;
 }
 /* Empty value must be the last so that it has priority and gets applied */
 #workspaces button.empty {
-    color: @foreground;
+  color: @foreground;
 }
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+  background-color: #eb4d4b;
 }
 #workspaces button.active {
-    background: @selected-color;
-    color: @on-selected-color;
-    border-color: @text-color;
+  background: @selected-color;
+  color: @on-selected-color;
+  border-color: @text-color;
 }
 
 #custom-cava {
-    font-family: FantasqueSansM Nerd Font Mono;
-    padding: 0;
+  font-family: FantasqueSansM Nerd Font Mono;
+  padding: 0;
 }
 
 #tray {
@@ -140,225 +138,225 @@ window#waybar.hidden {
 }
 
 #memory {
-    background: linear-gradient(
-        alpha(@memory-color-bg, 0.75) 50%,
-        alpha(@memory-color-bg, 0.25)
-    );
-    color: @memory-color;
+  background: linear-gradient(
+    alpha(@memory-color-bg, 0.75) 50%,
+    alpha(@memory-color-bg, 0.25)
+  );
+  color: @memory-color;
 }
 
 #custom-power {
-    margin: -1rem -0.8rem;
-    font-size: 2rem;
-    text-shadow:
-        0 0 0.2rem @primary_container,
-        0 0 0.2rem @primary_container,
-        0 0 0.2rem @primary_container;
-    color: @on_primary_container;
+  margin: -1em -0.5em;
+  font-size: 2em;
+  text-shadow:
+    0 0 0.2em @primary_container,
+    0 0 0.2em @primary_container,
+    0 0 0.2em @primary_container;
+  color: @on_primary_container;
 }
 
 #custom-storage-home,
 #custom-storage-root {
-    background: linear-gradient(
-        alpha(@storage-color-bg, 0.75) 50%,
-        alpha(@storage-color-bg, 0.25)
-    );
-    color: @storage-color;
+  background: linear-gradient(
+    alpha(@storage-color-bg, 0.75) 50%,
+    alpha(@storage-color-bg, 0.25)
+  );
+  color: @storage-color;
 }
 
 #custom-launcher {
-    background-color: #1b242b;
-    color: #6a92d7;
-    /* Adjusted padding */
+  background-color: #1b242b;
+  color: #6a92d7;
+  /* Adjusted padding */
 }
 
 #backlight {
-    background: linear-gradient(
-        alpha(@backlight-color-bg, 0.75) 50%,
-        alpha(@backlight-color-bg, 0.25)
-    );
-    color: @backlight-color;
+  background: linear-gradient(
+    alpha(@backlight-color-bg, 0.75) 50%,
+    alpha(@backlight-color-bg, 0.25)
+  );
+  color: @backlight-color;
 }
 
 #clock {
 }
 
 #battery {
-    color: #c0caf5;
+  color: #c0caf5;
 }
 
 #battery.charging,
 #battery.full,
 #battery.plugged {
-    /* background-color: @good-color-bg; */
-    background: linear-gradient(
-        alpha(@good-color-bg, 0.75) 50%,
-        alpha(@good-color-bg, 0.5)
-    );
-    color: @good-color;
+  /* background-color: @good-color-bg; */
+  background: linear-gradient(
+    alpha(@good-color-bg, 0.75) 50%,
+    alpha(@good-color-bg, 0.5)
+  );
+  color: @good-color;
 }
 
 @keyframes blink {
-    to {
-        background-color: rgba(30, 34, 42, 0.5);
-        color: #abb2bf;
-    }
+  to {
+    background-color: rgba(30, 34, 42, 0.5);
+    color: #abb2bf;
+  }
 }
 
 #battery.critical:not(.charging) {
-    color: @bad-color;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  color: @bad-color;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #window {
-    background-color: @bg-color;
-    color: @text-color;
-    font-size: 15px;
-    font-weight: 800;
-    opacity: 1;
+  background-color: @bg-color;
+  color: @text-color;
+  font-size: 15px;
+  font-weight: 800;
+  opacity: 1;
 }
 
 #custom-screenshot_t {
-    background-color: @bg-color;
-    color: @text-color;
+  background-color: @bg-color;
+  color: @text-color;
 }
 
 #custom-spotify {
-    background-color: @bg-color;
-    color: @text-color;
+  background-color: @bg-color;
+  color: @text-color;
 }
 
 #custom-weather.severe {
-    color: #eb937d;
+  color: #eb937d;
 }
 #custom-weather.sunnyDay {
-    color: #c2ca76;
+  color: #c2ca76;
 }
 #custom-weather.clearNight {
-    color: #cad3f5;
+  color: #cad3f5;
 }
 #custom-weather.cloudyFoggyDay,
 #custom-weather.cloudyFoggyNight {
-    color: #c2ddda;
+  color: #c2ddda;
 }
 #custom-weather.rainyDay,
 #custom-weather.rainyNight {
-    color: #5aaca5;
+  color: #5aaca5;
 }
 #custom-weather.showyIcyDay,
 #custom-weather.snowyIcyNight {
-    color: #d6e7e5;
+  color: #d6e7e5;
 }
 #custom-weather.default {
-    color: #dbd9d8;
+  color: #dbd9d8;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child {
-    margin-right: 1em;
+  margin-right: 0;
 }
 
 #pulseaudio {
-    color: #7d9bba;
+  color: #7d9bba;
 }
 
 label {
-    font-family: inherit;
-    font-stretch: inherit;
+  font-family: inherit;
+  font-stretch: inherit;
 }
 label:focus {
-    background-color: #000000;
+  background-color: #000000;
 }
 
 #disk {
-    background-color: #964b00;
+  background-color: #964b00;
 }
 
 #bluetooth {
-    color: #707d9d;
+  color: #707d9d;
 }
 
 #bluetooth.disconnected {
-    color: #f53c3c;
+  color: #f53c3c;
 }
 
 #network {
-    color: #b48ead;
+  color: #b48ead;
 }
 
 #network.disconnected {
-    color: #f53c3c;
+  color: #f53c3c;
 }
 
 #custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
+  background-color: #66cc99;
+  color: #2a5c45;
+  min-width: 100px;
 }
 
 #custom-media.custom-spotify {
-    background-color: #66cc99;
+  background-color: #66cc99;
 }
 
 #custom-media.custom-vlc {
-    background-color: #ffa000;
+  background-color: #ffa000;
 }
 
 #temperature {
-    background-color: #f0932b;
+  background-color: #f0932b;
 }
 
 #temperature.critical {
-    background-color: #eb4d4b;
+  background-color: #eb4d4b;
 }
 
 #tray > .passive {
-    -gtk-icon-effect: dim;
+  -gtk-icon-effect: dim;
 }
 
 #tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
 }
 
 #idle_inhibitor {
-    background-color: #2d3436;
+  background-color: #2d3436;
 }
 
 #idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
+  background-color: #ecf0f1;
+  color: #2d3436;
 }
 
 #language {
-    background: #00b093;
-    color: #740864;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
+  background: #00b093;
+  color: #740864;
+  padding: 0 0px;
+  margin: 0 5px;
+  min-width: 16px;
 }
 
 #keyboard-state {
-    background: #97e1ad;
-    color: #000000;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
+  background: #97e1ad;
+  color: #000000;
+  padding: 0 0px;
+  margin: 0 5px;
+  min-width: 16px;
 }
 
 #keyboard-state > label {
-    padding: 0 0px;
+  padding: 0 0px;
 }
 
 #keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
