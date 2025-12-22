@@ -9,3 +9,4 @@ echo "Wallpaper path is: $wallpaper"
 # Update Matugen
 echo ":: Applying matugen with $wallpaper"
 matugen image $wallpaper --show-colors -t scheme-tonal-spot --contrast 0
+echo ":: Applied matugen with $wallpaper"

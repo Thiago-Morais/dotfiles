@@ -1,6 +1,10 @@
 [default]
 duration = '10m'
 exec = '~/.config/wpaperd/scripts/run-matugen.sh'
+mode = 'center'
 
 [any]
-path = '~/Pictures/wallpapers/static'
+# path = '~/Pictures/wallpapers/static'
+path = '~/Pictures/wallpapers/static/not-rated/'
+
+# [default.transition.book-flip]
