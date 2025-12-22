@@ -31,7 +31,7 @@ noise_reduction = 18
 cava -p $config_file | awk -F';' -v bar="  ▁▂▃▄▅▆▆▇▇██" '
 {
     max = length(bar) - 1
-    for (i=1; i<=NF; i++) {
+    for (i=1; i<=NF-1; i++) {
         idx = ($i > max) ? max : $i
         printf "%s", substr(bar, idx+1, 1)
     }
