@@ -13,3 +13,6 @@
 [submodule ".zen/fii5rp1a.Default (release)"]
 	path = .zen/fii5rp1a.Default (release)
 	url = https://github.com/Thiago-Morais/dotfiles-zen-browser
+[submodule ".config/mpv"]
+	path = .config/mpv
+	url = git@github.com:Thiago-Morais/mpv-settings.git
