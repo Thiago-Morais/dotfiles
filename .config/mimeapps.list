@@ -1,5 +1,6 @@
 [Added Associations]
 application=zen-browser.desktop;
+application/json=nvim.desktop;
 application/pdf=zen-browser.desktop;org.inkscape.Inkscape.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice.desktop;
 application/x-extension-htm=zen.desktop;
@@ -21,6 +22,7 @@ x-scheme-handler/https=zen.desktop;
 
 [Default Applications]
 application=zen-browser.desktop;
+application/json=nvim.desktop;
 application/pdf=zen-browser.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice.desktop;
 application/x-extension-htm=zen.desktop;
