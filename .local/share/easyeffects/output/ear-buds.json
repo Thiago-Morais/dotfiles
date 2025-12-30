@@ -607,7 +607,7 @@
             "maximizer#0"
         ],
         "stereo_tools#0": {
-            "balance-in": 0.11,
+            "balance-in": -0.2,
             "balance-out": 0.0,
             "bypass": false,
             "delay": 0.0,
