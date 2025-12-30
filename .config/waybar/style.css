@@ -13,7 +13,7 @@
   border: none;
   min-height: 0;
   margin: 0;
-  font-family: "JetBrainsMonoNL NFP";
+  font-family: "JetBrainsMonoNL Nerd Font Propo";
   font-weight: 700;
   font-size: 1.15rem; /* 0.9 * ( scale - scale * ( GDK_DPI_SCALE - scale / GDK_SCALE )) */
   padding: 0;
