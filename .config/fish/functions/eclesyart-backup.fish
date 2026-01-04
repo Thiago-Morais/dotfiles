@@ -1,0 +1,3 @@
+function eclesyart-backup --wraps='docker exec -it frappe_docker-backend-1 bench backup --verbose --with-files --compress && docker container cp frappe_docker-backend-1:/home/frappe/frappe-bench/sites/frontend/private/backups ~/repos/third-party/frappe_docker' --description 'alias eclesyart-backup=docker exec -it frappe_docker-backend-1 bench backup --verbose --with-files --compress && docker container cp frappe_docker-backend-1:/home/frappe/frappe-bench/sites/frontend/private/backups ~/repos/third-party/frappe_docker'
+    docker exec -it frappe_docker-backend-1 bench backup --verbose --with-files --compress && docker container cp frappe_docker-backend-1:/home/frappe/frappe-bench/sites/frontend/private/backups ~/repos/third-party/frappe_docker $argv
+end
