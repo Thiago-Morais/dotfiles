@@ -1,7 +1,8 @@
 @theme "~/.config/rofi/theme.rasi"
 
 configuration {
-    modes: "window,run,ssh,drun";
+    modes: "combi,drun,window,run,ssh,rate-wallpaper";
+    combi-modes: "rate-wallpaper,drun,window";
     font: "JetBrainsMono NFP 22";
     show-icons: true;
     terminal: "alacritty";
@@ -24,7 +25,6 @@ configuration {
     window-format: "{w} · {n} · {c} · {t}";
     cache-dir: "~/.config/rofi/cache";
     // normalize-match: true;
-    // Format: `{name} ({generic}) {categories}`
     drun-display-format: "{name}[<span weight='light' size='small'><i> ({generic})</i></span>][<span weight='ultralight' size='xx-small'><i> {categories}</i></span>]";
 
     display-window: "";
@@ -32,7 +32,7 @@ configuration {
     display-drun: " ";
     display-filebrowser: "";
     // display-ssh: "󰌢";
-    // display-combi: ;
+    display-combi: "";
     // display-keys: ;
     // display-recursivebrowser: ;
     display-emoji: "😐️";
