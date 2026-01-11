@@ -5,7 +5,7 @@ destination_parent_dir="$HOME/Pictures/wallpapers/static/rated"
 monitor="eDP-2"
 # The symbolic link that will be generated after the image is copied
 link_path="$HOME/.local/state/wpaperd/wallpapers/$monitor"
-get_current_image_path() {
+get_image_path_from_wallpaper_service() {
     wpaperctl get "$monitor"
 }
 
@@ -14,7 +14,7 @@ set -euo pipefail
 
 # With optional echo options
 log() {
-    echo $2 "$1">&2
+    echo ${@:2} "$1">&2
 }
 throw() {
     RED='\033[0;31m'
@@ -33,9 +33,19 @@ echo -en "\0use-hot-keys\x1ftrue\n"
 echo -en "\0prompt\x1fRate Wallpaper\n"
 echo -en "\0keep-filter\x1ftrue\n"
 
+
 if [ $kb_custom -eq 0 ] || [ $kb_custom -eq 1 ]; then
     log "first pass"
-    echo "Rate Wallpaper"
+    current_image_path=$(get_image_path_from_wallpaper_service)
+    log "current_image_path = $current_image_path"
+    current_image_name=$(basename "$current_image_path")
+    log "current_image_name = $current_image_name"
+    current_rating=$(basename $(dirname "$current_image_path"))
+    log "current_rating = $current_rating"
+
+    echo "Rate Wallpaper: '$current_image_name'"
+    echo -en "\0prompt\x1fRate: '$current_image_name'\n"
+    echo -en "\0theme\x1ftextbox-current-rating { content: \"$current_rating\"; }\n"
     exit 0
 fi
 
@@ -48,15 +58,18 @@ fi
 
 log "Button pressed = $rating"
 
-try_get_current_image_path() {
-    image_path="$(get_current_image_path)"
-    if [ -z "$image_path" ] || [ ! -f "$image_path" ]; then
-        throw "error: Invalid image path"
+get_valid_current_image_path() {
+    image_path="$(get_image_path_from_wallpaper_service)"
+    if [ -z "$image_path" ] ; then
+        throw "error: Empty image path '$image_path'"
+    fi
+    if [ ! -f "$image_path" ]; then
+        throw "error: Image file not found at path: \r'$image_path'"
     fi
     echo "$image_path"
 }
 
-current_image_path=$(try_get_current_image_path)
+current_image_path=$(get_valid_current_image_path)
 padded_rating=$(printf '%02d' "$rating")
 dest_path="$destination_parent_dir/quality-$padded_rating/$(basename "$current_image_path")"
 dest_dir=$(dirname "$dest_path")

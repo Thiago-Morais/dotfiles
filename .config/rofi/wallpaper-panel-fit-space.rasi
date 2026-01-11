@@ -7,6 +7,14 @@ wallpaper-panel {
 
 current-rating {
     background-color: transparent;
+    children: ["textbox-current-rating"];
+}
+
+textbox-current-rating {
+    color: @on-surface;
+    content: "__WALLPAPER_RATING__";
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
 }
 
 wallpaper-container {
@@ -26,34 +34,60 @@ icon-wallpaper {
 
 rating-panel {
     background-color: transparent;
-    background-color: blue;
     children: [ "button-rate-5", "button-rate-6", "button-rate-7", "button-rate-8", "button-rate-9", "button-rate-10" ];
-    spacing: 5px;
     orientation: horizontal;
 }
 
 button-rate-5, button-rate-6, button-rate-7, button-rate-8, button-rate-9, button-rate-10 {
-    border: 1px;
-    margin: 10px;
-    background-color: green;
+    margin: 10px 5px;
+    border: 2px;
+    border-radius: 5px;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+    border-color: @outline;
+    text-outline: true;
+    text-outline-color: @background;
 }
 
 button-rate-5 {
     action: "kb-custom-6";
+    content: "5";
+    background-color: @red-to-lime-5;
 }
 button-rate-6 {
     action: "kb-custom-5";
+    content: "6";
+    background-color: @red-to-lime-6;
 }
 button-rate-7 {
     action: "kb-custom-4";
+    content: "7";
+    background-color: @red-to-lime-7;
 }
 button-rate-8 {
     action: "kb-custom-3";
+    content: "8";
+    background-color: @red-to-lime-8;
 }
 button-rate-9 {
     action: "kb-custom-2";
+    content: "9";
+    background-color: @red-to-lime-9;
 }
 button-rate-10 {
     action: "kb-custom-1";
-    background-color: teal;
+    content: "10";
+    background-color: @red-to-lime-9;
 }
+
+// red-to-lime-0  = #bf4040
+// red-to-lime-1  = #c14d33
+// red-to-lime-2  = #bf5a25
+// red-to-lime-3  = #bb6813
+// red-to-lime-4  = #b47600
+// red-to-lime-5  = #aa8400
+// red-to-lime-6  = #9e9100
+// red-to-lime-7  = #8f9d00
+// red-to-lime-8  = #7ca900
+// red-to-lime-9  = #63b424
+// red-to-lime-10 = #40bf40
