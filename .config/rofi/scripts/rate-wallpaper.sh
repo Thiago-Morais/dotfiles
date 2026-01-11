@@ -70,13 +70,10 @@ log "link_path = $link_path"
 
 log "creating directory '$dest_dir'"
 mkdir -p "$dest_dir" || throw "Failed to create directory"
-
 log "moving '$current_image_path' to '$dest_path'"
 mv "$current_image_path" "$dest_path" || throw "Failed to move '$current_image_path' to '$dest_path'"
-
 log "creating linking directory '$link_dir'"
 mkdir -p "$link_dir" || throw "Failed to create link directory"
-
 log "linking '$link_path' to '$dest_path'"
 ln -sf "$dest_path" "$link_path" || throw "Failed to link '$dest_path' to '$link_path'"
 
