@@ -41,6 +41,19 @@ arguments = ["hyprpaper", "reload", ","]
 "palegreen" = "#80ff80"
 "khaki" = "#ffff80"
 
+# Red to Lime gradient
+"red_to_lime_0"  = "#ff0000"
+"red_to_lime_1"  = "#fc4300"
+"red_to_lime_2"  = "#f66300"
+"red_to_lime_3"  = "#ea7e00"
+"red_to_lime_4"  = "#dd9500"
+"red_to_lime_5"  = "#ceaa00"
+"red_to_lime_6"  = "#bdbc00"
+"red_to_lime_7"  = "#a9ce00"
+"red_to_lime_8"  = "#8fdf00"
+"red_to_lime_9"  = "#65f000"
+"red_to_lime_10" = "#00ff00"
+
 [templates.copy_colors]
 input_path = '~/.config/matugen/templates/copy_colors'
 output_path = '~/.config/matugen/cached_colors'

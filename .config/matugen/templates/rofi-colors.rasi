@@ -56,6 +56,42 @@
 
     source: {{colors.source_color.default.hex}};
 
+    red-to-lime-0:  {{colors.red_to_lime_0.default.hex | auto_lightness: 20.0 }}CC;
+    red-to-lime-1:  {{colors.red_to_lime_1.default.hex | auto_lightness: 20.0 }}CC;
+    red-to-lime-2:  {{colors.red_to_lime_2.default.hex | auto_lightness: 20.0 }}CC;
+    red-to-lime-3:  {{colors.red_to_lime_3.default.hex | auto_lightness: 20.0 }}CC;
+    red-to-lime-4:  {{colors.red_to_lime_4.default.hex | auto_lightness: 20.0 }}CC;
+    red-to-lime-5:  {{colors.red_to_lime_5.default.hex | auto_lightness: 20.0 }}CC;
+    red-to-lime-6:  {{colors.red_to_lime_6.default.hex | auto_lightness: 20.0 }}CC;
+    red-to-lime-7:  {{colors.red_to_lime_7.default.hex | auto_lightness: 20.0 }}CC;
+    red-to-lime-8:  {{colors.red_to_lime_8.default.hex | auto_lightness: 20.0 }}CC;
+    red-to-lime-9:  {{colors.red_to_lime_9.default.hex | auto_lightness: 20.0 }}CC;
+    red-to-lime-10: {{colors.red_to_lime_10.default.hex | auto_lightness: 20.0 }}CC;
+
+    // red-to-lime-0:  {{colors.red_to_lime_0.default.hex }}CC;
+    // red-to-lime-1:  {{colors.red_to_lime_1.default.hex }}CC;
+    // red-to-lime-2:  {{colors.red_to_lime_2.default.hex }}CC;
+    // red-to-lime-3:  {{colors.red_to_lime_3.default.hex }}CC;
+    // red-to-lime-4:  {{colors.red_to_lime_4.default.hex }}CC;
+    // red-to-lime-5:  {{colors.red_to_lime_5.default.hex }}CC;
+    // red-to-lime-6:  {{colors.red_to_lime_6.default.hex }}CC;
+    // red-to-lime-7:  {{colors.red_to_lime_7.default.hex }}CC;
+    // red-to-lime-8:  {{colors.red_to_lime_8.default.hex }}CC;
+    // red-to-lime-9:  {{colors.red_to_lime_9.default.hex }}CC;
+    // red-to-lime-10: {{colors.red_to_lime_10.default.hex }}CC;
+
+    // red-to-lime-0:  {{colors.red_to_lime_0.default.hex }};
+    // red-to-lime-1:  {{colors.red_to_lime_1.default.hex }};
+    // red-to-lime-2:  {{colors.red_to_lime_2.default.hex }};
+    // red-to-lime-3:  {{colors.red_to_lime_3.default.hex }};
+    // red-to-lime-4:  {{colors.red_to_lime_4.default.hex }};
+    // red-to-lime-5:  {{colors.red_to_lime_5.default.hex }};
+    // red-to-lime-6:  {{colors.red_to_lime_6.default.hex }};
+    // red-to-lime-7:  {{colors.red_to_lime_7.default.hex }};
+    // red-to-lime-8:  {{colors.red_to_lime_8.default.hex }};
+    // red-to-lime-9:  {{colors.red_to_lime_9.default.hex }};
+    // red-to-lime-10: {{colors.red_to_lime_10.default.hex }};
+
     // Background of input bar and one of the result elements
     background-color: {{colors.surface.default.rgba                   | set_alpha: 0.1}};
     foreground:       {{colors.outline.default.rgba                   | set_alpha: 1.0}};
