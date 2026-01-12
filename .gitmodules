@@ -16,3 +16,6 @@
 [submodule ".config/mpv"]
 	path = .config/mpv
 	url = git@github.com:Thiago-Morais/mpv-settings.git
+[submodule ".config/fish"]
+	path = .config/fish
+	url = https://github.com/Thiago-Morais/dotfiles-fish
