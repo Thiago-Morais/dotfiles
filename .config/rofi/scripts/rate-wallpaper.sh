@@ -1,110 +1,148 @@
 #!/usr/bin/env bash
 
+# set -euo pipefail
+
 monitor="eDP-2"
 # Change the following variables to your environment and preference
-destination_parent_dir="$HOME/Pictures/wallpapers/static/rated"
+destination_base_dir="$HOME/Pictures/wallpapers/static/rated"
 # The symbolic link that will be generated after the image is copied
 link_path="$HOME/.local/state/wpaperd/wallpapers/$monitor"
 follow_link_when_not_found=1
+allow_rating_outside_0_to_10_range=1
 get_image_path_from_wallpaper_service() {
     wpaperctl get "$monitor"
 }
+get_custom_mapped_dir_name() {
+    local kb_custom="$1"
+    case "$kb_custom" in
+        12)
+            local custom_dir_name="../very-schetched"
+            ;;
+        13)
+            local custom_dir_name="../schetched"
+            ;;
+        14)
+            local custom_dir_name="../to-upscale"
+            ;;
+        *)
+            throw "Unmapped kb-custom '$kb_custom'"
+            ;;
+    esac
+    echo $custom_dir_name
+}
 
-
-set -euo pipefail
-
+# Helpers
 log() {
     echo ${@:2} "$1">&2
 }
 log_error() {
-    RED='\033[0;31m'
-    NO_COLOR='\033[0m'
+    local RED='\033[0;31m'
+    local NO_COLOR='\033[0m'
     log "${RED}$1${NO_COLOR}" -e
 }
 notify() {
     notify-send ${@:2} -a "Wallpaper Rating Script" "Wallpaper Rating" "$1"
 }
 throw() {
-    log_error "$1"
-    notify "$1" -u critical
+    log_error "Error: $1"
+    notify "Error: $1" -u critical
+    kill -TERM $$
     exit 1
 }
 
-kb_custom="${ROFI_RETV:-0}"
-log "kb_custom = $kb_custom"
+rofi_retv="${ROFI_RETV:-0}"
+log "ROFI_RETV = $rofi_retv"
 echo -en "\0use-hot-keys\x1ftrue\n"
 echo -en "\0prompt\x1fRate Wallpaper\n"
-echo -en "\0keep-filter\x1ftrue\n"
 
-
-if [ $kb_custom -eq 0 ] || [ $kb_custom -eq 1 ]; then
+# First pass at launch
+if [ $rofi_retv -eq 0 ] || [ $rofi_retv -eq 1 ]; then
     log "first pass"
     image_path_from_wallpaper_service=$(get_image_path_from_wallpaper_service)
+    log "image_path_from_wallpaper_service = '$image_path_from_wallpaper_service'"
     if [ -f "$image_path_from_wallpaper_service" ]; then
         current_image_path=$image_path_from_wallpaper_service
     else
+        log_error "Image not found at '$image_path_from_wallpaper_service'"
+        log "Following link at '$link_path'"
         current_image_path=$(readlink -f "$link_path")
     fi
-    current_base_name=$(basename "$current_image_path")
+    current_filename=$(basename "$current_image_path")
     current_dir_name=$(basename "$(dirname "$current_image_path")")
-    log "image_path_from_wallpaper_service = $image_path_from_wallpaper_service"
-    log "current_base_name = $current_base_name"
-    log "current_dir_name = $current_dir_name"
+    log "current_base_name = '$current_filename'"
+    log "current_dir_name = '$current_dir_name'"
 
-    echo "Rate Wallpaper: '$current_base_name'"
-    echo -en "\0prompt\x1fRate: '$current_base_name'\n"
+    echo "Rate Wallpaper: '$current_filename'"
+    echo -en "\0prompt\x1fRate: '$current_filename'\n"
     echo -en "\0theme\x1ftextbox-current-rating { content: \"$current_dir_name\"; }\n"
     exit 0
 fi
 
-minimum_kb_custom=10
-rating=$((10 - ($kb_custom - $minimum_kb_custom)))
-is_rating_outside_0_to_10_range=$((rating < 0 || rating > 10))
-if (( is_rating_outside_0_to_10_range )) ; then
-    throw "error: Unhandled kb-custom"
-fi
-
-log "Button pressed = $rating"
-
+# Second pass at input
 get_valid_current_image_path() {
-    image_path="$(get_image_path_from_wallpaper_service)"
+    local image_path="$(get_image_path_from_wallpaper_service)"
     if [[ $follow_link_when_not_found ]] && [[ -z "$image_path" || ! -f "$image_path" ]]; then
-        log_error "image not found at '$image_path'"
+        log_error "Image not found at '$image_path'"
         log "following link"
-        image_path=$(readlink -f "$link_path")
+        local image_path=$(readlink -f "$link_path")
     fi
     if [ -z "$image_path" ] ; then
-        throw "error: Empty image path '$image_path'"
+        throw "Empty image path '$image_path'"
     fi
     if [ ! -f "$image_path" ]; then
-        throw "error: Image file not found at path: \r'$image_path'"
+        throw "Image file not found at path: \r'$image_path'"
     fi
-    echo "$image_path"
+    echo $image_path
+}
+get_dest_dir_name() {
+    # We expect the `kb_custom` to `rating` to be inverted in the theme
+    # rating 10 = kb-custom-1 // rating 0 = kb-custom-11
+    local rating=$((10 - ($kb_custom - 1)))
+    log "rating = '$rating'"
+    local is_rating_within_0_to_10_range=$((0 <= rating && rating <= 10))
+    if (( is_rating_within_0_to_10_range )); then
+        local padded_rating=$(printf '%02d' "$rating")
+        local dest_dir_name="quality-$padded_rating"
+    elif (( $allow_rating_outside_0_to_10_range )); then
+        local dest_dir_name=$(get_custom_mapped_dir_name "$kb_custom")
+    else
+        throw "Unknown error with kb-custom '$kb_custom'"
+    fi
+    echo $dest_dir_name
 }
 
+minimum_rofi_retv_kb_custom=10
+# kb-custom-N is base 1, so we add 1
+kb_custom=$(($rofi_retv - $minimum_rofi_retv_kb_custom + 1))
+log "kb_custom = '$kb_custom'"
+if (($kb_custom < 1)); then
+    throw "Unhandled kb-custom '$kb_custom'"
+fi
+kb_custom_is_within_allowed_range=$(( allow_rating_outside_0_to_10_range || kb_custom - 1 <= 10 ))
+if (( ! kb_custom_is_within_allowed_range )) ; then
+    throw "kb-custom '$kb_custom' outside allowed range; Set \`allow_rating_outside_0_to_10_range\` to \`true\`"
+fi
+
 current_image_path=$(get_valid_current_image_path)
-padded_rating=$(printf '%02d' "$rating")
-dest_path="$destination_parent_dir/quality-$padded_rating/$(basename "$current_image_path")"
-dest_dir=$(dirname "$dest_path")
-link_dir=$(dirname "$link_path")
-log "current_image_path = $current_image_path"
-log "link_path = $link_path"
-log "padded_rating = $padded_rating"
-log "dest_path = $dest_path"
-log "dest_dir = $dest_dir"
-log "link_path = $link_path"
+log "current_image_path = '$current_image_path'"
+dir_name=$(get_dest_dir_name)
+log "dir_name = '$dir_name'"
+filename=$(basename "$current_image_path")
+log "filename = '$filename'"
+fullpath="$destination_base_dir/$dir_name/$filename"
+log "fullpath = '$fullpath'"
 
-log "creating directory '$dest_dir'"
-mkdir -p "$dest_dir" || throw "Failed to create directory"
-log "moving '$current_image_path' to '$dest_path'"
-mv "$current_image_path" "$dest_path" || throw "Failed to move '$current_image_path' to '$dest_path'"
-log "creating linking directory '$link_dir'"
-mkdir -p "$link_dir" || throw "Failed to create link directory"
-log "linking '$link_path' to '$dest_path'"
-ln -sf "$dest_path" "$link_path" || throw "Failed to link '$dest_path' to '$link_path'"
+log "creating directory '$(dirname "$fullpath")'"
+mkdir -p "$(dirname "$fullpath")" || throw "Failed to create directory"
+log "moving '$current_image_path' to '$fullpath'"
+mv "$current_image_path" "$fullpath" || throw "Failed to move '$current_image_path' to '$fullpath'"
+log "creating linking directory '$(dirname "$link_path")'"
+mkdir -p "$(dirname "$link_path")" || throw "Failed to create link directory"
+log "linking '$link_path' to '$fullpath'"
+ln -sf "$fullpath" "$link_path" || throw "Failed to link '$fullpath' to '$link_path'"
 
-log "Wallpaper rated '$rating'"
-notify "Wallpaper rated '$rating'"
+log "Wallpaper rated '$dir_name'"
+notify "Wallpaper rated '$dir_name'" -u low
 
 log "end of script"
 exit 0
