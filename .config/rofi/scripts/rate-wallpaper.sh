@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
+monitor="eDP-2"
 # Change the following variables to your environment and preference
 destination_parent_dir="$HOME/Pictures/wallpapers/static/rated"
-monitor="eDP-2"
 # The symbolic link that will be generated after the image is copied
 link_path="$HOME/.local/state/wpaperd/wallpapers/$monitor"
+follow_link_when_not_found=1
 get_image_path_from_wallpaper_service() {
     wpaperctl get "$monitor"
 }
@@ -12,19 +13,21 @@ get_image_path_from_wallpaper_service() {
 
 set -euo pipefail
 
-# With optional echo options
 log() {
     echo ${@:2} "$1">&2
 }
-throw() {
+log_error() {
     RED='\033[0;31m'
     NO_COLOR='\033[0m'
     log "${RED}$1${NO_COLOR}" -e
-    notify "$1" -u critical
-    exit 1
 }
 notify() {
     notify-send ${@:2} -a "Wallpaper Rating Script" "Wallpaper Rating" "$1"
+}
+throw() {
+    log_error "$1"
+    notify "$1" -u critical
+    exit 1
 }
 
 kb_custom="${ROFI_RETV:-0}"
@@ -36,16 +39,21 @@ echo -en "\0keep-filter\x1ftrue\n"
 
 if [ $kb_custom -eq 0 ] || [ $kb_custom -eq 1 ]; then
     log "first pass"
-    current_image_path=$(get_image_path_from_wallpaper_service)
-    log "current_image_path = $current_image_path"
-    current_image_name=$(basename "$current_image_path")
-    log "current_image_name = $current_image_name"
-    current_rating=$(basename $(dirname "$current_image_path"))
-    log "current_rating = $current_rating"
+    image_path_from_wallpaper_service=$(get_image_path_from_wallpaper_service)
+    if [ -f "$image_path_from_wallpaper_service" ]; then
+        current_image_path=$image_path_from_wallpaper_service
+    else
+        current_image_path=$(readlink -f "$link_path")
+    fi
+    current_base_name=$(basename "$current_image_path")
+    current_dir_name=$(basename "$(dirname "$current_image_path")")
+    log "image_path_from_wallpaper_service = $image_path_from_wallpaper_service"
+    log "current_base_name = $current_base_name"
+    log "current_dir_name = $current_dir_name"
 
-    echo "Rate Wallpaper: '$current_image_name'"
-    echo -en "\0prompt\x1fRate: '$current_image_name'\n"
-    echo -en "\0theme\x1ftextbox-current-rating { content: \"$current_rating\"; }\n"
+    echo "Rate Wallpaper: '$current_base_name'"
+    echo -en "\0prompt\x1fRate: '$current_base_name'\n"
+    echo -en "\0theme\x1ftextbox-current-rating { content: \"$current_dir_name\"; }\n"
     exit 0
 fi
 
@@ -60,6 +68,11 @@ log "Button pressed = $rating"
 
 get_valid_current_image_path() {
     image_path="$(get_image_path_from_wallpaper_service)"
+    if [[ $follow_link_when_not_found ]] && [[ -z "$image_path" || ! -f "$image_path" ]]; then
+        log_error "image not found at '$image_path'"
+        log "following link"
+        image_path=$(readlink -f "$link_path")
+    fi
     if [ -z "$image_path" ] ; then
         throw "error: Empty image path '$image_path'"
     fi
