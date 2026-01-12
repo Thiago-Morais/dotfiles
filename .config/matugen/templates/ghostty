@@ -21,8 +21,8 @@ palette = 1={{colors.red.default.hex}}
 palette = 2={{colors.green.default.hex}}
 palette = 3={{colors.yellow.default.hex}}
 palette = 4={{colors.blue.default.hex}}
-palette = 5={{colors.magenta.default.hex}}
-palette = 6={{colors.cyan.default.hex}}
+palette = 5={{colors.fuchsia.default.hex}}
+palette = 6={{colors.aqua.default.hex}}
 palette = 7={{colors.white.default.hex}}
 
 palette = 8=#666666
