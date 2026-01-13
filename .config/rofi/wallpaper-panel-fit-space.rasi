@@ -130,20 +130,17 @@ button-very-schetched, button-schetch, button-to-upscale {
 
 button-very-schetched {
     action: "kb-custom-12";
-    content: "<span></span>";
     content: "<span size='x-small'></span>";
     background-color: @very-schetched-color;
     text-outline-width: 0.5;
 }
 button-schetch {
     action: "kb-custom-13";
-    content: "<span>󰷉</span>";
     content: "<span size='small'>󰷉</span>";
     background-color: @schetch-color;
 }
 button-to-upscale {
     action: "kb-custom-14";
-    content: "<span></span>";
     content: "<span size='small'></span>";
     background-color: @to-upscale-color;
 }
