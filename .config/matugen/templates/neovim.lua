@@ -14,15 +14,16 @@ require("mini.base16").setup({
 		-- Actually main number on left bar
 		base04 = "{{ colors.on_surface.default.hex }}",
 		--  Default Foreground, Caret, Delimiters, Operators
-		--  Actually Comment
-		base05 = "{{ colors.surface_tint.default.hex | auto_lightness: -15.0 }}",
+		--  Actually Variables
+		base05 = "{{ colors.turquoise.default.hex | auto_lightness: 20.0 }}",
 		--  Light Foreground (Not often used)
 		base06 = "#00ff00",
 		--  Light Background (Not often used)
 		base07 = "#0000ff",
 
 		--  Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-		base08 = "{{ colors.turquoise.default.hex | auto_lightness: 20.0 }}",
+		--  Actually Identifiers
+		base08 = "{{ colors.orange.default.hex | auto_lightness: -10.0 }}",
 		--  Integers, Boolean, Constants, XML Attributes, Markup Link Url
 		base09 = "{{ colors.purple.default.hex | auto_lightness: 20.0 }}",
 		--  Classes, Markup Bold, Search Text Background
@@ -34,7 +35,7 @@ require("mini.base16").setup({
 		--  Functions, Methods, Attribute IDs, Headings
 		base0D = "{{ colors.springgreen.default.hex | auto_lightness: 20.0 }}",
 		--  Keywords, Storage, Selector, Markup Italic, Diff Changed
-		base0E = "{{ colors.orange.default.hex | auto_lightness: 20.0 }}",
+		base0E = "{{ colors.red.default.hex | auto_lightness: 25.0 }}",
 		--  Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 		base0F = "{{ colors.brown_container.default.hex | auto_lightness: 20.0 }}",
 	},
@@ -57,34 +58,9 @@ local function set_hl_mutliple(groups, value)
 	end
 end
 
--- Make selected text stand out more
-vim.api.nvim_set_hl(0, "Visual", {
-	bg = "{{ colors.primary_container.default.hex }}",
-	fg = "{{ colors.background.default.hex }}",
-})
-
 set_hl_mutliple({ "TSComment", "Comment" }, {
 	bg = "{{ colors.red_container.default.hex | auto_lightness: -25.0 }}",
 	fg = "{{ colors.red_source.default.hex | auto_lightness: -10.0 }}",
-})
-
--- set_hl_mutliple({ "TSMethod", "Method" }, {
--- 	fg = "{{ colors.tertiary.default.hex }}",
--- })
---
--- set_hl_mutliple({ "TSFunction", "Function" }, {
--- 	fg = "{{ colors.secondary.default.hex }}",
--- })
---
--- vim.api.nvim_set_hl(0, "Keyword", {
---   -- fg = "{{ colors.inverse_primary.default.hex }}",
---   fg = "{{ colors.primary.default.hex }}",
--- })
---
-
-vim.api.nvim_set_hl(0, "MsgArea", {
-	bg = "{{ colors.inverse_on_surface.default.hex }}",
-	fg = "{{ colors.primary.default.hex }}",
 })
 
 set_hl_mutliple({
@@ -119,6 +95,59 @@ set_hl_mutliple({
 	"NeoTreeNormalNC",
 }, {
 	bg = "NONE",
+})
+
+local function link_hl_mutliple(links)
+	for k, v in pairs(links) do
+		vim.api.nvim_set_hl(0, k, { link = v })
+	end
+end
+
+link_hl_mutliple({
+	-- ["@lsp"] = "@type",
+	["@lsp.type.class"] = "@type",
+	["@lsp.type.event"] = "@type",
+	["@lsp.type.function"] = "@function",
+	["@lsp.type.interface"] = "@type",
+	["@lsp.type.macro"] = "@constant.macro",
+	-- ["@lsp.type.macro"] = "@constant",
+	["@lsp.type.method"] = "@function.method",
+	-- ["@lsp.type.method"] = "@function",
+	["@lsp.type.modifier"] = "@type.qualifier",
+	-- ["@lsp.type.modifier"] = "@type",
+	["@lsp.type.regexp"] = "@string.regexp",
+	["@lsp.type.struct"] = "@type",
+	["@lsp.type.type"] = "@type",
+	["@lsp.type.typeParameter"] = "@type.definition",
+	-- ["@lsp.type.typeParameter"] = "@type",
+	["@lsp.type.variable"] = "@variable",
+	["@lsp.type.member"] = "Identifier",
+	["@lsp.mod.deprecated"] = "DiagnosticDeprecated",
+})
+
+-- Make selected text stand out more
+vim.api.nvim_set_hl(0, "Visual", {
+	bg = "{{ colors.primary_container.default.hex }}",
+	fg = "{{ colors.background.default.hex }}",
+})
+
+-- set_hl_mutliple({ "TSMethod", "Method" }, {
+-- 	fg = "{{ colors.tertiary.default.hex }}",
+-- })
+--
+-- set_hl_mutliple({ "TSFunction", "Function" }, {
+-- 	fg = "{{ colors.secondary.default.hex }}",
+-- })
+--
+-- vim.api.nvim_set_hl(0, "Keyword", {
+--   -- fg = "{{ colors.inverse_primary.default.hex }}",
+--   fg = "{{ colors.primary.default.hex }}",
+-- })
+--
+
+vim.api.nvim_set_hl(0, "MsgArea", {
+	bg = "{{ colors.inverse_on_surface.default.hex }}",
+	fg = "{{ colors.primary.default.hex }}",
 })
 
 vim.api.nvim_set_hl(0, "DiffText", { bg = "NONE" })
