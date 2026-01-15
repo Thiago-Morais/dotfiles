@@ -53,24 +53,19 @@ icon-wallpaper {
 
 rating-panel {
     background-color: transparent;
-    children: [ "default-ratings-1-5", "default-ratings-6-10", "custom-ratings"];
-    // orientation: horizontal;
+    children: [ "default-ratings", "custom-ratings"];
 }
 
-default-ratings-1-5, default-ratings-6-10 {
+default-ratings, custom-ratings {
     background-color: transparent;
     orientation: horizontal;
     spacing: 5px;
-    expand: false;
-    margin: 0;
-    padding: 0;
+    expand: true;
 }
 
-default-ratings-1-5 {
-    children: [ "button-rate-1", "button-rate-2", "button-rate-3", "button-rate-4", "button-rate-5" ];
-}
-default-ratings-6-10 {
-    children: [ "button-rate-6", "button-rate-7", "button-rate-8", "button-rate-9", "button-rate-10" ];
+default-ratings {
+    margin: 5px 0 0 0;
+    children: [ "button-rate-1", "button-rate-2", "button-rate-3", "button-rate-4", "button-rate-5", "button-rate-6", "button-rate-7", "button-rate-8", "button-rate-9", "button-rate-10" ];
 }
 
 button-to-upscale,
@@ -86,8 +81,7 @@ button-rate-7,
 button-rate-8,
 button-rate-9,
 button-rate-10 {
-    margin: 2px 0 0 0;
-    padding: -7px 0;
+    padding: -5px 0 0 0;
     border-radius: 5px;
     border-color: @outline;
     text-color: @on-surface;
@@ -98,7 +92,6 @@ button-rate-10 {
     text-outline-color: @surface;
     markup: true;
     cursor: pointer;
-    // expand: false;
 }
 
 button-rate-1 {
@@ -163,14 +156,7 @@ button-rate-10 {
 }
 
 custom-ratings {
-    background-color: transparent;
     children: [ "button-to-upscale", "button-very-sketched", "button-sketch" ];
-    orientation: horizontal;
-    expand: false;
-    spacing: 5px;
-}
-
-button-very-sketched, button-sketch, button-to-upscale {
 }
 
 button-very-sketched {
