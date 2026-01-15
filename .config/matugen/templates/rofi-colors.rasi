@@ -56,41 +56,37 @@
 
     source: {{colors.source_color.default.hex}};
 
-    red-to-lime-0:  {{colors.red_to_lime_0.default.hex | auto_lightness: 20.0 }}CC;
-    red-to-lime-1:  {{colors.red_to_lime_1.default.hex | auto_lightness: 20.0 }}CC;
-    red-to-lime-2:  {{colors.red_to_lime_2.default.hex | auto_lightness: 20.0 }}CC;
-    red-to-lime-3:  {{colors.red_to_lime_3.default.hex | auto_lightness: 20.0 }}CC;
-    red-to-lime-4:  {{colors.red_to_lime_4.default.hex | auto_lightness: 20.0 }}CC;
-    red-to-lime-5:  {{colors.red_to_lime_5.default.hex | auto_lightness: 20.0 }}CC;
-    red-to-lime-6:  {{colors.red_to_lime_6.default.hex | auto_lightness: 20.0 }}CC;
-    red-to-lime-7:  {{colors.red_to_lime_7.default.hex | auto_lightness: 20.0 }}CC;
-    red-to-lime-8:  {{colors.red_to_lime_8.default.hex | auto_lightness: 20.0 }}CC;
-    red-to-lime-9:  {{colors.red_to_lime_9.default.hex | auto_lightness: 20.0 }}CC;
-    red-to-lime-10: {{colors.red_to_lime_10.default.hex | auto_lightness: 20.0 }}CC;
+    very-sketched-color: {{colors.red.default.hex | auto_lightness: -10.0 }}ac;
+    sketch-color: {{colors.aqua.default.hex | auto_lightness: -10.0 }}ac;
+    to-upscale-color: {{colors.yellow.default.hex | auto_lightness: -10.0 }}ac;
 
-    // red-to-lime-0:  {{colors.red_to_lime_0.default.hex }}CC;
-    // red-to-lime-1:  {{colors.red_to_lime_1.default.hex }}CC;
-    // red-to-lime-2:  {{colors.red_to_lime_2.default.hex }}CC;
-    // red-to-lime-3:  {{colors.red_to_lime_3.default.hex }}CC;
-    // red-to-lime-4:  {{colors.red_to_lime_4.default.hex }}CC;
-    // red-to-lime-5:  {{colors.red_to_lime_5.default.hex }}CC;
-    // red-to-lime-6:  {{colors.red_to_lime_6.default.hex }}CC;
-    // red-to-lime-7:  {{colors.red_to_lime_7.default.hex }}CC;
-    // red-to-lime-8:  {{colors.red_to_lime_8.default.hex }}CC;
-    // red-to-lime-9:  {{colors.red_to_lime_9.default.hex }}CC;
-    // red-to-lime-10: {{colors.red_to_lime_10.default.hex }}CC;
+    very-sketched-grad: linear-gradient(to bottom, {{colors.red_container.default.hex | auto_lightness: 20.0 }}a0, transparent);
+    sketch-grad: linear-gradient(to bottom, {{colors.aqua_container.default.hex | auto_lightness: 20.0 }}a0, transparent);
+    to-upscale-grad: linear-gradient(to bottom, {{colors.yellow_container.default.hex | auto_lightness: 20.0 }}a0, transparent);
 
-    // red-to-lime-0:  {{colors.red_to_lime_0.default.hex }};
-    // red-to-lime-1:  {{colors.red_to_lime_1.default.hex }};
-    // red-to-lime-2:  {{colors.red_to_lime_2.default.hex }};
-    // red-to-lime-3:  {{colors.red_to_lime_3.default.hex }};
-    // red-to-lime-4:  {{colors.red_to_lime_4.default.hex }};
-    // red-to-lime-5:  {{colors.red_to_lime_5.default.hex }};
-    // red-to-lime-6:  {{colors.red_to_lime_6.default.hex }};
-    // red-to-lime-7:  {{colors.red_to_lime_7.default.hex }};
-    // red-to-lime-8:  {{colors.red_to_lime_8.default.hex }};
-    // red-to-lime-9:  {{colors.red_to_lime_9.default.hex }};
-    // red-to-lime-10: {{colors.red_to_lime_10.default.hex }};
+    red-to-lime-0:  {{colors.red_to_lime_0.default.hex | auto_lightness: -10.0 }}ac;
+    red-to-lime-1:  {{colors.red_to_lime_1.default.hex | auto_lightness: -10.0 }}ac;
+    red-to-lime-2:  {{colors.red_to_lime_2.default.hex | auto_lightness: -10.0 }}ac;
+    red-to-lime-3:  {{colors.red_to_lime_3.default.hex | auto_lightness: -10.0 }}ac;
+    red-to-lime-4:  {{colors.red_to_lime_4.default.hex | auto_lightness: -10.0 }}ac;
+    red-to-lime-5:  {{colors.red_to_lime_5.default.hex | auto_lightness: -10.0 }}ac;
+    red-to-lime-6:  {{colors.red_to_lime_6.default.hex | auto_lightness: -10.0 }}ac;
+    red-to-lime-7:  {{colors.red_to_lime_7.default.hex | auto_lightness: -10.0 }}ac;
+    red-to-lime-8:  {{colors.red_to_lime_8.default.hex | auto_lightness: -10.0 }}ac;
+    red-to-lime-9:  {{colors.red_to_lime_9.default.hex | auto_lightness: -10.0 }}ac;
+    red-to-lime-10: {{colors.red_to_lime_10.default.hex | auto_lightness: -10.0 }}ac;
+
+    red-to-lime-grad-0:  linear-gradient(to bottom, {{colors.red_to_lime_0_container.default.hex | auto_lightness: 20.0 }}a0, transparent);
+    red-to-lime-grad-1:  linear-gradient(to bottom, {{colors.red_to_lime_1_container.default.hex | auto_lightness: 20.0 }}a0, transparent);
+    red-to-lime-grad-2:  linear-gradient(to bottom, {{colors.red_to_lime_2_container.default.hex | auto_lightness: 20.0 }}a0, transparent);
+    red-to-lime-grad-3:  linear-gradient(to bottom, {{colors.red_to_lime_3_container.default.hex | auto_lightness: 20.0 }}a0, transparent);
+    red-to-lime-grad-4:  linear-gradient(to bottom, {{colors.red_to_lime_4_container.default.hex | auto_lightness: 20.0 }}a0, transparent);
+    red-to-lime-grad-5:  linear-gradient(to bottom, {{colors.red_to_lime_5_container.default.hex | auto_lightness: 20.0 }}a0, transparent);
+    red-to-lime-grad-6:  linear-gradient(to bottom, {{colors.red_to_lime_6_container.default.hex | auto_lightness: 20.0 }}a0, transparent);
+    red-to-lime-grad-7:  linear-gradient(to bottom, {{colors.red_to_lime_7_container.default.hex | auto_lightness: 20.0 }}a0, transparent);
+    red-to-lime-grad-8:  linear-gradient(to bottom, {{colors.red_to_lime_8_container.default.hex | auto_lightness: 20.0 }}a0, transparent);
+    red-to-lime-grad-9:  linear-gradient(to bottom, {{colors.red_to_lime_9_container.default.hex | auto_lightness: 20.0 }}a0, transparent);
+    red-to-lime-grad-10: linear-gradient(to bottom, {{colors.red_to_lime_10_container.default.hex | auto_lightness: 20.0 }}a0, transparent);
 
     // Background of input bar and one of the result elements
     background-color: {{colors.surface.default.rgba                   | set_alpha: 0.1}};

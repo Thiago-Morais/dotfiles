@@ -1,9 +1,3 @@
-* {
-    very-sketched-color: #f00a; // red
-    sketch-color: #0ffa; // aqua
-    to-upscale-color: #ff0a; // yellow
-}
-
 wallpaper-panel {
     children:         ["current-rating", "wallpaper-container", "rating-panel"];
     background-color: transparent;
@@ -24,7 +18,6 @@ top-textbox {
 }
 
 textbox-current-rating, textbox-time-left {
-    // border: 2;
     text-color: @on-surface;
     text-outline: true;
     text-outline-width: 2;
@@ -95,7 +88,6 @@ button-rate-9,
 button-rate-10 {
     margin: 2px 0 0 0;
     padding: -7px 0;
-    border: 2px;
     border-radius: 5px;
     border-color: @outline;
     text-color: @on-surface;
@@ -112,65 +104,63 @@ button-rate-10 {
 button-rate-1 {
     action: "kb-custom-1";
     content: "<span weight='2000'>1</span>";
-    background-color: @red-to-lime-1;
+    color: @red-to-lime-1;
+    background-image: @red-to-lime-grad-1;
 }
 button-rate-2 {
     action: "kb-custom-2";
     content: "<span weight='2000'>2</span>";
-    background-color: @red-to-lime-2;
+    color: @red-to-lime-2;
+    background-image: @red-to-lime-grad-2;
 }
 button-rate-3 {
     action: "kb-custom-3";
     content: "<span weight='2000'>3</span>";
-    background-color: @red-to-lime-3;
+    color: @red-to-lime-3;
+    background-image: @red-to-lime-grad-3;
 }
 button-rate-4 {
     action: "kb-custom-4";
     content: "<span weight='2000'>4</span>";
-    background-color: @red-to-lime-4;
+    color: @red-to-lime-4;
+    background-image: @red-to-lime-grad-4;
 }
 button-rate-5 {
     action: "kb-custom-5";
     content: "<span weight='2000'>5</span>";
-    background-color: @red-to-lime-5;
+    color: @red-to-lime-5;
+    background-image: @red-to-lime-grad-5;
 }
 button-rate-6 {
     action: "kb-custom-6";
     content: "<span weight='2000'>6</span>";
-    background-color: @red-to-lime-6;
+    color: @red-to-lime-6;
+    background-image: @red-to-lime-grad-6;
 }
 button-rate-7 {
     action: "kb-custom-7";
     content: "<span weight='2000'>7</span>";
-    background-color: @red-to-lime-7;
+    color: @red-to-lime-7;
+    background-image: @red-to-lime-grad-7;
 }
 button-rate-8 {
     action: "kb-custom-8";
     content: "<span weight='2000'>8</span>";
-    background-color: @red-to-lime-8;
+    color: @red-to-lime-8;
+    background-image: @red-to-lime-grad-8;
 }
 button-rate-9 {
     action: "kb-custom-9";
     content: "<span weight='2000'>9</span>";
-    background-color: @red-to-lime-9;
+    color: @red-to-lime-9;
+    background-image: @red-to-lime-grad-9;
 }
 button-rate-10 {
     action: "kb-custom-10";
     content: "<span weight='2000'>10</span>";
-    background-color: @red-to-lime-10;
+    color: @red-to-lime-10;
+    background-image: @red-to-lime-grad-10;
 }
-
-// red-to-lime-0  = #bf4040 = kb-custom-11
-// red-to-lime-1  = #c14d33 = kb-custom-10
-// red-to-lime-2  = #bf5a25 = kb-custom-9
-// red-to-lime-3  = #bb6813 = kb-custom-8
-// red-to-lime-4  = #b47600 = kb-custom-7
-// red-to-lime-5  = #aa8400 = kb-custom-6
-// red-to-lime-6  = #9e9100 = kb-custom-5
-// red-to-lime-7  = #8f9d00 = kb-custom-4
-// red-to-lime-8  = #7ca900 = kb-custom-3
-// red-to-lime-9  = #63b424 = kb-custom-2
-// red-to-lime-10 = #40bf40 = kb-custom-1
 
 custom-ratings {
     background-color: transparent;
@@ -181,22 +171,24 @@ custom-ratings {
 }
 
 button-very-sketched, button-sketch, button-to-upscale {
-    // margin: 0;
 }
 
 button-very-sketched {
     action: "kb-custom-12";
     content: "<span size='x-small'></span>";
-    background-color: @very-sketched-color;
     text-outline-width: 0.5;
+    color: @very-sketched-color;
+    background-image: @very-sketched-grad;
 }
 button-sketch {
     action: "kb-custom-13";
     content: "<span size='small'>󰷉</span>";
-    background-color: @sketch-color;
+    color: @sketch-color;
+    background-image: @sketch-grad;
 }
 button-to-upscale {
     action: "kb-custom-14";
     content: "<span size='small'></span>";
-    background-color: @to-upscale-color;
+    color: @to-upscale-color;
+    background-image: @to-upscale-grad;
 }
