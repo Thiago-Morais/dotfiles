@@ -1,6 +1,6 @@
 * {
-    very-schetched-color: #f00a; // red
-    schetch-color: #0ffa; // aqua
+    very-sketched-color: #f00a; // red
+    sketch-color: #0ffa; // aqua
     to-upscale-color: #ff0a; // yellow
 }
 
@@ -13,21 +13,34 @@ wallpaper-panel {
 
 current-rating {
     background-color: transparent;
-    children: ["textbox-current-rating"];
+    children: ["top-textbox"];
     expand: false;
     margin: 0 0 5px 0;
 }
 
-textbox-current-rating {
-    content: "__WALLPAPER_RATING__";
-    vertical-align: 0.5;
-    horizontal-align: 0.5;
+top-textbox {
+    children: [ "void", "textbox-current-rating", "textbox-time-left" ];
+    orientation: horizontal;
+}
+
+textbox-current-rating, textbox-time-left {
+    // border: 2;
     text-color: @on-surface;
-    text-transform: italic;
     text-outline: true;
     text-outline-width: 2;
     text-outline-color: @surface;
     text-outline-color: @background;
+    vertical-align: 0.5;
+}
+
+textbox-current-rating {
+    content: "__WALLPAPER_RATING__";
+    horizontal-align: 0.5;
+    expand: false;
+}
+textbox-time-left {
+    padding: 0 5px;
+    expand: true;
 }
 
 wallpaper-container {
@@ -47,19 +60,41 @@ icon-wallpaper {
 
 rating-panel {
     background-color: transparent;
-    children: [ "default-ratings", "custom-ratings"];
+    children: [ "default-ratings-1-5", "default-ratings-6-10", "custom-ratings"];
     // orientation: horizontal;
 }
 
-default-ratings {
+default-ratings-1-5, default-ratings-6-10 {
     background-color: transparent;
-    children: [ "button-rate-5", "button-rate-6", "button-rate-7", "button-rate-8", "button-rate-9", "button-rate-10" ];
     orientation: horizontal;
     spacing: 5px;
+    expand: false;
+    margin: 0;
+    padding: 0;
 }
 
-button-very-schetched, button-schetch, button-to-upscale, button-rate-5, button-rate-6, button-rate-7, button-rate-8, button-rate-9, button-rate-10 {
-    margin: 10px 0;
+default-ratings-1-5 {
+    children: [ "button-rate-1", "button-rate-2", "button-rate-3", "button-rate-4", "button-rate-5" ];
+}
+default-ratings-6-10 {
+    children: [ "button-rate-6", "button-rate-7", "button-rate-8", "button-rate-9", "button-rate-10" ];
+}
+
+button-to-upscale,
+button-very-sketched,
+button-sketch,
+button-rate-1,
+button-rate-2,
+button-rate-3,
+button-rate-4,
+button-rate-5,
+button-rate-6,
+button-rate-7,
+button-rate-8,
+button-rate-9,
+button-rate-10 {
+    margin: 2px 0 0 0;
+    padding: -7px 0;
     border: 2px;
     border-radius: 5px;
     border-color: @outline;
@@ -70,35 +105,57 @@ button-very-schetched, button-schetch, button-to-upscale, button-rate-5, button-
     text-outline-width: 1;
     text-outline-color: @surface;
     markup: true;
+    cursor: pointer;
+    // expand: false;
 }
 
+button-rate-1 {
+    action: "kb-custom-1";
+    content: "<span weight='2000'>1</span>";
+    background-color: @red-to-lime-1;
+}
+button-rate-2 {
+    action: "kb-custom-2";
+    content: "<span weight='2000'>2</span>";
+    background-color: @red-to-lime-2;
+}
+button-rate-3 {
+    action: "kb-custom-3";
+    content: "<span weight='2000'>3</span>";
+    background-color: @red-to-lime-3;
+}
+button-rate-4 {
+    action: "kb-custom-4";
+    content: "<span weight='2000'>4</span>";
+    background-color: @red-to-lime-4;
+}
 button-rate-5 {
-    action: "kb-custom-6";
+    action: "kb-custom-5";
     content: "<span weight='2000'>5</span>";
     background-color: @red-to-lime-5;
 }
 button-rate-6 {
-    action: "kb-custom-5";
+    action: "kb-custom-6";
     content: "<span weight='2000'>6</span>";
     background-color: @red-to-lime-6;
 }
 button-rate-7 {
-    action: "kb-custom-4";
+    action: "kb-custom-7";
     content: "<span weight='2000'>7</span>";
     background-color: @red-to-lime-7;
 }
 button-rate-8 {
-    action: "kb-custom-3";
+    action: "kb-custom-8";
     content: "<span weight='2000'>8</span>";
     background-color: @red-to-lime-8;
 }
 button-rate-9 {
-    action: "kb-custom-2";
+    action: "kb-custom-9";
     content: "<span weight='2000'>9</span>";
     background-color: @red-to-lime-9;
 }
 button-rate-10 {
-    action: "kb-custom-1";
+    action: "kb-custom-10";
     content: "<span weight='2000'>10</span>";
     background-color: @red-to-lime-10;
 }
@@ -117,27 +174,26 @@ button-rate-10 {
 
 custom-ratings {
     background-color: transparent;
-    children: [ "button-very-schetched", "button-schetch", "button-to-upscale" ];
+    children: [ "button-to-upscale", "button-very-sketched", "button-sketch" ];
     orientation: horizontal;
     expand: false;
     spacing: 5px;
 }
 
-button-very-schetched, button-schetch, button-to-upscale {
-    margin: 0;
-    padding: -5px 0;
+button-very-sketched, button-sketch, button-to-upscale {
+    // margin: 0;
 }
 
-button-very-schetched {
+button-very-sketched {
     action: "kb-custom-12";
     content: "<span size='x-small'></span>";
-    background-color: @very-schetched-color;
+    background-color: @very-sketched-color;
     text-outline-width: 0.5;
 }
-button-schetch {
+button-sketch {
     action: "kb-custom-13";
     content: "<span size='small'>󰷉</span>";
-    background-color: @schetch-color;
+    background-color: @sketch-color;
 }
 button-to-upscale {
     action: "kb-custom-14";

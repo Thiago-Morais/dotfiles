@@ -8,7 +8,7 @@ destination_base_dir="$HOME/Pictures/wallpapers/static/rated"
 # The symbolic link that will be generated after the image is copied
 link_path="$HOME/.local/state/wpaperd/wallpapers/$monitor"
 follow_link_when_not_found=1
-allow_rating_outside_0_to_10_range=1
+allow_rating_outside_1_to_10_range=1
 get_image_path_from_wallpaper_service() {
     wpaperctl get "$monitor"
 }
@@ -16,10 +16,10 @@ get_custom_mapped_dir_name() {
     local kb_custom="$1"
     case "$kb_custom" in
         12)
-            local custom_dir_name="../very-schetched"
+            local custom_dir_name="../very-sketched"
             ;;
         13)
-            local custom_dir_name="../schetched"
+            local custom_dir_name="../sketched"
             ;;
         14)
             local custom_dir_name="../to-upscale"
@@ -29,6 +29,13 @@ get_custom_mapped_dir_name() {
             ;;
     esac
     echo $custom_dir_name
+}
+get_time_left(){
+    raw_time_left=$(wpaperctl status)
+    log "raw_time_left = '$raw_time_left'"
+    formated_time_left=$(echo "$raw_time_left" | awk -F '[()]' '{print $2}')
+    log "time_left = '$formated_time_left'"
+    echo $formated_time_left
 }
 
 # Helpers
@@ -69,12 +76,18 @@ if [ $rofi_retv -eq 0 ] || [ $rofi_retv -eq 1 ]; then
     fi
     current_filename=$(basename "$current_image_path")
     current_dir_name=$(basename "$(dirname "$current_image_path")")
+    formated_time_left=$(get_time_left)
     log "current_base_name = '$current_filename'"
     log "current_dir_name = '$current_dir_name'"
+    log "time_left = '$formated_time_left'"
 
     echo "Rate Wallpaper: '$current_filename'"
     echo -en "\0prompt\x1fRate: '$current_filename'\n"
-    echo -en "\0theme\x1ftextbox-current-rating { content: \"$current_dir_name\"; }\n"
+    echo -en "\0theme\x1ftextbox-current-rating { markup: true; }\n"
+    echo -en "\0theme\x1ftextbox-current-rating { content: \"<span style='italic'>$current_dir_name</span>\"; }\n"
+    echo -en "\0theme\x1ftextbox-time-left { markup: true; }\n"
+    echo -en "\0theme\x1ftextbox-time-left { content: \"<span alpha='30%' font_size='xx-small'>$formated_time_left</span>\"; }\n"
+
     exit 0
 fi
 
@@ -97,13 +110,13 @@ get_valid_current_image_path() {
 get_dest_dir_name() {
     # We expect the `kb_custom` to `rating` to be inverted in the theme
     # rating 10 = kb-custom-1 // rating 0 = kb-custom-11
-    local rating=$((10 - ($kb_custom - 1)))
+    local rating=$(($kb_custom))
     log "rating = '$rating'"
-    local is_rating_within_0_to_10_range=$((0 <= rating && rating <= 10))
-    if (( is_rating_within_0_to_10_range )); then
+    local is_rating_within_1_to_10_range=$((1 <= rating && rating <= 10))
+    if (( is_rating_within_1_to_10_range )); then
         local padded_rating=$(printf '%02d' "$rating")
         local dest_dir_name="quality-$padded_rating"
-    elif (( $allow_rating_outside_0_to_10_range )); then
+    elif (( $allow_rating_outside_1_to_10_range )); then
         local dest_dir_name=$(get_custom_mapped_dir_name "$kb_custom")
     else
         throw "Unknown error with kb-custom '$kb_custom'"
@@ -118,7 +131,7 @@ log "kb_custom = '$kb_custom'"
 if (($kb_custom < 1)); then
     throw "Unhandled kb-custom '$kb_custom'"
 fi
-kb_custom_is_within_allowed_range=$(( allow_rating_outside_0_to_10_range || kb_custom - 1 <= 10 ))
+kb_custom_is_within_allowed_range=$(( allow_rating_outside_1_to_10_range || kb_custom - 1 <= 10 ))
 if (( ! kb_custom_is_within_allowed_range )) ; then
     throw "kb-custom '$kb_custom' outside allowed range; Set \`allow_rating_outside_0_to_10_range\` to \`true\`"
 fi
