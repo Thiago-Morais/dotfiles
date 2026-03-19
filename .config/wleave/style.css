@@ -23,7 +23,7 @@ button {
 button:hover {
   background-color: var(--accent-bg-color);
   color: var(--accent-fg-color);
-  transform: scale(1.3);
+  transform: scale(1.25);
 }
 
 button label.action-name {
@@ -33,7 +33,7 @@ button label.action-name {
 button label.keybind {
   font-size: 2em;
   font-family:
-    JetBrainsMonoNL NFP,
+    JetBrainsMonoNL Nerd Font Propo,
     monospace;
 }
 

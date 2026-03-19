@@ -1,4 +1,6 @@
 {
+  "margin-left": "8.5%",
+  "buttons-per-row": "3",
   "column-spacing": 0,
   "row-spacing": 0,
   "close-on-lost-focus": true,
