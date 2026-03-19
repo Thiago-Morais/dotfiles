@@ -118,8 +118,8 @@
          id="rect"
          style="fill:blue;"
          usecurrent="1"
-         width="64.067636956007"
-         height="78.6693031338917" />
+         width="1100.55276076052"
+         height="482.74264499291" />
       <eventcontext
          id="3dbox"
          style="stroke:none;stroke-linejoin:round;"
@@ -595,8 +595,8 @@
     <group
        id="align"
        sel-as-groups="1"
-       objects-align-to="page"
-       oncanvas="0" />
+       oncanvas="1"
+       objects-align-to="page" />
     <group
        id="xml"
        h="500"
@@ -639,7 +639,7 @@
        default="org.inkscape.output.svg.inkscape"
        append_extension="1"
        enable_preview="1"
-       path="/home/thiago/Documents/eclesyart/1-projects/26-01-28"
+       path="/home/thiago/Documents/eclesyart/1-projects/26-03-16"
        use_current_dir="1"
        enable_svgexport="0" />
     <group
@@ -651,11 +651,11 @@
     <group
        id="open"
        enable_preview="1"
-       path="/home/thiago/Documents/eclesyart/1-projects/26-01-22" />
+       path="/home/thiago/Documents/eclesyart/1-projects/26-03-16" />
     <group
        id="import"
        enable_preview="1"
-       path=""
+       path="/home/thiago/Documents/eclesyart/1-projects/26-02-02/"
        ask="1"
        ask_svg="1"
        link="embed"
@@ -672,8 +672,8 @@
        YPad="37.7952755905512"
        VertAlign="0"
        HorizAlign="0"
-       AutoRowSize="20"
-       AutoColSize="20" />
+       AutoRowSize="-20"
+       AutoColSize="-20" />
     <group
        id="extension-error"
        show-on-startup="0" />
@@ -730,7 +730,8 @@
   <group
      id="options"
      rotationlock="1"
-     onungroup="0">
+     onungroup="0"
+     displaymode="0">
     <group
        id="renderingcache"
        size="1024" />
@@ -996,10 +997,11 @@
        partialdynamic="0" />
     <group
        id="font"
-       unitType="2" />
+       unitType="5" />
     <group
        id="boot"
-       theme="colorful">
+       theme="colorful"
+       showwelcome="1">
       <group
          id="shown"
          ver1.4.2="1"
@@ -1076,9 +1078,9 @@
      org.inkscape.template.other.unit="px" />
   <group
      id="desktop"
-     style="fill:#008000;text-orientation:auto">
+     style="fill:#ffffff;text-orientation:auto;font-size:207.87401575px;-inkscape-font-specification:'Arial Bold';font-family:Arial;font-weight:bold">
     <group
-       width="1594"
+       width="939"
        height="958"
        x="0"
        y="0"
