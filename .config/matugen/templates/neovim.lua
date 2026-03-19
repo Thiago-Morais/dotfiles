@@ -2,42 +2,41 @@
 require("mini.base16").setup({
 	palette = {
 		--  Default Background
-		base00 = "{{ colors.surface_container_low.default.hex }}",
+		base00 = "{{ colors.surface_container_low.default.hex }}", -- surface_container_low
 		--  Lighter Background (Used for status bars, line number and folding marks)
-		base01 = "{{ colors.surface_container_high.default.hex }}",
+		base01 = "{{ colors.surface_container_high.default.hex }}", -- surface_container_high
 		--  Selection Background
-		base02 = "{{ colors.outline_variant.default.hex }}",
+		base02 = "{{ colors.outline_variant.default.hex }}", -- outline_variant
 		--  Comments, Invisibles, Line Highlighting
 		-- Actually numbers on left bar
-		base03 = "{{ colors.on_surface_variant.default.hex }}",
+		base03 = "{{ colors.on_surface_variant.default.hex }}", -- on_surface_variant
 		--  Dark Foreground (Used for status bars)
 		-- Actually main number on left bar
-		base04 = "{{ colors.on_surface.default.hex }}",
+		base04 = "{{ colors.on_surface.default.hex }}", -- on_surface
 		--  Default Foreground, Caret, Delimiters, Operators
 		--  Actually Variables
-		base05 = "{{ colors.turquoise.default.hex | auto_lightness: 20.0 }}",
+		base05 = "{{ colors.orange_container.default.hex | auto_lightness: 50.0 }}", -- orange_container 50.0
 		--  Light Foreground (Not often used)
 		base06 = "#00ff00",
 		--  Light Background (Not often used)
 		base07 = "#0000ff",
-
 		--  Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
 		--  Actually Identifiers
-		base08 = "{{ colors.orange.default.hex | auto_lightness: -10.0 }}",
+		base08 = "{{ colors.turquoise.default.hex | auto_lightness: 20.0 }}", -- turquoise 20.0
 		--  Integers, Boolean, Constants, XML Attributes, Markup Link Url
-		base09 = "{{ colors.purple.default.hex | auto_lightness: 20.0 }}",
+		base09 = "{{ colors.purple.default.hex | auto_lightness: 20.0 }}", -- purple 20.0
 		--  Classes, Markup Bold, Search Text Background
-		base0A = "{{ colors.blue.default.hex | auto_lightness: 20.0 }}",
+		base0A = "{{ colors.blue.default.hex | auto_lightness: 20.0 }}", -- blue 20.0
 		--  Strings, Inherited Class, Markup Code, Diff Inserted
-		base0B = "{{ colors.on_khaki_container.default.hex | auto_lightness: 10.0 }}",
+		base0B = "{{ colors.yellow_container.default.hex | auto_lightness: 45.0 }}", -- yellow_container 45.0
 		--  Support, Regular Expressions, Escape Characters, Markup Quotes
-		base0C = "{{ colors.blueviolet.default.hex | auto_lightness: 10.0 }}",
+		base0C = "{{ colors.blueviolet.default.hex | auto_lightness: 10.0 }}", -- blueviolet 10.0
 		--  Functions, Methods, Attribute IDs, Headings
-		base0D = "{{ colors.springgreen.default.hex | auto_lightness: 20.0 }}",
+		base0D = "{{ colors.springgreen.default.hex | auto_lightness: 20.0 }}", -- springgreen 20.0
 		--  Keywords, Storage, Selector, Markup Italic, Diff Changed
-		base0E = "{{ colors.red.default.hex | auto_lightness: 25.0 }}",
+		base0E = "{{ colors.orange.default.hex | auto_lightness: 30.0 }}", -- orange 30.0
 		--  Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
-		base0F = "{{ colors.brown_container.default.hex | auto_lightness: 20.0 }}",
+		base0F = "{{ colors.brown_container.default.hex | auto_lightness: 20.0 }}", -- brown_container 20.0
 	},
 	use_cterm = true,
 	transparent = true,
