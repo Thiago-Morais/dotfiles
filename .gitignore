@@ -33,7 +33,6 @@
 !.config/mako
 !.config/fish
 !.config/inkscape
-!.config/clipse
 !.local/share/easyeffects
 
 # Allow specific files
@@ -60,6 +59,13 @@
 !.config/easyeffects/db/
 .config/easyeffects/db/*
 .config/easyeffects/db/*.lock
+
+# Specific clipse files
+!.config/clipse/
+.config/clipse/*
+.config/clipse/clipboard_history.json
+.config/clipse/clipse.log
+.config/clipse/tmp_files/
 
 # Remove matugen generated colors from repository
 .config/hypr/colors.conf
