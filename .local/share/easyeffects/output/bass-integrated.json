@@ -182,7 +182,7 @@
             },
             "mode": "IIR",
             "num-bands": 15,
-            "output-gain": 0.0,
+            "output-gain": 13.0,
             "pitch-left": 0.0,
             "pitch-right": 0.0,
             "right": {
@@ -593,7 +593,7 @@
             "input-to-sidechain": 0.0,
             "link-to-input": 0.0,
             "link-to-sidechain": 0.0,
-            "output-gain": -6.0,
+            "output-gain": 0.0,
             "sidechain-to-input": 0.0,
             "sidechain-to-link": 0.0,
             "stereo-split": true,
