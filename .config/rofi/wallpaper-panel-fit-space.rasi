@@ -48,7 +48,9 @@ wallpaper-container {
 icon-wallpaper {
     background-image: var(wallpaper-image);
     size:             var(wallpaper-height);
+    action:           "kb-custom-11";
     squared:          false;
+    cursor: pointer;
 }
 
 rating-panel {
