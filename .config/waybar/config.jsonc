@@ -53,7 +53,7 @@
         "tooltip": false,
         "on-click-right": "nwg-drawer",
         "on-click": "wofi --show run",
-        "on-click-middle": "pkill -9 wofi",
+        "on-click-middle": "pkill -9 wofi"
     },
     "hyprland/workspaces": {
         "all-outputs": false,
@@ -94,13 +94,10 @@
             // Orientation of the taskbar ("horizontal" or "vertical"). Default: "horizontal".
             "orientation": "horizontal",
             // List of regexes. A window will NOT be shown if its window class or title match one or more items. Default: []
-            "ignore-list": [
-                "code",
-                "Firefox - .*"
-            ],
+            "ignore-list": ["code", "Firefox - .*"],
             // Command to run when a window is clicked. Default: "" (switch to the workspace as usual). Allowed variables: {address}, {button}
-            "on-click-window": "/some/arbitrary/script {address} {button}",
-        },
+            "on-click-window": "/some/arbitrary/script {address} {button}"
+        }
     },
     "wlr/taskbar": {
         "format": "{icon}",
@@ -109,16 +106,14 @@
         "tooltip-format": "{title}",
         "on-click": "activate",
         "on-click-middle": "close",
-        "ignore-list": [
-            "Alacritty"
-        ],
+        "ignore-list": ["Alacritty"],
         "app_ids-mapping": {
-            "firefoxdeveloperedition": "firefox-developer-edition",
+            "firefoxdeveloperedition": "firefox-developer-edition"
         },
         "rewrite": {
             "Firefox Web Browser": "Firefox",
-            "Foot Server": "Terminal",
-        },
+            "Foot Server": "Terminal"
+        }
     },
     "temperature": {
         // "thermal-zone": 1,
@@ -128,22 +123,18 @@
         // "format-critical": " {temperatureC}°C",
         "format-critical": "  {temperatureC}°C",
         "format": "{icon}  {temperatureC}°C",
-        "format-icons": [
-            "",
-            "",
-            ""
-        ],
+        "format-icons": ["", "", ""],
         "max-length": 7,
         "min-length": 7,
-        "on-click": "xsensors",
+        "on-click": "xsensors"
     },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
             "activated": "",
-            "deactivated": "",
+            "deactivated": ""
         },
-        "tooltip": "true",
+        "tooltip": "true"
     },
     "mpd": {
         "max-length": 25,
@@ -157,7 +148,7 @@
         "on-scroll-up": "mpc --quiet prev",
         "on-scroll-down": "mpc --quiet next",
         "smooth-scrolling-threshold": 5,
-        "tooltip-format": "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})",
+        "tooltip-format": "{title} - {artist} ({elapsedTime:%M:%S}/{totalTime:%H:%M:%S})"
     },
     "custom/spotify": {
         "exec": "~/.config/waybar/mediaplayer.py --player spotify",
@@ -165,7 +156,7 @@
         "return-type": "json",
         "on-click": "playerctl play-pause",
         "on-scroll-up": "playerctl next",
-        "on-scroll-down": "playerctl previous",
+        "on-scroll-down": "playerctl previous"
     },
     "backlight": {
         "device": "intel_backlight",
@@ -187,11 +178,11 @@
             "",
             "",
             "",
-            "",
+            ""
         ],
         "on-scroll-down": "brightnessctl -d intel_backlight s 1%-",
         "on-scroll-up": "brightnessctl -d intel_backlight s +1%",
-        "tooltip-format": "{percent:3}%",
+        "tooltip-format": "{percent:3}%"
     },
     "backlight#compact": {
         "device": "intel_backlight",
@@ -213,18 +204,18 @@
             "",
             "",
             "",
-            "",
+            ""
         ],
         "on-scroll-down": "brightnessctl -d intel_backlight s 1%-",
         "on-scroll-up": "brightnessctl -d intel_backlight s +1%",
-        "tooltip-format": "{percent:3}%",
+        "tooltip-format": "{percent:3}%"
     },
     "custom/cava": {
         "format": "{}",
-        "exec": "~/.config/waybar/modules/cava.sh",
+        "exec": "~/.config/waybar/modules/cava.sh"
     },
     "cava": {
-        "cava_config": "/home/thiago/.config/cava/config",
+        "cava_config": "/home/thiago/.config/cava/config"
     },
     "custom/storage-root": {
         "format": " {}",
@@ -232,7 +223,7 @@
         "format-alt-click": "click-right",
         "return-type": "json",
         "interval": 60,
-        "exec": "~/.config/waybar/modules/storage-root.sh",
+        "exec": "~/.config/waybar/modules/storage-root.sh"
     },
     "custom/storage-home": {
         "format": " {:3}",
@@ -240,60 +231,54 @@
         "format-alt-click": "click-right",
         "return-type": "json",
         "interval": 60,
-        "exec": "~/.config/waybar/modules/storage-home.sh",
+        "exec": "~/.config/waybar/modules/storage-home.sh"
     },
     "custom/sp1": {
         "format": " | ",
-        "tooltip": false,
+        "tooltip": false
     },
     "custom/sp2": {
         "format": " |",
-        "tooltip": false,
+        "tooltip": false
     },
     "custom/screenshot_t": {
         "format": " ",
         "on-click": "~/.config/hypr/scripts/screenshot_full",
-        "on-click-right": "~/.config/hypr/scripts/screenshot_area",
+        "on-click-right": "~/.config/hypr/scripts/screenshot_area"
     },
     "clock#1": {
         "format": " {:%a}",
         "tooltip": false,
-        "on-click": "gsimplecal",
+        "on-click": "gsimplecal"
     },
     "clock#2": {
         "format": " {:%d-%h-%Y}",
         "tooltip": false,
-        "on-click": "gsimplecal",
+        "on-click": "gsimplecal"
     },
     "clock#3": {
         "format": " {:%H:%M:%S %p}",
         "tooltip": false,
-        "on-click": "gsimplecal",
+        "on-click": "gsimplecal"
     },
     "memory": {
         "interval": 30,
         "format": "{used:0.2f}{total:0.0f} GB",
-        "on-click": "alacritty -e btop",
+        "on-click": "alacritty -e btop"
     },
     "battery": {
         "interval": 2,
         "states": {
             "good": 85,
             "warning": 30,
-            "critical": 15,
+            "critical": 15
         },
         // "design-capacity": true,
         "format": "{icon} {capacity:2}%",
         "format-charging": " {capacity:3}%",
         "format-plugged": "󱞜{capacity:3}%",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        "format-time": "{H}h {M}m",
+        "format-icons": ["", "", "", "", ""],
+        "format-time": "{H}h {M}m"
     },
     "network": {
         "format-wifi": " {essid} ({signalStrength}%)",
@@ -306,7 +291,7 @@
         "on-click-right": "wl-copy $(ip address show up scope global | grep inet6 | head -n1 | cut -d/ -f 1 | tr -d [:space:] | cut -c6-)",
         "tooltip-format": " {bandwidthUpBits}  {bandwidthDownBits}\n{ifname}\n{ipaddr}/{cidr}\n",
         "tooltip-format-wifi": " {essid} {frequency}MHz\nStrength: {signaldBm}dBm ({signalStrength}%)\nIP: {ipaddr}/{cidr}\n {bandwidthUpBits}  {bandwidthDownBits}",
-        "interval": 10,
+        "interval": 10
     },
     "custom/weather": {
         "format": "{}",
@@ -316,7 +301,7 @@
         "exec": "curl -s 'https://wttr.in/?format=1'",
         //"return-type": "json",
         //"exec": "~/.config/waybar/modules/weather.sh",
-        "exec-if": "ping wttr.in -c1",
+        "exec-if": "ping wttr.in -c1"
     },
     "custom/pacman": {
         "format": "<big>􏆲</big>  {}",
@@ -326,7 +311,7 @@
         "on-click": "alacritty -e 'paru'; pkill -SIGRTMIN+8 waybar", // update system
         "signal": 8,
         "max-length": 5,
-        "min-length": 3,
+        "min-length": 3
     },
     "custom/media": {
         "format": "{0} {1}",
@@ -334,9 +319,9 @@
         "max-length": 40,
         "format-icons": {
             "spotify": "",
-            "default": "🎜",
+            "default": "🎜"
         },
-        "escape": true,
+        "escape": true
         //"exec": "~/.config/waybar/mediaplayer.py" // Script in resources folder
         // "exec": "~/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
@@ -344,12 +329,12 @@
         "format": " 󰐥 ",
         "tooltip": false,
         // "on-click": "wlogout",
-        "on-click": "wleave",
+        "on-click": "wleave"
     },
     "clock": {
         "format": " {:%H:%M   %e %b}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "today-format": "<b>{}</b>",
+        "today-format": "<b>{}</b>"
     },
     "clock#date": {
         // https://fmt.dev/latest/syntax/#chrono-format-specifications
@@ -357,7 +342,7 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "today-format": "<b>{}</b>",
         "calendar": {},
-        "interval": 1,
+        "interval": 1
     },
     "custom/gammastep": {
         "interval": 5,
@@ -365,7 +350,7 @@
         "exec": {
             "pre": "if unit_status=\"$(systemctl --user is-active gammastep)\"; then\nstatus=\"$unit_status ($(journalctl --user -u gammastep.service -g 'Period: ' | tail -1 | cut -d ':' -f6 | xargs))\"\nelse\nstatus=\"$unit_status\"\nfi",
             "alt": "${status:-inactive}",
-            "tooltip": "Gammastep is $status",
+            "tooltip": "Gammastep is $status"
         },
         "format": "{icon}",
         "format-icons": {
@@ -379,30 +364,30 @@
             "active (Day)": " ",
             "active (Daytime)": " ",
             "active (Transition (Day)": " ",
-            "active (Transition (Daytime)": " ",
+            "active (Transition (Daytime)": " "
         },
-        "on-click": "systemctl --user is-active gammastep && systemctl --user stop gammastep || systemctl --user start gammastep",
+        "on-click": "systemctl --user is-active gammastep && systemctl --user stop gammastep || systemctl --user start gammastep"
     },
     "cpu": {
         "interval": 1,
         //"format": " {}%", // Icon: microchip
         "format": "{max_frequency}GHz <span color=\"darkgray\">| {usage}%</span>",
         "max-length": 13,
-        "min-length": 13,
+        "min-length": 13
     },
     "custom/title": {
         "format": "{}",
         "interval": 0,
         "return-type": "json",
         //"max-length": 35,
-        "tooltip": false,
+        "tooltip": false
     },
     "custom/title#name": {
         "format": "{}",
         "interval": 0,
         "return-type": "json",
         "max-length": 35,
-        "exec": "$HOME/.scripts/title",
+        "exec": "$HOME/.scripts/title"
     },
     /*"custom/keyboard": {
         "format": " {}",
@@ -411,7 +396,7 @@
     },*/
     "hyprland/window": {
         "max-length": 40,
-        "separate-outputs": true,
+        "separate-outputs": true
     },
     "pulseaudio": {
         "scroll-step": 3, // %, can be a float
@@ -430,14 +415,10 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": [
-                "",
-                "",
-                ""
-            ],
+            "default": ["", "", ""]
         },
         "on-click": "pavucontrol",
-        "on-click-right": "amixer sset Master toggle",
+        "on-click-right": "amixer sset Master toggle"
     },
     "wireplumber": {
         "on-click": "pavucontrol",
@@ -458,16 +439,12 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": [
-                "",
-                "",
-                ""
-            ],
-        },
+            "default": ["", "", ""]
+        }
     },
     "tray": {
         "icon-size": 15,
         "spacing": 5,
-        "show-passive-items": true,
-    },
+        "show-passive-items": true
+    }
 }
