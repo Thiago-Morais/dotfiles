@@ -97,18 +97,6 @@ window#waybar.hidden {
   padding: 0 0.3em;
   /* border-width: 0.2em 0; */
 }
-#workspaces button:nth-child(2) {
-  color: @obsidian-color;
-}
-#workspaces button:nth-child(3) {
-  color: @code-color;
-}
-#workspaces button:nth-child(4) {
-  color: @firefox-color;
-}
-#workspaces button:nth-child(5) {
-  color: @whatsapp-color;
-}
 #workspaces button:hover {
   background: @hover-color;
   color: @on-hover-color;
