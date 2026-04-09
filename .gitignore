@@ -45,11 +45,6 @@
 !.config/youtube-music-flags.conf
 !.gnupg/dirmng.conf
 **/*[Cc]ache*
-!.config/systemd/
-.config/systemd/*
-!.config/systemd/user/
-.config/systemd/user/*
-!.config/systemd/user/geoclue-agent.service
 
 # Specific zen files
 !.zen/
