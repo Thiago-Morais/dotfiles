@@ -36,8 +36,6 @@
 !.local/share/easyeffects
 
 # Allow specific files
-!.config/
-.config/*
 !.config/chromium-flags.conf
 !.config/electron-flags.conf
 !.config/edge-flags.conf
