@@ -33,6 +33,7 @@
 !.config/mako
 !.config/fish
 !.config/inkscape
+!.config/gammastep
 !.local/share/easyeffects
 
 # Allow specific files
