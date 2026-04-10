@@ -68,6 +68,16 @@
 .config/clipse/clipse.log
 .config/clipse/tmp_files/
 
+# Specific systemd files
+!.config/systemd/
+.config/systemd/*
+!.config/systemd/user/
+.config/systemd/user/*
+!.config/systemd/user/graphical-session.target.wants/
+.config/systemd/user/graphical-session.target.wants/*
+!.config/systemd/user/geoclue-agent.service
+!.config/systemd/user/graphical-session.target.wants/geoclue-agent.service
+
 # Remove matugen generated colors from repository
 .config/hypr/colors.conf
 .config/waybar/themes/colors.css
