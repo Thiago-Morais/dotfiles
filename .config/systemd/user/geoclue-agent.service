@@ -1,0 +1,11 @@
+[Unit]
+Description=Geoclue agent for location-based services
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/lib/geoclue-2.0/demos/agent
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
