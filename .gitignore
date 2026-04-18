@@ -34,6 +34,7 @@
 !.config/fish
 !.config/inkscape
 !.config/gammastep
+!.config/btop
 !.local/share/easyeffects
 
 # Allow specific files
