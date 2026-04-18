@@ -16,7 +16,8 @@
     "reload_style_on_change": true,
     "modules-left": [
         "clock#date",
-        "wireplumber",
+        // "wireplumber",
+        "pulseaudio",
         "custom/cava"
         //"custom/rofi",
         //"hyprland/submap",
@@ -40,7 +41,6 @@
         // "cpu",
         "backlight#compact",
         "battery",
-        //"pulseaudio",
         // "custom/screenshot_t",
         "tray",
         "custom/power"
@@ -399,13 +399,13 @@
         "separate-outputs": true
     },
     "pulseaudio": {
+        "on-click": "amixer sset Master toggle 1>/dev/null",
+        "on-click-right": "pavucontrol",
         "scroll-step": 3, // %, can be a float
-        "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        //"format-source": "{volume}% ",
-        //"format-source-muted": "",
+        "format": "<span foreground='#fab387'>{icon}</span> {volume:3}% {format_source}",
+        "format-muted": "{volume:3}% {format_source}",
+        "format-bluetooth": "<span foreground='#fab387'>{icon}</span>{volume:3}% {format_source}",
+        "format-bluetooth-muted": "󰂲{volume:3}% {format_source}",
         "format-source": "",
         "format-source-muted": "",
         "format-icons": {
@@ -416,18 +416,16 @@
             "portable": "",
             "car": "",
             "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol",
-        "on-click-right": "amixer sset Master toggle"
+        }
     },
     "wireplumber": {
-        "on-click": "pavucontrol",
-        "on-click-right": "amixer sset Master toggle 1>/dev/null",
+        "on-click": "amixer sset Master toggle 1>/dev/null",
+        "on-click-right": "pavucontrol",
         //on-click: "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
         //on-scroll-down: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04+";
         //on-scroll-up: "${wpctl} set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.04-";
-        "format": "<span foreground='#fab387' font-family='JetBrainsMono NF'>{icon}</span> {volume:3}%",
-        "format-muted": "",
+        "format": "<span foreground='#fab387'>{icon}</span>{volume:3}%",
+        "format-muted": "{volume:3}%",
         "format-source": "",
         "format-source-muted": "",
         //"format-muted": "<span foreground='#fab387'> </span>",

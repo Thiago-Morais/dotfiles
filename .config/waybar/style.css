@@ -253,9 +253,9 @@ window#waybar.hidden {
   margin-right: 0;
 }
 
-#pulseaudio {
-  color: #7d9bba;
-}
+/* #pulseaudio { */
+/*   color: #7d9bba; */
+/* } */
 
 label {
   font-family: inherit;
