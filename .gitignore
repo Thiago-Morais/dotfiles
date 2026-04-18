@@ -11,6 +11,8 @@
 .local/*
 !.local/share/
 .local/share/*
+!.local/share/applications/
+.local/share/applications/*
 !.share/
 .share/*
 !.gnupg/
@@ -44,6 +46,7 @@
 !.config/mimeapps.list
 !.config/youtube-music-flags.conf
 !.gnupg/dirmng.conf
+!.local/share/applications/nwg-displays.desktop
 **/*[Cc]ache*
 
 # Specific zen files

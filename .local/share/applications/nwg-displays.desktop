@@ -10,7 +10,7 @@ GenericName[pl]=Ustawienia wyświetlaczy
 Comment=nwg-shell tool to configure outputs
 Comment[pl]=Narzędzie nwg-shell do konfiguracji monitorów
 
-Keywords=nwg-displays
+# Keywords=nwg-displays
 
 Exec=nwg-displays
 Icon=nwg-displays
