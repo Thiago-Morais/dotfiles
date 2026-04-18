@@ -3,9 +3,8 @@ caching = true
 
 [config.wallpaper]
 set = true
-pre_hook = "hyprpaper"
-command = "hyprctl"
-arguments = ["hyprpaper", "reload", ","]
+# command = "hyprctl"
+# arguments = ["hyprpaper", "reload", ","]
 
 [config.custom_colors]
 "black" = "#000000"
