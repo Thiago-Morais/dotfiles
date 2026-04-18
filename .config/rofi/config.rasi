@@ -6,8 +6,7 @@ configuration {
     font: "JetBrainsMono NFP 22";
     show-icons: true;
     terminal: "alacritty";
-    // drun-match-fields: "name,generic,exec,categories,keywords";
-    drun-match-fields: "name,generic,categories,keywords";
+    drun-match-fields: "name,generic,exec,categories,keywords";
     // drun-show-actions: true;
 
     // # Search
@@ -20,9 +19,10 @@ configuration {
     // # Layout and Theming
     sidebar-mode: true;
     hover-select: false;
+    steal-focus: true;
 
     scroll-method: 1;
-    window-format: "{w} · {n} · {c} · {t}";
+    window-format: "{w}·{c:4}· {t}";
     cache-dir: "~/.config/rofi/cache";
     // normalize-match: true;
     drun-display-format: "{name}[<span weight='light' size='small'><i> ({generic})</i></span>][<span weight='ultralight' size='xx-small'><i> {categories}</i></span>]";
