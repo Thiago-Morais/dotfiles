@@ -6,5 +6,17 @@ mode = 'center'
 [any]
 # path = '~/Pictures/wallpapers/static'
 path = '~/Pictures/wallpapers/static/not-rated/'
+# path = '~/Pictures/wallpapers/static/rated/'
+# path = '~/Pictures/wallpapers/static/rated/quality-01/'
+# path = '~/Pictures/wallpapers/static/rated/quality-01/quality-02/'
+# path = '~/Pictures/wallpapers/static/rated/quality-01/quality-02/quality-03/'
+# path = '~/Pictures/wallpapers/static/rated/quality-01/quality-02/quality-03/quality-04/'
+# path = '~/Pictures/wallpapers/static/rated/quality-01/quality-02/quality-03/quality-04/quality-05/'
+# path = '~/Pictures/wallpapers/static/rated/quality-01/quality-02/quality-03/quality-04/quality-05/quality-06/'
+# path = '~/Pictures/wallpapers/static/rated/quality-01/quality-02/quality-03/quality-04/quality-05/quality-06/quality-07/'
+# path = '~/Pictures/wallpapers/static/rated/quality-01/quality-02/quality-03/quality-04/quality-05/quality-06/quality-07/quality-08/'
+# path = '~/Pictures/wallpapers/static/rated/quality-01/quality-02/quality-03/quality-04/quality-05/quality-06/quality-07/quality-08/quality-09/'
+# path = '~/Pictures/wallpapers/static/rated/quality-01/quality-02/quality-03/quality-04/quality-05/quality-06/quality-07/quality-08/quality-09/quality-10/'
+# path = './target-parent/linked-target/'
 
 # [default.transition.book-flip]

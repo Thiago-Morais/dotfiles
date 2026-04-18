@@ -26,6 +26,47 @@ get_monitor(){
     '
 }
 
+get_rated_mapped_dir_name() {
+    local rating="$1"
+    local padded_rating=$(printf '%02d' "$rating")
+    case "$rating" in
+        1)
+            local rated_dir_name="quality-01"
+            ;;
+        2)
+            local rated_dir_name="quality-01/quality-02"
+            ;;
+        3)
+            local rated_dir_name="quality-01/quality-02/quality-03"
+            ;;
+        4)
+            local rated_dir_name="quality-01/quality-02/quality-03/quality-04"
+            ;;
+        5)
+            local rated_dir_name="quality-01/quality-02/quality-03/quality-04/quality-05"
+            ;;
+        6)
+            local rated_dir_name="quality-01/quality-02/quality-03/quality-04/quality-05/quality-06"
+            ;;
+        7)
+            local rated_dir_name="quality-01/quality-02/quality-03/quality-04/quality-05/quality-06/quality-07"
+            ;;
+        8)
+            local rated_dir_name="quality-01/quality-02/quality-03/quality-04/quality-05/quality-06/quality-07/quality-08"
+            ;;
+        9)
+            local rated_dir_name="quality-01/quality-02/quality-03/quality-04/quality-05/quality-06/quality-07/quality-08/quality-09"
+            ;;
+        10)
+            local rated_dir_name="quality-01/quality-02/quality-03/quality-04/quality-05/quality-06/quality-07/quality-08/quality-09/quality-10"
+            ;;
+        *)
+            local rated_dir_name="quality-$padded_rating"
+            ;;
+    esac
+    echo $rated_dir_name
+}
+
 # We use kb-custom 1 to 10 for standard rating
 # We use kb-custom 11 for clicking on the image
 # We can use kb-custom 12 to 20 for any other action
@@ -136,8 +177,8 @@ get_dest_dir_name() {
     log "rating = '$rating'"
     local is_rating_within_1_to_10_range=$((1 <= rating && rating <= 10))
     if (( is_rating_within_1_to_10_range )); then
-        local padded_rating=$(printf '%02d' "$rating")
-        local dest_dir_name="quality-$padded_rating"
+        local dest_dir_name=$(get_rated_mapped_dir_name "$rating")
+
     elif (( $allow_rating_outside_1_to_10_range )); then
         local dest_dir_name=$(get_custom_mapped_dir_name "$kb_custom")
     else
@@ -171,6 +212,12 @@ log "filename = '$filename'"
 fullpath="$destination_base_dir/$dest_dir_name/$filename"
 log "fullpath = '$fullpath'"
 
+if (("$current_image_path" == "$fullpath")); then
+    log "wallpaper directory is already '$dest_dir_name'"
+    notify "wallpaper directory is already '$dest_dir_name'" -u low
+    exit 0
+fi
+
 log "creating directory '$(dirname "$fullpath")'"
 mkdir -p "$(dirname "$fullpath")" || throw "Failed to create directory"
 log "moving '$current_image_path' to '$fullpath'"
@@ -180,8 +227,9 @@ mkdir -p "$(dirname "$(get_link_path)")" || throw "Failed to create link directo
 log "linking '$(get_link_path)' to '$fullpath'"
 ln -sf "$fullpath" "$(get_link_path)" || throw "Failed to link '$fullpath' to '$(get_link_path)'"
 
-log "Wallpaper rated '$dest_dir_name'"
-notify "Wallpaper rated '$dest_dir_name'" -u low
+rated_name=$(basename "$dest_dir_name")
+log "Wallpaper rated '$rated_name'"
+notify "Wallpaper rated '$rated_name'" -u low
 
 log "end of script"
 exit 0
