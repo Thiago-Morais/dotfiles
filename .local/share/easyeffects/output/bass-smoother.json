@@ -354,6 +354,9 @@
             },
             "split-channels": false
         },
+        "level_meter#0": {
+            "bypass": false
+        },
         "maximizer#0": {
             "bypass": false,
             "input-gain": 0.0,
@@ -603,6 +606,7 @@
             "bass_loudness#0",
             "equalizer#0",
             "multiband_compressor#0",
+            "level_meter#0",
             "maximizer#0"
         ]
     }
