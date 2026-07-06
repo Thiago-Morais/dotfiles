@@ -40,11 +40,14 @@
 !.local/share/easyeffects
 
 # Allow specific files
+!.gtkrc-2.0
+!.gtkrc-2.0.mine
 !.config/chromium-flags.conf
 !.config/electron-flags.conf
 !.config/edge-flags.conf
 !.config/mimeapps.list
 !.config/youtube-music-flags.conf
+!.config/kdeglobals
 !.gnupg/dirmng.conf
 !.local/share/applications/nwg-displays.desktop
 **/*[Cc]ache*
@@ -84,6 +87,7 @@
 
 # Remove matugen generated colors from repository
 .config/hypr/colors.conf
+.config/hypr/colors.lua
 .config/waybar/themes/colors.css
 .config/wleave/colors.css
 .config/alacritty/colors.toml
