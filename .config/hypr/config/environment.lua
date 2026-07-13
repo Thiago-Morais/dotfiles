@@ -7,6 +7,7 @@
 local function core_env()
 	hl.env("XDG_MENU_PREFIX", "arch-")
 	hl.env("XDG_SCREENSHOTS_DIR", "$HOME/Pictures/Screenshots")
+	hl.env("GSK_RENDERER=gl")
 end
 
 local function fix_scaling()
@@ -31,7 +32,7 @@ local function fix_scaling()
 		hl.env("QT_SCREEN_SCALE_FACTOR", "1.6")
 		-- hl.env("QT_SCREEN_SCALE_FACTOR","1")
 		hl.env("QT_SCALE_FACTOR", "1") -- overscale Dolphin and QDirStat?
-		hl.env("QT_WAYLAND_FORCE_DPI", "96 # 96 * 1.0") -- overscale Dolphin
+		hl.env("QT_WAYLAND_FORCE_DPI", "96") -- 96 * 1.0 -- overscale Dolphin
 	end
 	local function program_scalings()
 		hl.env("ELM_SCALE", "1.6") -- Elementary OS applications
@@ -60,9 +61,9 @@ local function force_input_method_editor(ime)
 	-- Fix dead keys
 	-- be sure to install fcitx with $ paru -S fcitx
 	hl.env("GTK_IM_MODULE", ime)
-	hl.env("QT_IM_MODULE", ime)
+	hl.env("QT_IM_MODULE", "wayland;" .. ime .. ";ibus")
 	hl.env("XMODIFIERS", "@im=" .. ime)
-	hl.env("SDL_IM_MODULE", ime)
+	-- hl.env("SDL_IM_MODULE", ime)
 end
 
 local function force_wayland()

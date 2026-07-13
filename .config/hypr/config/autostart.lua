@@ -12,7 +12,7 @@ local function main()
 
 		start_core_processes()
 		start_secondary_process()
-		hl.exec_cmd('bash -c "mkfifo /tmp/$HYPRLAND_INSTANCE_SIGNATURE.wob && tail -f /tmp/$HYPRLAND_INSTANCE_SIGNATURE.wob | wob & disown"')
+		hl.exec_cmd('bash -c "mkfifo /tmp/$HYPRLAND_INSTANCE_SIGNATURE.wob && tail -f /tmp/$HYPRLAND_INSTANCE_SIGNATURE.wob | wob & disown" &')
 		hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1 &")
 
 		single_trigger_commands()
@@ -36,37 +36,39 @@ end
 function start_secondary_process()
 	hl.exec_cmd("hyprpaper &")
 	hl.exec_cmd("wpaperd &")
-	hl.exec_cmd("waybar &")
-	hl.exec_cmd("mako &")
+	hl.exec_cmd("waybar")
+	hl.exec_cmd("mako")
 	hl.exec_cmd("easyeffects -w &")
 	hl.exec_cmd("clipse -listen &")
-	hl.exec_cmd(Start_all_services .. "&")
-	hl.exec_cmd(Sync_all_remotes .. "&")
-	hl.exec_cmd(Idlehandler .. "&")
+	hl.exec_cmd(start_all_services .. " &")
+	hl.exec_cmd(sync_all_remotes .. " &")
+	hl.exec_cmd(idle_handler)
 	-- hl.exec_cmd("seanime &")
-	-- hl.exec_cmd("xsettingsd &")
-end
-
-function fix_power_usage()
-	hl.exec_cmd("brightnessctl -d nvidia_0 s 0 &")
-	hl.exec_cmd("../scripts/power-mode/update-power-mode.sh &")
+	hl.exec_cmd("xsettingsd &")
 end
 
 function single_trigger_commands()
 	hl.exec_cmd("hyprpm reload &")
-	hl.exec_cmd("trash-empty 30 -f &")
+	hl.exec_cmd("trash-empty 30 -f")
 	fix_power_usage()
+end
+
+function fix_power_usage()
+	hl.exec_cmd("brightnessctl -d nvidia_0 s 0")
+	hl.exec_cmd("../scripts/power-mode/update-power-mode.sh")
 end
 
 function start_programs_in_workspaces()
 	-- We can't use a `&` at the end if we want the application to open at the correct workspace
-	-- hl.exec_cmd("[workspace 2 silent] " .. Notetaker)
-	hl.exec_cmd("[workspace 3 silent] " .. Terminal_preffix .. " cd ~/.config/hypr/ && " .. Codeeditor .. " -S " .. Terminal_suffix)
-	-- hl.exec_cmd("[workspace 4 silent] " .. Browser)
+	hl.exec_cmd("[workspace 1 silent] anki &")
+	-- hl.exec_cmd("[workspace 2 silent] " .. Notetaker .. " &")
+	hl.exec_cmd("[workspace 3 silent] " .. terminal_preffix .. " cd ~/.config/hypr/ && " .. code_editor .. " -S " .. terminal_suffix .. " &")
+	-- hl.exec_cmd("[workspace 4 silent] " .. Browser .. " &")
 	-- Launch WhatsApp
-	hl.exec_cmd("[workspace 5 silent] firefoxpwa site launch 01K7N2EPSD39A4MS7ZFD78HVCC")
-	-- hl.exec_cmd("[workspace special:音楽 silent] youtube-music")
-	hl.exec_cmd("[workspace special:特別 silent] " .. Terminal)
+	hl.exec_cmd("[workspace 5 silent] firefoxpwa site launch 01K7N2EPSD39A4MS7ZFD78HVCC" .. " &")
+	-- hl.exec_cmd("[workspace 8 silent] " .. Email .. Email_suffix .. " &")
+	-- hl.exec_cmd("[workspace special:音楽 silent] youtube-music" .. " &")
+	hl.exec_cmd("[workspace special:特別 silent] " .. terminal .. " &")
 end
 
 -- **** Ignore ****

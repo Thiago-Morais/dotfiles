@@ -2,22 +2,11 @@
 ---- KEYBINDINGS ----
 ---------------------
 
--- local mainMod = "SUPER" -- Sets "Windows" key as main modifier
-local mainMod = "ALT" -- Sets "Windows" key as main modifier
+local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+-- local mainMod = "ALT" -- Sets "Windows" key as main modifier
 require("config.defaults")
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
--- hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(Terminal))
-hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(Terminal))
----@diagnostic disable-next-line: unused-local
-local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
--- closeWindowBind:set_enabled(false)
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(FileManager))
--- hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(Menu))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
@@ -68,6 +57,7 @@ hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen
 hl.bind(mainMod .. " + ALT + F", function()
 	local monitor = hl.get_active_monitor() or { width = 1920, height = 1080 }
 	hl.dispatch(hl.dsp.window.resize({ x = monitor.width, y = monitor.height }))
+	-- bindd = $mainMod ALT, F, Move active window downwards, movewindow, d
 	hl.dispatch(hl.dsp.window.center())
 end, { description = "Resize window to the size of the screen" })
 hl.bind(mainMod .. " + CTRL + F", hl.dsp.layout("movetoroot"), {
@@ -76,9 +66,9 @@ hl.bind(mainMod .. " + CTRL + F", hl.dsp.layout("movetoroot"), {
 hl.bind(mainMod .. " + CTRL + U", hl.dsp.layout("movetoroot"), {
 	description = "Increase current window to the largest size; Swaps position and size with the current biggest window",
 })
+hl.bind(mainMod .. " + P", hl.dsp.window.pin(), { description = "Pin current window (shows on all workspaces)" })
 hl.bind(mainMod .. " + U", hl.dsp.layout("togglesplit"), { description = "Toggles current window split mode" })
 hl.bind(mainMod .. " + SHIFT + U", hl.dsp.layout("swapsplit"), { description = "Swap current window position within work tree" })
-hl.bind(mainMod .. " + P", hl.dsp.window.pin(), { description = "Pin current window (shows on all workspaces)" })
 local function cycle_windows()
 	hl.dispatch(hl.dsp.window.cycle_next())
 	hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
@@ -87,56 +77,48 @@ hl.bind(mainMod .. " + ALT + Tab", cycle_windows, { repeating = true, descriptio
 hl.bind(mainMod .. " + Tab", cycle_windows, { repeating = true, description = "Cycle between windows" })
 
 -- ======= Programs Shortcuts =======
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(Applauncher .. " &"), { description = "Runs your application launcher" })
-hl.bind(mainMod .. " + CTRL + SPACE", hl.dsp.exec_cmd(Windowswitcher .. " &"), { description = "Runs your window switcher" })
-hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(Terminal .. " &"), { description = "Opens your preferred terminal emulator (" .. Terminal .. ")" })
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(Filemanager .. " &"), { description = "Opens your preferred filemanager (" .. Filemanager .. ")" })
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(Browser .. " &"), { description = "Open your preferred browser (" .. Browser .. ")" })
-hl.bind(
-	mainMod .. " + Escape",
-	hl.dsp.exec_cmd(string.format("%s --class %s -e %s &", Terminal_preffix, Taskmanager, Taskmanager)),
-	{ description = "Open your preferred task manager ($taskmanager)" }
-)
-hl.bind(
-	mainMod .. " + O",
-	hl.dsp.exec_cmd(string.format("%s --class %s %s cd %s; $EDITOR %s & disown", Terminal, Notetaker, Terminal_middlefix, Note_vault, Terminal_suffix)),
-	{ description = "Open your preferred note taking app ($notetaker)" }
-)
-hl.bind(
-	mainMod .. " + N",
-	hl.dsp.exec_cmd(string.format("%s $EDITOR %s & disown", Terminal_preffix, Terminal_suffix)),
-	{ description = "Open your preferred code editor ($EDITOR)" }
-)
-hl.bind(mainMod .. " + I", hl.dsp.exec_cmd(Colorpicker .. " -ar"), { description = "Open your preferred color picker (" .. Colorpicker .. ")" })
-hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd(Emojipicker .. " &"), { description = "Open emoji picker (" .. Emojipicker .. ")" })
-hl.bind(mainMod .. " + CTRL + V", hl.dsp.exec_cmd(Terminal .. " --class clipse -e 'clipse' &"), { description = "Open clipboard history" })
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(app_launcher .. " &"), { description = "Runs your application launcher" })
+hl.bind(mainMod .. " + CTRL + SPACE", hl.dsp.exec_cmd(window_switcher .. " &"), { description = "Runs your window switcher" })
+hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal .. " &"), { description = "Opens your preferred terminal emulator (" .. terminal .. ")" })
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(file_manager .. " &"), { description = "Opens your preferred filemanager (" .. file_manager .. ")" })
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser .. " &"), { description = "Open your preferred browser (" .. browser .. ")" })
+hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd(string.format(terminal_preffix .. " --class " .. task_manager .. " -e " .. task_manager .. " &")), {
+	description = "Open your preferred task manager (" .. task_manager .. ")",
+})
+hl.bind(mainMod .. " + O", function()
+	hl.dsp.exec_cmd(string.format("%s --class %s %s cd %s; $EDITOR %s & disown", terminal, note_taker, terminal_middlefix, note_vault, terminal_suffix))
+	hl.dsp.exec_cmd(string.format(note_taker .. " &"))
+end, { description = "Open your preferred note taking app (" .. note_taker .. ")" })
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(string.format("%s $EDITOR %s & disown", terminal_preffix, terminal_suffix)), {
+	description = "Open your preferred code editor (" .. os.getenv("EDITOR") .. ")",
+})
+hl.bind(mainMod .. " + I", hl.dsp.exec_cmd(color_picker .. " -ar"), { description = "Open your preferred color picker (" .. color_picker .. ")" })
+hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd(emoji_picker .. " &"), { description = "Open emoji picker (" .. emoji_picker .. ")" })
+hl.bind(mainMod .. " + CTRL + V", hl.dsp.exec_cmd(terminal .. " --class clipse -e 'clipse' &"), { description = "Open clipboard history" })
+hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd(music_player .. " &"), { description = "Open your preferred music player (" .. music_player .. ")" })
 
 -- ======= Commands Shortcuts =======
-hl.bind(
-	mainMod .. " + ALT + S",
-	hl.dsp.exec_cmd(Terminal .. " -e " .. Sync_all_remotes),
-	{ description = "Syncronize all remote directories with preferred synchronization program" }
-)
+hl.bind(mainMod .. " + ALT + S", hl.dsp.exec_cmd(terminal .. " -e " .. sync_all_remotes), {
+	description = "Syncronize all remote directories with preferred synchronization program",
+})
 
 -- ======= Screenshot/Printscreen =======
-hl.bind("Print", hl.dsp.exec_cmd(Shot_region), { description = " Creates a screenshot of an area" })
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(Shot_region), { description = " Creates a screenshot of an area" })
-hl.bind("CTRL + Print", hl.dsp.exec_cmd(Shot_window), { description = " Creates a screenshot of the active window" })
-hl.bind("ALT + Print", hl.dsp.exec_cmd(Shot_screen), { description = " Creates a screenshot of the active display" })
+hl.bind("Print", hl.dsp.exec_cmd(shot_region), { description = "Creates a screenshot of an area" })
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(shot_region), { description = "Creates a screenshot of an area" })
+hl.bind("CTRL + Print", hl.dsp.exec_cmd(shot_window), { description = "Creates a screenshot of the active window" })
+hl.bind("ALT + Print", hl.dsp.exec_cmd(shot_screen), { description = "Creates a screenshot of the active display" })
 -- ======= Screen Recording =======
-hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd(Shot_screen), { description = " Records screen" })
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd(shot_screen), { description = "Records screen" })
 
 -- ======= System toggles =======
--- hl.bind(
--- 	mainMod .. " + CTRL + B",
--- 	hl.dsp.exec_cmd(" rfkill block bluetooth || rfkill unblock bluetooth"),
--- 	{ description = "Toggles bluetooth on/off", release = true }
--- )
-hl.bind(
-	mainMod .. " + ALT + B",
-	hl.dsp.exec_cmd("/home/thiago/.config/hypr/scripts/bluetooth-toggle.sh"),
-	{ description = "Toggles bluetooth on/off", release = true }
-)
+-- hl.bind(mainMod .. " + CTRL + B", hl.dsp.exec_cmd(" rfkill block bluetooth || rfkill unblock bluetooth"), {
+-- 	description = "Toggles bluetooth on/off",
+-- 	release = true,
+-- })
+hl.bind(mainMod .. " + ALT + B", hl.dsp.exec_cmd("/home/thiago/.config/hypr/scripts/bluetooth-toggle.sh"), {
+	description = "Toggles bluetooth on/off",
+	release = true,
+})
 
 -- ======= Grouping Windows =======
 hl.bind(mainMod .. " +  + G", hl.dsp.group.toggle(), { description = "Toggles  current window group mode (ungroup all related)" })
@@ -144,16 +126,12 @@ hl.bind(mainMod .. " + Tab", hl.dsp.group.next(), { description = "Switches to t
 hl.bind(mainMod .. " + SHIFT + Tab", hl.dsp.group.prev(), { description = "Switches to the next window in the group", repeating = true })
 
 -- -- ======= Toggle Gaps =======
--- hl.bind(
--- 	mainMod .. " + SHIFT + G",
--- 	hl.dsp.exec_cmd('hyprctl --batch "keyword general:gaps_out 5;keyword general:gaps_in 3"'),
--- 	{ description = "Set CachyOS default gaps" }
--- )
--- hl.bind(
--- 	mainMod .. " +  + G",
--- 	hl.dsp.exec_cmd('hyprctl --batch "keyword general:gaps_out 0;keyword general:gaps_in 0"'),
--- 	{ description = "Remove gaps between window" }
--- )                                                                                                                                                                                          e
+-- hl.bind(mainMod .. " + SHIFT + G", hl.dsp.exec_cmd('hyprctl --batch "keyword general:gaps_out 5;keyword general:gaps_in 3"'), {
+-- 	description = "Set CachyOS default gaps",
+-- })
+-- hl.bind(mainMod .. " +  + G", hl.dsp.exec_cmd('hyprctl --batch "keyword general:gaps_out 0;keyword general:gaps_in 0"'), {
+-- 	description = "Remove gaps between window",
+-- })
 
 -- ======= Volume Control =======
 local function raise_volume()
@@ -186,12 +164,12 @@ hl.bind(mainMod .. " + XF86AudioLowerVolume", hl.dsp.exec_cmd("playerctl previou
 
 -- ======= Screen Brightness =======
 
--- -- #Increases brightness +4%
--- hl.bind(el = , XF86MonBrightnessUp, exec, brightnessctl -l -c backlight|grep -oP "Device '\K[^']+"|xargs -I {} brightnessctl -e -d {} s +4%
--- -- #Decreases brightness -4%
--- hl.bind(el = , XF86MonBrightnessDown, exec, brightnessctl -l -c backlight|grep -oP "Device '\K[^']+"|xargs -I {} brightnessctl -e -d {} s 4%-
--- hl.bind(d = $mainMod ALT, P, Lock the screen, exec, hyprlock
--- hl.bind(d = $mainMod ALT, W, Reload/restarts Waybar, exec, killall -SIGUSR2 waybar
+-- #Increases brightness +4%
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -l -c backlight|grep -oP \"Device '\\K[^']+\"|xargs -I {} brightnessctl -e -d {} s +4%"))
+-- #Decreases brightness -4%
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -l -c backlight|grep -oP \"Device '\\K[^']+\"|xargs -I {} brightnessctl -e -d {} s 4%-"))
+hl.bind(mainMod .. " + ALT + P", hl.dsp.exec_cmd("hyprlock"), { description = "Lock the screen" })
+hl.bind(mainMod .. " + ALT + W", hl.dsp.exec_cmd("killall -SIGUSR2 waybar"), { description = "Reload/restarts Waybar" })
 
 -- -- ======= Window Actions =======
 -- ---- Move window with mainMod + LMB/RMB and dragging

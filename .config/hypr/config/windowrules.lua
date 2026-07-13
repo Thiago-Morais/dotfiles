@@ -164,7 +164,7 @@ end
 
 function background_windows()
 	hl.window_rule({
-		match = { class = Background_video_class },
+		match = { class = background_video_class },
 		border_size = 0,
 		no_dim = 1,
 		opaque = 1,
@@ -174,7 +174,7 @@ function background_windows()
 		size = { "monitor_w", "monitor_h" },
 	})
 	hl.window_rule({
-		match = { title = Background_video_title },
+		match = { title = background_video_title },
 		border_size = 0,
 		no_dim = 1,
 		opaque = 1,
