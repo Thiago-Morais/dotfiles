@@ -26,6 +26,7 @@ hl.bind(
 	hl.dsp.exec_cmd("loginctl terminate-user ''"),
 	{ description = "Exits Hyprland by terminating the user sessions" }
 )
+
 -- ====== Other Window Ations ======
 hl.bind(b.combo(MainMod, "Q"), hl.dsp.window.close(), { description = "Closes (not kill) current window" })
 hl.bind(b.combo(MainMod, "V"), hl.dsp.window.float(), { description = "Switches current window between floating and tiling mode" })
@@ -39,6 +40,41 @@ hl.bind(b.combo(MainMod, "ALT", "F"), function()
 	hl.dispatch(hl.dsp.window.center())
 end, { description = _desc })
 hl.bind(b.combo(MainMod, "mouse:272"), hl.dsp.window.drag(), { drag = true, desc = "Move the window towards a direction" })
+hl.bind(b.combo(MainMod, "SHIFT", "slash"), hl.dsp.window.center(), { desc = "Center active window downwards" })
+
+local function resizing_window()
+	-- ## Resizing windows ##
+	-- Activate keyboard window resize mode (left commented out, as in the original)
+	-- hl.bind(b.combo(mainMod, "R"), hl.dsp.submap("resize"), { desc = "Activates window resizing mode" })
+
+	local resizeSteps = {
+		{ keys = { "right", "l" }, x = 30, y = 0 },
+		{ keys = { "left", "h" }, x = -30, y = 0 },
+		{ keys = { "up", "k" }, x = 0, y = -30 },
+		{ keys = { "down", "j" }, x = 0, y = 30 },
+	}
+
+	hl.define_submap("resize", function()
+		for _, step in ipairs(resizeSteps) do
+			for _, key in ipairs(step.keys) do
+				hl.bind(key, hl.dsp.window.resize({ x = step.x, y = step.y, relative = true }), { repeating = true })
+			end
+		end
+		hl.bind("escape", hl.dsp.submap("reset"))
+	end)
+
+	-- Quick resize window with keyboard
+	for _, step in ipairs(resizeSteps) do
+		for _, key in ipairs(step.keys) do
+			hl.bind(b.combo(MainMod, "CTRL", "SHIFT", key), hl.dsp.window.resize({ x = step.x, y = step.y, relative = true }), { repeating = true })
+		end
+	end
+
+	-- Resize / move window with mainMod + LMB/RMB and dragging
+	hl.bind(b.combo(MainMod, "mouse:273"), hl.dsp.window.resize(), { drag = true, desc = "Resize the window towards a direction" })
+	hl.bind(b.combo(MainMod, "mouse:272"), hl.dsp.window.drag(), { drag = true, desc = "Drag window" })
+	-- ## Resizing Windows End ##
+end
 
 local function dir_as_string(direction)
 	return direction.preffix .. direction.dir .. direction.suffix
@@ -61,39 +97,7 @@ for _, d in ipairs(DIRECTIONS) do
 	end
 end
 
-hl.bind(b.combo(MainMod, "SHIFT", "slash"), hl.dsp.window.center(), { desc = "Center active window downwards" })
-
--- ## Resizing windows ##
--- Activate keyboard window resize mode (left commented out, as in the original)
--- hl.bind(b.combo(mainMod, "R"), hl.dsp.submap("resize"), { desc = "Activates window resizing mode" })
-
-local resizeSteps = {
-	{ keys = { "right", "l" }, x = 30, y = 0 },
-	{ keys = { "left", "h" }, x = -30, y = 0 },
-	{ keys = { "up", "k" }, x = 0, y = -30 },
-	{ keys = { "down", "j" }, x = 0, y = 30 },
-}
-
-hl.define_submap("resize", function()
-	for _, step in ipairs(resizeSteps) do
-		for _, key in ipairs(step.keys) do
-			hl.bind(key, hl.dsp.window.resize({ x = step.x, y = step.y, relative = true }), { repeating = true })
-		end
-	end
-	hl.bind("escape", hl.dsp.submap("reset"))
-end)
-
--- Quick resize window with keyboard
-for _, step in ipairs(resizeSteps) do
-	for _, key in ipairs(step.keys) do
-		hl.bind(b.combo(MainMod, "CTRL", "SHIFT", key), hl.dsp.window.resize({ x = step.x, y = step.y, relative = true }), { repeating = true })
-	end
-end
-
--- Resize / move window with mainMod + LMB/RMB and dragging
-hl.bind(b.combo(MainMod, "mouse:273"), hl.dsp.window.resize(), { drag = true, desc = "Resize the window towards a direction" })
-hl.bind(b.combo(MainMod, "mouse:272"), hl.dsp.window.drag(), { drag = true, desc = "Drag window" })
--- ## Resizing Windows End ##
+resizing_window()
 
 -- ====== Layout ======
 _desc = "Increase current window to the largest size; Swaps position and size with the current biggest window"
@@ -153,24 +157,7 @@ hl.bind(b.combo(MainMod, "mouse_down"), hl.dsp.focus({ workspace = "e+1" }), { d
 hl.bind(b.combo(MainMod, "mouse_up"), hl.dsp.focus({ workspace = "e-1" }), { desc = "Scroll through workspaces decrementally" })
 hl.bind(b.combo(MainMod, "slash"), hl.dsp.focus({ workspace = "previous" }), { desc = "Switch to the previous workspace" })
 
--- ======= Launch Programs =======
-hl.bind(b.combo(MainMod, "SPACE"), hl.dsp.exec_cmd(App_launcher .. " &"), { description = "Runs your application launcher" })
-hl.bind(b.combo(MainMod, "CTRL", "SPACE"), hl.dsp.exec_cmd(Window_switcher .. " &"), { description = "Runs your window switcher" })
-hl.bind(b.combo(MainMod, "RETURN"), hl.dsp.exec_cmd(Terminal .. " &"), { description = "Opens your preferred terminal emulator (" .. Terminal .. ")" })
-hl.bind(b.combo(MainMod, "E"), hl.dsp.exec_cmd(File_manager .. " &"), { description = "Opens your preferred filemanager (" .. File_manager .. ")" })
-hl.bind(b.combo(MainMod, "B"), hl.dsp.exec_cmd(Browser .. " &"), { description = "Open your preferred browser (" .. Browser .. ")" })
-_desc = "Open your preferred task manager (" .. Task_manager .. ")"
-hl.bind(b.combo(MainMod, "Escape"), hl.dsp.exec_cmd(("%s --class %s -e %s &"):format(Terminal, Task_manager, Task_manager)), { description = _desc })
-hl.bind(b.combo(MainMod, "O"), function()
-	hl.dsp.exec_cmd(("%s --class %s %s cd %s; $EDITOR %s & disown"):format(Terminal, Note_taker, Terminal_middlefix, Note_vault, Terminal_suffix))
-	hl.dsp.exec_cmd(Note_taker .. " &")
-end, { description = "Open your preferred note taking app (" .. Note_taker .. ")" })
-_desc = "Open your preferred code editor (" .. os.getenv("EDITOR") .. ")"
-hl.bind(b.combo(MainMod, "N"), hl.dsp.exec_cmd(("%s $EDITOR %s & disown"):format(Terminal_preffix, Terminal_suffix)), { description = _desc })
-hl.bind(b.combo(MainMod, "I"), hl.dsp.exec_cmd(Color_picker .. " -ar"), { description = "Open your preferred color picker (" .. Color_picker .. ")" })
-hl.bind(b.combo(MainMod, "PERIOD"), hl.dsp.exec_cmd(Emoji_picker .. " &"), { description = "Open emoji picker (" .. Emoji_picker .. ")" })
-hl.bind(b.combo(MainMod, "CTRL", "V"), hl.dsp.exec_cmd(Terminal .. " --class clipse -e 'clipse' &"), { description = "Open clipboard history" })
-hl.bind(b.combo(MainMod, "Y"), hl.dsp.exec_cmd(Music_player .. " &"), { description = "Open your preferred music player (" .. Music_player .. ")" })
+require("config.binds.launch_programs").setup()
 
 -- ======= Commands Shortcuts =======
 _desc = "Syncronize all remote directories with preferred synchronization program"
@@ -202,33 +189,8 @@ hl.bind(b.combo(MainMod, "SHIFT", "Tab"), hl.dsp.group.prev(), { description = "
 -- 	description = "Remove gaps between window",
 -- })
 
--- ======= Volume Control =======
-local display_volume_cmd = "wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oP '\\d+\\.\\d+' | awk '{print $1 * 100}' | head -1 > " .. Wob_path
-
--- Laptop multimedia keys for volume
-local raise_volume_cmd = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(raise_volume_cmd .. " && " .. display_volume_cmd), { repeating = true, locked = true })
-local lower_volume_cmd = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(lower_volume_cmd .. " && " .. display_volume_cmd), { repeating = true, locked = true })
-do
-	local mute_volume_cmd = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-	local display_mute_cmd = "wpctl get-volume @DEFAULT_AUDIO_SINK@"
-		.. " | grep -oP '\\d+\\.\\d+.*'"
-		.. " | awk '/\\[MUTED\\]/{print 0; exit} {print $1 * 100}'"
-		.. " | head -1 > "
-		.. Wob_path
-	hl.bind("XF86AudioMute", hl.dsp.exec_cmd(mute_volume_cmd .. " && " .. display_mute_cmd), { repeating = true, locked = true })
-end
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { repeating = true, locked = true })
-
--- ======= Playback Control =======
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { description = "Toggles play/pause", locked = true })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { description = "Toggles play/pause", locked = true })
-hl.bind(MainMod .. " + XF86AudioMute", hl.dsp.exec_cmd("playerctl play-pause"), { description = "Toggles play/pause", locked = true })
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { description = "Next track", locked = true })
-hl.bind(MainMod .. " + XF86AudioRaiseVolume", hl.dsp.exec_cmd("playerctl next"), { description = "Next track", locked = true })
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { description = "Previous track", locked = true })
-hl.bind(MainMod .. " + XF86AudioLowerVolume", hl.dsp.exec_cmd("playerctl previous"), { description = "Previous track", locked = true })
+require("config.binds.volume_controls").setup()
+require("config.binds.playback_control").setup()
 
 -- ======= Screen Brightness =======
 local all_backlight_devices = "brightnessctl -l -c backlight|grep -oP \"Device '\\K[^']+\""
