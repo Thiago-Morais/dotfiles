@@ -73,7 +73,7 @@ function M.setup()
 		hl.dispatch(hl.dsp.window.alter_zorder({ mode = "top" }))
 	end
 	hl.bind(b.combo(MainMod, "ALT", "Tab"), cycle_windows, { repeating = true, description = "Cycle between windows" })
-	hl.bind(b.combo(MainMod, "Tab"), cycle_windows, { repeating = true, description = "Cycle between windows" })
+	hl.bind(b.combo("ALT", "Tab"), cycle_windows, { repeating = true, description = "Cycle between windows" })
 
 	return _desc
 end
