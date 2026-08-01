@@ -1,2 +1,2 @@
-require("config.patches.background-video")
+-- require("config.patches.background-video")
 -- require("config.patches.battery-save")
