@@ -59,7 +59,7 @@ end
 local function force_input_method_editor(ime)
 	-- Fix dead keys
 	-- be sure to install fcitx with $ paru -S fcitx
-	hl.env("GTK_IM_MODULE", ime)
+	-- hl.env("GTK_IM_MODULE", ime)
 	hl.env("QT_IM_MODULE", "wayland;" .. ime .. ";ibus")
 	hl.env("XMODIFIERS", "@im=" .. ime)
 	-- hl.env("SDL_IM_MODULE", ime)
