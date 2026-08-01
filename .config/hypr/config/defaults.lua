@@ -49,6 +49,7 @@ start_all_services = "$start-docker; $start-mariadb"
 
 start_dolibarr = "docker start dolibarr-mariadb-1  dolibarr-web-1"
 start_all_docker = "$start-dolibarr"
+wob_path = "/tmp/" .. os.getenv("HYPRLAND_INSTANCE_SIGNATURE") .. ".wob"
 
 local function combo(...)
 	return table.concat({ ... }, " + ")

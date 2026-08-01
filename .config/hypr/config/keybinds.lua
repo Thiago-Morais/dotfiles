@@ -29,20 +29,6 @@ hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
--- Laptop multimedia keys for volume and LCD brightness
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true, repeating = true })
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true, repeating = true })
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
-
--- Requires playerctl
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
-
 -- https://wiki.hyprland.org/Configuring/Binds/
 hl.bind(mainMod .. " + Q", hl.dsp.window.close(), { description = "Closes (not kill) current window" })
 hl.bind(mainMod .. " + ALT + SHIFT + P", hl.dsp.exec_cmd("loginctl terminate-user ''"), { description = "Exits Hyprland by terminating the user sessions" })
@@ -129,40 +115,40 @@ hl.bind(mainMod .. " + SHIFT + Tab", hl.dsp.group.prev(), { description = "Switc
 -- })
 
 -- ======= Volume Control =======
-local function raise_volume()
-	local raise_volume_cmd =
-		"pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\\d+(?=%)' | awk '{if($1>100) system(\"pactl set-sink-volume @DEFAULT_SINK@ 100%\")}' && pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\\d+(?=%)' | awk '{print $1}' | head -1 > /tmp/$HYPRLAND_INSTANCE_SIGNATURE.wob"
-	hl.dispatch(hl.dsp.exec_cmd(raise_volume_cmd))
-end
-local function lower_volume()
-	local lower_volume_cmd =
-		"amixer sset Master toggle | sed -En '/\\[on\\]/ s/.*\\[([0-9]+)%\\].*/\\1/ p; /\\[off\\]/ s/.*/0/p' | head -1 > /tmp/$HYPRLAND_INSTANCE_SIGNATURE.wob"
-	hl.dispatch(hl.dsp.exec_cmd(lower_volume_cmd))
-end
-local function mute_volume()
-	local mute_volume_cmd =
-		"amixer sset Master toggle | sed -En '/\\[on\\]/ s/.*\\[([0-9]+)%\\].*/\\1/ p; /\\[off\\]/ s/.*/0/p' | head -1 > /tmp/$HYPRLAND_INSTANCE_SIGNATURE.wob"
-	hl.dispatch(hl.dsp.exec_cmd(mute_volume_cmd))
-end
+local display_volume_cmd = "wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -oP '\\d+\\.\\d+' | awk '{print $1 * 100}' | head -1 > " .. wob_path
 
-hl.bind("XF86AudioRaiseVolume", raise_volume, { repeating = true, locked = true })
-hl.bind("XF86AudioLowerVolume", lower_volume, { repeating = true, locked = true })
-hl.bind("XF86AudioMute", mute_volume, { repeating = true, locked = true })
+-- Laptop multimedia keys for volume
+local raise_volume_cmd = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(raise_volume_cmd .. " && " .. display_volume_cmd), { repeating = true, locked = true })
+local lower_volume_cmd = "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(lower_volume_cmd .. " && " .. display_volume_cmd), { repeating = true, locked = true })
+do
+	local mute_volume_cmd = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+	local display_mute_cmd = "wpctl get-volume @DEFAULT_AUDIO_SINK@"
+		.. " | grep -oP '\\d+\\.\\d+.*'"
+		.. " | awk '/\\[MUTED\\]/{print 0; exit} {print $1 * 100}'"
+		.. " | head -1 > "
+		.. wob_path
+	hl.bind("XF86AudioMute", hl.dsp.exec_cmd(mute_volume_cmd .. " && " .. display_mute_cmd), { repeating = true, locked = true })
+end
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { repeating = true, locked = true })
 
 -- ======= Playback Control =======
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { description = "Next track" })
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { description = "Toggles play/pause" })
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { description = "Previous track" })
-hl.bind(mainMod .. " + XF86AudioMute", hl.dsp.exec_cmd("playerctl play-pause"), { description = "Toggles play/pause" })
-hl.bind(mainMod .. " + XF86AudioRaiseVolume", hl.dsp.exec_cmd("playerctl next"), { description = "Next track" })
-hl.bind(mainMod .. " + XF86AudioLowerVolume", hl.dsp.exec_cmd("playerctl previous"), { description = "Previous track" })
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { description = "Toggles play/pause", locked = true })
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { description = "Toggles play/pause", locked = true })
+hl.bind(mainMod .. " + XF86AudioMute", hl.dsp.exec_cmd("playerctl play-pause"), { description = "Toggles play/pause", locked = true })
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { description = "Next track", locked = true })
+hl.bind(mainMod .. " + XF86AudioRaiseVolume", hl.dsp.exec_cmd("playerctl next"), { description = "Next track", locked = true })
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { description = "Previous track", locked = true })
+hl.bind(mainMod .. " + XF86AudioLowerVolume", hl.dsp.exec_cmd("playerctl previous"), { description = "Previous track", locked = true })
 
 -- ======= Screen Brightness =======
-
+local all_backlight_devices = "brightnessctl -l -c backlight|grep -oP \"Device '\\K[^']+\""
 -- #Increases brightness +4%
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -l -c backlight|grep -oP \"Device '\\K[^']+\"|xargs -I {} brightnessctl -e -d {} s +4%"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(all_backlight_devices .. " | xargs -I {} brightnessctl -e -d {} s +4%"))
 -- #Decreases brightness -4%
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -l -c backlight|grep -oP \"Device '\\K[^']+\"|xargs -I {} brightnessctl -e -d {} s 4%-"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(all_backlight_devices .. " | xargs -I {} brightnessctl -e -d {} s 4%-"))
+
 hl.bind(mainMod .. " + ALT + P", hl.dsp.exec_cmd("hyprlock"), { description = "Lock the screen" })
 hl.bind(mainMod .. " + ALT + W", hl.dsp.exec_cmd("killall -SIGUSR2 waybar"), { description = "Reload/restarts Waybar" })
 

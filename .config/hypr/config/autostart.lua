@@ -12,7 +12,6 @@ local function main()
 
 		start_core_processes()
 		start_secondary_process()
-		hl.exec_cmd('bash -c "mkfifo /tmp/$HYPRLAND_INSTANCE_SIGNATURE.wob && tail -f /tmp/$HYPRLAND_INSTANCE_SIGNATURE.wob | wob & disown" &')
 		hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1 &")
 
 		single_trigger_commands()
@@ -31,6 +30,7 @@ end
 function start_core_processes()
 	hl.exec_cmd("fcitx5 -d &")
 	hl.exec_cmd("nm-applet --indicator &")
+	hl.exec_cmd('bash -c "mkfifo ' .. wob_path .. " && tail -f " .. wob_path .. ' | wob & disown" &')
 end
 
 function start_secondary_process()
