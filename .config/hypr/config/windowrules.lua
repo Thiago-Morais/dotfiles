@@ -132,7 +132,7 @@ function specific_applications()
 	hl.window_rule({ match = { class = "^(mpv|vlc)$" }, no_dim = 1, opaque = 1, pin = 1 })
 	hl.window_rule({ match = { title = "^(cava)$" }, no_dim = 1, opaque = 1 })
 	hl.window_rule({ match = { title = ".*(cbonsai|screensaver|gitlogue).*" }, no_dim = 1, opaque = 1 })
-	hl.window_rule({ match = { class = ("($1)"):format(Task_manager) }, float = 1, size = { "1300", "840" } })
+	hl.window_rule({ match = { class = ("(%s)"):format(Task_manager) }, float = 1, size = { "1300", "840" } })
 	hl.window_rule({ match = { class = "clipse" }, float = 1, size = { "622", "622" } })
 	local function inkscape_rules()
 		hl.window_rule({ match = { class = "^(org.inkscape.Inkscape)$" }, float = 1 })
@@ -174,9 +174,9 @@ function background_windows()
 end
 
 function bind_windows_to_workspace()
-	hl.window_rule({ workspace = 2, match = { class = ("($1|obsidian|github-desktop-plus)"):format(Note_taker) } })
-	hl.window_rule({ workspace = 3, match = { class = ("^($1|nvim|code)$"):format(Code_editor) } })
-	hl.window_rule({ workspace = 4, match = { class = ("^($1|zen-browser|firefox|chrome|zen)$"):format(Browser) } })
+	hl.window_rule({ workspace = 2, match = { class = ("(%s|obsidian|github-desktop-plus)"):format(Note_taker) } })
+	hl.window_rule({ workspace = 3, match = { class = ("^(%s|nvim|code)$"):format(Code_editor) } })
+	hl.window_rule({ workspace = 4, match = { class = ("^(%s|zen-browser|firefox|chrome|zen)$"):format(Browser) } })
 	hl.window_rule({ workspace = 5, match = { initial_title = "(WhatsApp Web|whatsapp-web).*" } })
 	hl.window_rule({ workspace = "special:音楽", match = { class = "^(com.github.th_ch.youtube_music|org.kde.kasts)$" } })
 end
@@ -184,7 +184,7 @@ end
 function prevent_idle()
 	hl.window_rule({
 		idle_inhibit = "always",
-		match = { class = ("^(mpv|[Pp]icture[- ][Ii]n[- ][Pp]icture|bg|$1)$"):format(Background_video_class) },
+		match = { class = ("^(mpv|[Pp]icture[- ][Ii]n[- ][Pp]icture|bg|%s)$"):format(Background_video_class) },
 	})
 	hl.window_rule({ idle_inhibit = "always", match = { title = ("^(mpv|[Pp]icture[- ][Ii]n[- ][Pp]icture)$"):format(Background_video_title) } })
 end
