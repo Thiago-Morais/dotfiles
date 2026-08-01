@@ -178,6 +178,7 @@ function bind_windows_to_workspace()
 	hl.window_rule({ workspace = 3, match = { class = ("^(%s|nvim|code)$"):format(Code_editor) } })
 	hl.window_rule({ workspace = 4, match = { class = ("^(%s|zen-browser|firefox|chrome|zen)$"):format(Browser) } })
 	hl.window_rule({ workspace = 5, match = { initial_title = "(WhatsApp Web|whatsapp-web).*" } })
+	hl.window_rule({ workspace = 8, match = { class = "(eu.betterbird.Betterbird).*" } })
 	hl.window_rule({ workspace = "special:音楽", match = { class = "^(com.github.th[_-]ch.youtube[_-]music|org.kde.kasts)$" } })
 end
 
