@@ -160,7 +160,7 @@ hl.bind(b.combo(MainMod, "RETURN"), hl.dsp.exec_cmd(Terminal .. " &"), { descrip
 hl.bind(b.combo(MainMod, "E"), hl.dsp.exec_cmd(File_manager .. " &"), { description = "Opens your preferred filemanager (" .. File_manager .. ")" })
 hl.bind(b.combo(MainMod, "B"), hl.dsp.exec_cmd(Browser .. " &"), { description = "Open your preferred browser (" .. Browser .. ")" })
 _desc = "Open your preferred task manager (" .. Task_manager .. ")"
-hl.bind(b.combo(MainMod, "Escape"), hl.dsp.exec_cmd(("%s --class %s -e %s &"):format(Terminal_preffix, Task_manager, Task_manager)), { description = _desc })
+hl.bind(b.combo(MainMod, "Escape"), hl.dsp.exec_cmd(("%s --class %s -e %s &"):format(Terminal, Task_manager, Task_manager)), { description = _desc })
 hl.bind(b.combo(MainMod, "O"), function()
 	hl.dsp.exec_cmd(("%s --class %s %s cd %s; $EDITOR %s & disown"):format(Terminal, Note_taker, Terminal_middlefix, Note_vault, Terminal_suffix))
 	hl.dsp.exec_cmd(Note_taker .. " &")
