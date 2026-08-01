@@ -5,11 +5,18 @@
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 -- local mainMod = "ALT" -- Sets "Windows" key as main modifier
 require("config.defaults")
+local b = require("config.binds-utils")
+
+local RIGHT = "right"
+local LEFT = "left"
+local UP = "up"
+local DOWN = "down"
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
+hl.bind(b.combo(mainMod, "left"), hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
@@ -18,8 +25,8 @@ hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
 	local key = i % 10 -- 10 maps to key 0
-	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+	hl.bind(b.combo(mainMod, key), hl.dsp.focus({ workspace = i }))
+	hl.bind(b.combo(mainMod, "SHIFT", key), hl.dsp.window.move({ workspace = i }))
 end
 
 -- Example special workspace (scratchpad)
@@ -50,7 +57,7 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 
 -- https://wiki.hyprland.org/Configuring/Binds/
 hl.bind(mainMod .. " + Q", hl.dsp.window.close(), { description = "Closes (not kill) current window" })
--- hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("loginctl terminate-user"), { description = "Exits Hyprland by terminating the user sessions" })
+hl.bind(mainMod .. " + ALT + SHIFT + P", hl.dsp.exec_cmd("loginctl terminate-user ''"), { description = "Exits Hyprland by terminating the user sessions" })
 hl.bind(mainMod .. " + V", hl.dsp.window.float(), { description = "Switches current window between floating and tiling mode" })
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }), { description = "Toggles current window fullscreen mode" })
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }), { description = "Toggles current window maximize mode" })
@@ -171,61 +178,48 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -l -c backlight|
 hl.bind(mainMod .. " + ALT + P", hl.dsp.exec_cmd("hyprlock"), { description = "Lock the screen" })
 hl.bind(mainMod .. " + ALT + W", hl.dsp.exec_cmd("killall -SIGUSR2 waybar"), { description = "Reload/restarts Waybar" })
 
--- -- ======= Window Actions =======
--- ---- Move window with mainMod + LMB/RMB and dragging
--- bindd = $mainMod, mouse:272, Move the window towards a direction, movewindow
--- ---- Move window towards a direction
--- bindd = $mainMod SHIFT, left, Move active window to the left, movewindow, l
--- bindd = $mainMod SHIFT, H, Move active window to the left, movewindow, l
--- bindd = $mainMod SHIFT, right, Move active window to the right, movewindow, r
--- bindd = $mainMod SHIFT, L, Move active window to the right, movewindow, r
--- bindd = $mainMod SHIFT, up, Move active window upwards, movewindow, u
--- bindd = $mainMod SHIFT, K, Move active window upwards, movewindow, u
--- bindd = $mainMod SHIFT, down, Move active window downwards, movewindow, d
--- bindd = $mainMod SHIFT, J, Move active window downwards, movewindow, d
--- bindd = $mainMod SHIFT, slash, Center active window downwards, centerwindow
---
--- bindd = $mainMod ALT, left, Move active window to the left, moveoutofgroup, l
--- bindd = $mainMod ALT, left, Move active window to the left, movewindoworgroup, l
--- bindd = $mainMod ALT, H, Move active window to the left, moveoutofgroup, l
--- bindd = $mainMod ALT, H, Move active window to the left, movewindoworgroup, l
--- bindd = $mainMod ALT, right, Move active window to the right, moveoutofgroup, r
--- bindd = $mainMod ALT, right, Move active window to the right, movewindoworgroup, r
--- bindd = $mainMod ALT, L, Move active window to the right, moveoutofgroup, r
--- bindd = $mainMod ALT, L, Move active window to the right, movewindoworgroup, r
--- bindd = $mainMod ALT, up, Move active window upwards, moveoutofgroup, u
--- bindd = $mainMod ALT, up, Move active window upwards, movewindoworgroup, u
--- bindd = $mainMod ALT, K, Move active window upwards, moveoutofgroup, u
--- bindd = $mainMod ALT, K, Move active window upwards, movewindoworgroup, u
--- bindd = $mainMod ALT, down, Move active window downwards, moveoutofgroup, d
--- bindd = $mainMod ALT, down, Move active window downwards, movewindoworgroup, d
--- bindd = $mainMod ALT, J, Move active window downwards, moveoutofgroup, d
--- bindd = $mainMod ALT, J, Move active window downwards, movewindoworgroup, d
---
--- bindd = $mainMod CTRL, left, Move active workspace to monitor to the left, movecurrentworkspacetomonitor, l
--- bindd = $mainMod CTRL, H, Move active workspace to monitor to the left, movecurrentworkspacetomonitor, l
--- bindd = $mainMod CTRL, right, Move active workspace to monitor to the right, movecurrentworkspacetomonitor, r
--- bindd = $mainMod CTRL, L, Move active workspace to monitor to the right, movecurrentworkspacetomonitor, r
--- bindd = $mainMod CTRL, up, Move active workspace to monitor upwards, movecurrentworkspacetomonitor, u
--- bindd = $mainMod CTRL, K, Move active workspace to monitor upwards, movecurrentworkspacetomonitor, u
--- bindd = $mainMod CTRL, down, Move active workspace to monitor downwards, movecurrentworkspacetomonitor, d
--- bindd = $mainMod CTRL, J, Move active workspace to monitor downwards, movecurrentworkspacetomonitor, d
---
--- ---- Move focus with mainMod + arrow keys
--- bindd = $mainMod, left, Move focus to the left, movefocus, l
--- bindd = $mainMod, H, Move focus to the left, movefocus, l
--- bindd = $mainMod, right,  Move focus to the right, movefocus, r
--- bindd = $mainMod, L,  Move focus to the right, movefocus, r
--- bindd = $mainMod, up, Move focus upwards, movefocus, u
--- bindd = $mainMod, K, Move focus upwards, movefocus, u
--- bindd = $mainMod, down, Move focus downwards, movefocus, d
--- bindd = $mainMod, J, Move focus downwards, movefocus, d
--- bindd = $mainMod CTRL, Tab, Move focus to next monitor, focusmonitor, +1
--- bindd = $mainMod ALT, Tab, Move focus to next monitor, focusmonitor, +1
---
--- -- bindd = $mainMod, minus, Toggle hyprwinwrap interactivity, exec, hyprctl dispatch hyprwinwrap_toggle
--- bindd = $mainMod, minus, Toggle hyprwinwrap interactivity, exec, hyprctl dispatch hyprwinwrap_interactivity
---
+-- ======= Window Actions =======
+
+-- Move window with mainMod + LMB and dragging
+hl.bind(b.combo(mainMod, "mouse:272"), hl.dsp.window.drag(), { drag = true, desc = "Move the window towards a direction" })
+
+-- Move window / focus / workspace towards a direction
+-- (arrow keys + vim-style HJKL aliases, just like the original)
+local directions = {
+	{ dir = "left", preffix = "to the ", keys = { "left", "H" }, suffix = "" },
+	{ dir = "right", preffix = "to the ", keys = { "right", "L" }, suffix = "" },
+	{ dir = "up", preffix = "", keys = { "up", "K" }, suffix = "wards" },
+	{ dir = "down", preffix = "", keys = { "down", "J" }, suffix = "wards" },
+}
+
+local function to_dir(direction)
+	return direction.preffix .. direction.dir .. direction.suffix
+end
+
+for _, d in ipairs(directions) do
+	for _, key in ipairs(d.keys) do
+		-- Move window towards a direction
+		local dir = d.dir:sub(1, 1)
+		hl.bind(b.combo(mainMod, "SHIFT", key), hl.dsp.window.move({ direction = dir }), { desc = "Move active window " .. to_dir(d) })
+
+		-- Move window towards a direction and through groups
+		hl.bind(b.combo(mainMod, "ALT", key), function()
+			hl.dispatch(hl.dsp.window.move({ direction = dir, group_aware = true }))
+		end, { desc = "Move active window " .. to_dir(d) })
+
+		-- Move active workspace to the monitor in that direction
+		hl.bind(b.combo(mainMod, "CTRL", key), hl.dsp.workspace.move({ monitor = dir }), { desc = "Move active workspace to monitor " .. to_dir(d) })
+
+		-- Move keyboard focus in a direction
+		hl.bind(b.combo(mainMod, key), hl.dsp.focus({ direction = dir }), { desc = "Move focus " .. to_dir(d) })
+	end
+end
+
+hl.bind(b.combo(mainMod, "SHIFT", "slash"), hl.dsp.window.center(), { desc = "Center active window downwards" })
+
+hl.bind(b.combo(mainMod, "CTRL", "Tab"), hl.dsp.focus({ monitor = "+1" }), { desc = "Move focus to next monitor" })
+hl.bind(b.combo(mainMod, "ALT", "Tab"), hl.dsp.focus({ monitor = "+1" }), { desc = "Move focus to next monitor" })
+
 -- ---- Resizing windows
 -- -- Activate keyboard window resize mode
 -- -- https://wiki.hyprland.org/Configuring/Binds/#submaps
@@ -255,7 +249,7 @@ hl.bind(mainMod .. " + ALT + W", hl.dsp.exec_cmd("killall -SIGUSR2 waybar"), { d
 -- bindm = $mainMod, mouse:273, resizewindow	#Resize the window towards a direction
 -- bindm = $mainMod, mouse:272, movewindow		#Drag window
 -- ---- Resizing Windows End #
---
+
 -- ---- Move active window to a workspace with $mainMod + CTRL + [0-9]
 -- bindd = $mainMod CTRL, 1, Move window and switch to workspace 1, movetoworkspace, 1
 -- bindd = $mainMod CTRL, 2, Move window and switch to workspace 2, movetoworkspace, 2
@@ -355,3 +349,123 @@ hl.bind(mainMod .. " + ALT + W", hl.dsp.exec_cmd("killall -SIGUSR2 waybar"), { d
 --     allow_pin_fullscreen = true
 --     drag_threshold = 1
 -- }
+
+-- ## Resizing windows ##
+
+-- Activate keyboard window resize mode (left commented out, as in the original)
+-- hl.bind(combo(mainMod, "R"), hl.dsp.submap("resize"), { desc = "Activates window resizing mode" })
+
+local resizeSteps = {
+	{ keys = { "right", "l" }, x = 30, y = 0 },
+	{ keys = { "left", "h" }, x = -30, y = 0 },
+	{ keys = { "up", "k" }, x = 0, y = -30 },
+	{ keys = { "down", "j" }, x = 0, y = 30 },
+}
+
+hl.define_submap("resize", function()
+	for _, step in ipairs(resizeSteps) do
+		for _, key in ipairs(step.keys) do
+			hl.bind(key, hl.dsp.window.resize({ x = step.x, y = step.y }), { repeating = true })
+		end
+	end
+	-- Ends window resizing mode
+	hl.bind("escape", hl.dsp.submap("reset"))
+end)
+
+-- Quick resize window with keyboard
+-- (mainMod added since CTRL+SHIFT is used for word selection in text editors)
+for _, step in ipairs(resizeSteps) do
+	for _, key in ipairs(step.keys) do
+		hl.bind(b.combo(mainMod, "CTRL", "SHIFT", key), hl.dsp.window.resize({ x = step.x, y = step.y }), { repeating = true })
+	end
+end
+
+-- Resize / move window with mainMod + LMB/RMB and dragging
+hl.bind(b.combo(mainMod, "mouse:273"), hl.dsp.window.resize(), { drag = true, desc = "Resize the window towards a direction" })
+hl.bind(b.combo(mainMod, "mouse:272"), hl.dsp.window.drag(), { drag = true, desc = "Drag window" })
+-- ## Resizing Windows End ##
+
+-- Move active window to a workspace with mainMod + CTRL + [0-9]
+for i = 1, 10 do
+	local key = (i == 10) and "0" or tostring(i)
+	local ws = tostring(i == 10 and 10 or i)
+	hl.bind(b.combo(mainMod, "CTRL", key), hl.dsp.window.move({ workspace = ws }), { desc = "Move window and switch to workspace " .. ws })
+end
+hl.bind(b.combo(mainMod, "CTRL", "M"), hl.dsp.window.move({ workspace = "special:音楽" }), { desc = "Move window and switch to music workspace" })
+hl.bind(b.combo(mainMod, "CTRL", "left"), hl.dsp.window.move({ workspace = "-1" }), { desc = "Move window and switch to the next workspace" })
+hl.bind(b.combo(mainMod, "CTRL", "right"), hl.dsp.window.move({ workspace = "+1" }), { desc = "Move window and switch to the previous workspace" })
+
+-- Same as above, but doesn't switch to the workspace
+for i = 1, 10 do
+	local key = (i == 10) and "0" or tostring(i)
+	local ws = tostring(i == 10 and 10 or i)
+	hl.bind(b.combo(mainMod, "SHIFT", key), hl.dsp.window.move({ workspace = ws, follow = false }), { desc = "Move window silently to workspace " .. ws })
+end
+hl.bind(
+	b.combo(mainMod, "SHIFT", "M"),
+	hl.dsp.window.move({ workspace = "special:音楽", follow = false }),
+	{ desc = "Move window silently to music workspace" }
+)
+hl.bind(b.combo(mainMod, "SHIFT", "left"), hl.dsp.window.move({ workspace = "-1", follow = false }), { desc = "Move window silently to the next workspace" })
+hl.bind(
+	b.combo(mainMod, "SHIFT", "right"),
+	hl.dsp.window.move({ workspace = "+1", follow = false }),
+	{ desc = "Move window silently to the previous workspace" }
+)
+-- Window actions End #
+
+-- ======= Workspace Actions =======
+
+-- Switch workspaces with mainMod + [0-9]
+for i = 1, 10 do
+	local key = (i == 10) and "0" or tostring(i)
+	local ws = tostring(i == 10 and 10 or i)
+	hl.bind(b.combo(mainMod, key), hl.dsp.focus({ workspace = ws }), { desc = "Switch to workspace " .. ws })
+
+	-- Move active workspace to the current monitor and switch to it
+	hl.bind(b.combo(mainMod, "ALT", key), function()
+		hl.dispatch(hl.dsp.workspace.move({ workspace = ws, monitor = "current" }))
+		hl.dispatch(hl.dsp.focus({ workspace = ws }))
+	end, { desc = "Move workspace " .. ws .. " to current monitor and switch to it" })
+end
+
+-- Scroll through existing workspaces with mainMod + scroll
+hl.bind(b.combo(mainMod, "mouse_down"), hl.dsp.focus({ workspace = "e+1" }), { desc = "Scroll through workspaces incrementally" })
+hl.bind(b.combo(mainMod, "mouse_up"), hl.dsp.focus({ workspace = "e-1" }), { desc = "Scroll through workspaces decrementally" })
+hl.bind(b.combo(mainMod, "slash"), hl.dsp.focus({ workspace = "previous" }), { desc = "Switch to the previous workspace" })
+
+-- Special workspaces (scratchpads)
+hl.bind(b.combo(mainMod, "CTRL", "equal"), hl.dsp.window.move({ workspace = "special:特別" }), { desc = "Move active window to Special workspace" })
+hl.bind(
+	b.combo(mainMod, "SHIFT", "equal"),
+	hl.dsp.window.move({ workspace = "special:特別", follow = false }),
+	{ desc = "Move active window silently to Special workspace" }
+)
+hl.bind(b.combo(mainMod, "equal"), hl.dsp.workspace.toggle_special("特別"), { desc = "Toggles the Special workspace" })
+hl.bind(b.combo(mainMod, "M"), hl.dsp.workspace.toggle_special("音楽"), { desc = "Toggles the Music workspace" })
+hl.bind(b.combo(mainMod, "F1"), hl.dsp.workspace.toggle_special("scratchpad"), { desc = "Call special workspace scratchpad" })
+hl.bind(
+	b.combo(mainMod, "ALT", "SHIFT", "F1"),
+	hl.dsp.window.move({ workspace = "special:scratchpad", follow = false }),
+	{ desc = "Move active window to special workspace scratchpad" }
+)
+
+-- ======= Others =======
+hl.bind(b.combo(mainMod, "SHIFT", "P"), hl.dsp.exec_cmd("hyprpicker -a"), { desc = "Open color picker" })
+
+-- ======= Additional Settings =======
+-- https://wiki.hypr.land/Configuring/Basics/Binds/
+hl.config({
+	binds = {
+		hide_special_on_workspace_change = true,
+		workspace_back_and_forth = false,
+		allow_workspace_cycles = true,
+		workspace_center_on = true,
+		focus_preferred_method = 1,
+		movefocus_cycles_fullscreen = true,
+		window_direction_monitor_fallback = true,
+		disable_keybind_grabbing = true,
+		allow_pin_fullscreen = true,
+		drag_threshold = 1,
+	},
+})

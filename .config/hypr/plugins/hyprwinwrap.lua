@@ -1,0 +1,20 @@
+require("config.binds-utils")
+
+-- plugin {
+--     hyprwinwrap {
+--         # class is an EXACT match and NOT a regex!
+--         class = $background_video_class
+--         # Hyprland development window class
+--         # class = aquamarine
+--         # you can also use title
+--         title = $background_video_title
+--         pos_x = 0
+--         pos_y = 0
+--         size_x = 100
+--         size_y = 100
+--     }
+-- }
+
+-- decoration:blur:new_optimizations = false
+
+hl.bind(b.combo(mainMod, "minus"), hl.dsp.exec_cmd("hyprctl dispatch hyprwinwrap_interactivity"), { desc = "Toggle hyprwinwrap interactivity" })

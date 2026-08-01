@@ -7,7 +7,7 @@
 local function core_env()
 	hl.env("XDG_MENU_PREFIX", "arch-")
 	hl.env("XDG_SCREENSHOTS_DIR", "$HOME/Pictures/Screenshots")
-	hl.env("GSK_RENDERER=gl")
+	hl.env("GSK_RENDERER", "gl")
 end
 
 local function fix_scaling()
