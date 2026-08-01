@@ -29,7 +29,6 @@ function default_rules()
 		-- Ignore maximize requests from all apps. You'll probably like this.
 		name = "suppress-maximize-events",
 		match = { class = ".*" },
-
 		suppress_event = "maximize",
 	})
 	-- suppressMaximizeRule:set_enabled(false)
@@ -45,7 +44,6 @@ function default_rules()
 			fullscreen = false,
 			pin = false,
 		},
-
 		no_focus = true,
 	})
 
@@ -61,7 +59,6 @@ function default_rules()
 	hl.window_rule({
 		name = "move-hyprland-run",
 		match = { class = "hyprland-run" },
-
 		move = "20 monitor_h-120",
 		float = true,
 	})
@@ -71,14 +68,12 @@ function float_necessary_windows()
 	hl.window_rule({
 		float = 1,
 		size = DEFAULT_FLOATING_SIZE,
-		match = {
-			class = "^(polkit-gnome-authentication-agent-1|hyprpolkitagent|org.org.kde.polkit-kde-authentication-agent-1)(.*)$",
-		},
+		match = { class = "^(polkit-gnome-authentication-agent-1|hyprpolkitagent|org.org.kde.polkit-kde-authentication-agent-1)" },
 	})
 	hl.window_rule({
 		float = 1,
 		size = DEFAULT_FLOATING_SIZE,
-		match = { class = "^(xdg-desktop-portal-gtk|xdg-desktop-portal-kde|xdg-desktop-portal-hyprland)(.*)$" },
+		match = { class = "^(xdg-desktop-portal-gtk|xdg-desktop-portal-kde|xdg-desktop-portal-hyprland)" },
 	})
 	hl.window_rule({ float = 1, size = { "660", "420" }, match = { class = "blueman-manager" } })
 	hl.window_rule({ float = 1, size = { "810", "540" }, match = { class = "^(org.pulseaudio.pavucontrol)" } })
@@ -131,20 +126,13 @@ function specific_applications()
 	hl.window_rule({ match = { class = ".*(01KCKFKMNJ6CYVWDH0TA87FX47)" }, no_dim = 1, opaque = 1 })
 	hl.window_rule({ match = { title = "^(danmufloat)$" }, pin = 1, rounding = 5 })
 	hl.window_rule({ match = { title = "^(termfloat)$" }, rounding = 5 })
-	hl.window_rule({
-		match = { title = "^([Pp]icture[- ][Ii]n[- ][Pp]icture)$" },
-		no_dim = 1,
-		opaque = 1,
-		float = 1,
-		pin = 1,
-		size = { "800", "450" },
-	})
+	hl.window_rule({ match = { title = "^([Pp]icture[- ][Ii]n[- ][Pp]icture)$" }, no_dim = 1, opaque = 1, float = 1, pin = 1, size = { "800", "450" } })
 	hl.window_rule({ match = { class = "^(com.github.wwmm.easyeffects)" }, maximize = 1 })
 	hl.window_rule({ match = { class = "ueberzugpp_.*" }, no_dim = 1, opaque = 1, float = 1, no_anim = 1 })
 	hl.window_rule({ match = { class = "^(mpv|vlc)$" }, no_dim = 1, opaque = 1, pin = 1 })
 	hl.window_rule({ match = { title = "^(cava)$" }, no_dim = 1, opaque = 1 })
 	hl.window_rule({ match = { title = ".*(cbonsai|screensaver|gitlogue).*" }, no_dim = 1, opaque = 1 })
-	hl.window_rule({ match = { class = "($taskmanager)" }, float = 1, size = { "1300", "840" } })
+	hl.window_rule({ match = { class = ("($1)"):format(Task_manager) }, float = 1, size = { "1300", "840" } })
 	hl.window_rule({ match = { class = "clipse" }, float = 1, size = { "622", "622" } })
 	local function inkscape_rules()
 		hl.window_rule({ match = { class = "^(org.inkscape.Inkscape)$" }, float = 1 })
@@ -164,7 +152,7 @@ end
 
 function background_windows()
 	hl.window_rule({
-		match = { class = background_video_class },
+		match = { class = Background_video_class },
 		border_size = 0,
 		no_dim = 1,
 		opaque = 1,
@@ -174,7 +162,7 @@ function background_windows()
 		size = { "monitor_w", "monitor_h" },
 	})
 	hl.window_rule({
-		match = { title = background_video_title },
+		match = { title = Background_video_title },
 		border_size = 0,
 		no_dim = 1,
 		opaque = 1,
@@ -186,22 +174,19 @@ function background_windows()
 end
 
 function bind_windows_to_workspace()
-	hl.window_rule({ workspace = 2, match = { class = "($notetaker|obsidian|github-desktop-plus)" } })
-	hl.window_rule({ workspace = 3, match = { class = "^($codeeditor|nvim|code)$" } })
-	hl.window_rule({ workspace = 4, match = { class = "^($browser|zen-browser|firefox|chrome|zen)$" } })
+	hl.window_rule({ workspace = 2, match = { class = ("($1|obsidian|github-desktop-plus)"):format(Note_taker) } })
+	hl.window_rule({ workspace = 3, match = { class = ("^($1|nvim|code)$"):format(Code_editor) } })
+	hl.window_rule({ workspace = 4, match = { class = ("^($1|zen-browser|firefox|chrome|zen)$"):format(Browser) } })
 	hl.window_rule({ workspace = 5, match = { initial_title = "(WhatsApp Web|whatsapp-web).*" } })
-	hl.window_rule({
-		workspace = "special:音楽",
-		match = { class = "^(com.github.th_ch.youtube_music|org.kde.kasts)$" },
-	})
+	hl.window_rule({ workspace = "special:音楽", match = { class = "^(com.github.th_ch.youtube_music|org.kde.kasts)$" } })
 end
 
 function prevent_idle()
 	hl.window_rule({
 		idle_inhibit = "always",
-		match = { class = "^(mpv|[Pp]icture[- ][Ii]n[- ][Pp]icture|bg|$background_video)$" },
+		match = { class = ("^(mpv|[Pp]icture[- ][Ii]n[- ][Pp]icture|bg|$1)$"):format(Background_video_class) },
 	})
-	hl.window_rule({ idle_inhibit = "always", match = { title = "^(mpv|[Pp]icture[- ][Ii]n[- ][Pp]icture)$" } })
+	hl.window_rule({ idle_inhibit = "always", match = { title = ("^(mpv|[Pp]icture[- ][Ii]n[- ][Pp]icture)$"):format(Background_video_title) } })
 end
 
 function layer_rules()

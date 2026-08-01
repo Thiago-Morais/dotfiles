@@ -30,7 +30,7 @@ end
 function start_core_processes()
 	hl.exec_cmd("fcitx5 -d &")
 	hl.exec_cmd("nm-applet --indicator &")
-	hl.exec_cmd('bash -c "mkfifo ' .. wob_path .. " && tail -f " .. wob_path .. ' | wob & disown" &')
+	hl.exec_cmd('bash -c "mkfifo ' .. Wob_path .. " && tail -f " .. Wob_path .. ' | wob & disown" &')
 end
 
 function start_secondary_process()
@@ -40,9 +40,9 @@ function start_secondary_process()
 	hl.exec_cmd("mako")
 	hl.exec_cmd("easyeffects -w &")
 	hl.exec_cmd("clipse -listen &")
-	hl.exec_cmd(start_all_services .. " &")
-	hl.exec_cmd(sync_all_remotes .. " &")
-	hl.exec_cmd(idle_handler)
+	hl.exec_cmd(Start_all_services .. " &")
+	hl.exec_cmd(Sync_all_remotes .. " &")
+	hl.exec_cmd(Idle_handler)
 	-- hl.exec_cmd("seanime &")
 	hl.exec_cmd("xsettingsd &")
 end
@@ -62,13 +62,13 @@ function start_programs_in_workspaces()
 	-- We can't use a `&` at the end if we want the application to open at the correct workspace
 	hl.exec_cmd("[workspace 1 silent] anki &")
 	-- hl.exec_cmd("[workspace 2 silent] " .. Notetaker .. " &")
-	hl.exec_cmd("[workspace 3 silent] " .. terminal_preffix .. " cd ~/.config/hypr/ && " .. code_editor .. " -S " .. terminal_suffix .. " &")
+	hl.exec_cmd("[workspace 3 silent] " .. Terminal_preffix .. " cd ~/.config/hypr/ && " .. Code_editor .. " -S " .. Terminal_suffix .. " &")
 	-- hl.exec_cmd("[workspace 4 silent] " .. Browser .. " &")
 	-- Launch WhatsApp
 	hl.exec_cmd("[workspace 5 silent] firefoxpwa site launch 01K7N2EPSD39A4MS7ZFD78HVCC" .. " &")
 	-- hl.exec_cmd("[workspace 8 silent] " .. Email .. Email_suffix .. " &")
 	-- hl.exec_cmd("[workspace special:音楽 silent] youtube-music" .. " &")
-	hl.exec_cmd("[workspace special:特別 silent] " .. terminal .. " &")
+	hl.exec_cmd("[workspace special:特別 silent] " .. Terminal .. " &")
 end
 
 -- **** Ignore ****
