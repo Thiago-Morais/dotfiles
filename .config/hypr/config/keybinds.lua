@@ -2,7 +2,6 @@
 ---- KEYBINDINGS ----
 ---------------------
 
-local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 -- local mainMod = "ALT" -- Sets "Windows" key as main modifier
 require("config.defaults")
 local b = require("config.binds-utils")

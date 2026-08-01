@@ -1,5 +1,5 @@
 require("config.variables.animations")
--- require("config.variables.decoration")
+require("config.variables.decoration")
 
 require("config.variables.input")
 

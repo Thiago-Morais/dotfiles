@@ -2,6 +2,8 @@
 ---- MY PROGRAMS ----
 ---------------------
 
+mainMod = "SUPER" -- Sets "Windows" key as main modifier
+
 -- General
 file_manager = "alacritty -e $SHELL -c 'yazi; $SHELL' & disown"
 app_launcher = "rofi -show combi"

@@ -10,12 +10,7 @@ local inactive_border = { colors = { colors.primary_container, colors.secondary_
 ---@diagnostic disable-next-line: unused-local
 local group_active = colors.tertiary .. " " .. colors.primary .. " " .. colors.tertiary .. " 45deg"
 ---@diagnostic disable-next-line: unused-local
-local group_inactive = colors.tertiary_container
-	.. " "
-	.. colors.primary_container
-	.. " "
-	.. colors.tertiary_container
-	.. " 45deg"
+local group_inactive = colors.tertiary_container .. " " .. colors.primary_container .. " " .. colors.tertiary_container .. " 45deg"
 
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
@@ -61,7 +56,7 @@ hl.config({
 			-- ignore_opacity = false
 			xray = false,
 			special = true,
-			new_optimizations = false,
+			new_optimizations = true,
 		},
 
 		-- https://wiki.hyprland.org/Configuring/Variables/#shadow

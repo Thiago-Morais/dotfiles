@@ -1,2 +1,2 @@
-require("plugins.dynamic-cursor")
--- require("plugins.hyprwinwrap")
+-- require("plugins.dynamic-cursor")
+require("plugins.hyprwinwrap")
