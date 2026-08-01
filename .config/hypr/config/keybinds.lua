@@ -21,18 +21,6 @@ hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
 
--- Switch workspaces with mainMod + [0-9]
--- Move active window to a workspace with mainMod + SHIFT + [0-9]
-for i = 1, 10 do
-	local key = i % 10 -- 10 maps to key 0
-	hl.bind(b.combo(mainMod, key), hl.dsp.focus({ workspace = i }))
-	hl.bind(b.combo(mainMod, "SHIFT", key), hl.dsp.window.move({ workspace = i }))
-end
-
--- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
-
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
@@ -192,7 +180,7 @@ local directions = {
 	{ dir = "down", preffix = "", keys = { "down", "J" }, suffix = "wards" },
 }
 
-local function to_dir(direction)
+local function dir_as_string(direction)
 	return direction.preffix .. direction.dir .. direction.suffix
 end
 
@@ -200,18 +188,18 @@ for _, d in ipairs(directions) do
 	for _, key in ipairs(d.keys) do
 		-- Move window towards a direction
 		local dir = d.dir:sub(1, 1)
-		hl.bind(b.combo(mainMod, "SHIFT", key), hl.dsp.window.move({ direction = dir }), { desc = "Move active window " .. to_dir(d) })
+		hl.bind(b.combo(mainMod, "SHIFT", key), hl.dsp.window.move({ direction = dir }), { desc = "Move active window " .. dir_as_string(d) })
 
 		-- Move window towards a direction and through groups
 		hl.bind(b.combo(mainMod, "ALT", key), function()
 			hl.dispatch(hl.dsp.window.move({ direction = dir, group_aware = true }))
-		end, { desc = "Move active window " .. to_dir(d) })
+		end, { desc = "Move active window " .. dir_as_string(d) })
 
 		-- Move active workspace to the monitor in that direction
-		hl.bind(b.combo(mainMod, "CTRL", key), hl.dsp.workspace.move({ monitor = dir }), { desc = "Move active workspace to monitor " .. to_dir(d) })
+		hl.bind(b.combo(mainMod, "CTRL", key), hl.dsp.workspace.move({ monitor = dir }), { desc = "Move active workspace to monitor " .. dir_as_string(d) })
 
 		-- Move keyboard focus in a direction
-		hl.bind(b.combo(mainMod, key), hl.dsp.focus({ direction = dir }), { desc = "Move focus " .. to_dir(d) })
+		hl.bind(b.combo(mainMod, key), hl.dsp.focus({ direction = dir }), { desc = "Move focus " .. dir_as_string(d) })
 	end
 end
 
@@ -220,140 +208,10 @@ hl.bind(b.combo(mainMod, "SHIFT", "slash"), hl.dsp.window.center(), { desc = "Ce
 hl.bind(b.combo(mainMod, "CTRL", "Tab"), hl.dsp.focus({ monitor = "+1" }), { desc = "Move focus to next monitor" })
 hl.bind(b.combo(mainMod, "ALT", "Tab"), hl.dsp.focus({ monitor = "+1" }), { desc = "Move focus to next monitor" })
 
--- ---- Resizing windows
--- -- Activate keyboard window resize mode
--- -- https://wiki.hyprland.org/Configuring/Binds/#submaps
--- -- bindd = $mainMod, R, Activates window resizing mode, submap, resize
--- submap = resize
--- bindde = , right, Resize to the right (resizing mode), resizeactive, 30 0
--- bindde = , left, Resize to the left (resizing mode), resizeactive, -30 0
--- bindde = , up, Resize upwards (resizing mode), resizeactive, 0 -30
--- bindde = , down, Resize downwards (resizing mode), resizeactive, 0 30
--- bindde = , l, Resize to the right (resizing mode), resizeactive, 30 0
--- bindde = , h, Resize to the left (resizing mode), resizeactive, -30 0
--- bindde = , k, Resize upwards (resizing mode), resizeactive, 0 -30
--- bindde = , j, Resize downwards (resizing mode), resizeactive, 0 30
--- bindde = , escape, Ends window resizing mode, submap, reset
--- submap = reset
--- -- Quick resize window with keyboard
--- -- !!! added $mainMod here because CTRL + SHIFT is used for word selection in various text editors
--- bindde = $mainMod CTRL SHIFT, right, Resize to the right, resizeactive, 30 0
--- bindde = $mainMod CTRL SHIFT, left, Resize to the left, resizeactive, -30 0
--- bindde = $mainMod CTRL SHIFT, up, Resize upwards, resizeactive, 0 -30
--- bindde = $mainMod CTRL SHIFT, down, Resize downwards, resizeactive, 0 30
--- bindde = $mainMod CTRL SHIFT, l, Resize to the right, resizeactive, 30 0
--- bindde = $mainMod CTRL SHIFT, h, Resize to the left, resizeactive, -30 0
--- bindde = $mainMod CTRL SHIFT, k, Resize upwards, resizeactive, 0 -30
--- bindde = $mainMod CTRL SHIFT, j, Resize downwards, resizeactive, 0 30
--- -- Resize window with mainMod + LMB/RMB and dragging
--- bindm = $mainMod, mouse:273, resizewindow	#Resize the window towards a direction
--- bindm = $mainMod, mouse:272, movewindow		#Drag window
--- ---- Resizing Windows End #
-
--- ---- Move active window to a workspace with $mainMod + CTRL + [0-9]
--- bindd = $mainMod CTRL, 1, Move window and switch to workspace 1, movetoworkspace, 1
--- bindd = $mainMod CTRL, 2, Move window and switch to workspace 2, movetoworkspace, 2
--- bindd = $mainMod CTRL, 3, Move window and switch to workspace 3, movetoworkspace, 3
--- bindd = $mainMod CTRL, 4, Move window and switch to workspace 4, movetoworkspace, 4
--- bindd = $mainMod CTRL, 5, Move window and switch to workspace 5, movetoworkspace, 5
--- bindd = $mainMod CTRL, 6, Move window and switch to workspace 6, movetoworkspace, 6
--- bindd = $mainMod CTRL, 7, Move window and switch to workspace 7, movetoworkspace, 7
--- bindd = $mainMod CTRL, 8, Move window and switch to workspace 8, movetoworkspace, 8
--- bindd = $mainMod CTRL, 9, Move window and switch to workspace 9, movetoworkspace, 9
--- bindd = $mainMod CTRL, 0, Move window and switch to workspace 10, movetoworkspace, 10
--- bindd = $mainMod CTRL, M, Move window and switch to music workspace, movetoworkspace, special:音楽
--- bindd = $mainMod CTRL, left, Move window and switch to the next workspace, movetoworkspace, -1
--- -- bindd = $mainMod CTRL, H, Move window and switch to the next workspace, movetoworkspace, -1
--- bindd = $mainMod CTRL, right, Move window and switch to the previous workspace, movetoworkspace, +1
--- -- bindd = $mainMod CTRL, L, Move window and switch to the previous workspace, movetoworkspace, +1
--- ---- Same as above, but doesn't switch to the workspace
--- bindd = $mainMod SHIFT, 1, Move window silently to workspace 1, movetoworkspacesilent, 1
--- bindd = $mainMod SHIFT, 2, Move window silently to workspace 2, movetoworkspacesilent, 2
--- bindd = $mainMod SHIFT, 3, Move window silently to workspace 3, movetoworkspacesilent, 3
--- bindd = $mainMod SHIFT, 4, Move window silently to workspace 4, movetoworkspacesilent, 4
--- bindd = $mainMod SHIFT, 5, Move window silently to workspace 5, movetoworkspacesilent, 5
--- bindd = $mainMod SHIFT, 6, Move window silently to workspace 6, movetoworkspacesilent, 6
--- bindd = $mainMod SHIFT, 7, Move window silently to workspace 7, movetoworkspacesilent, 7
--- bindd = $mainMod SHIFT, 8, Move window silently to workspace 8, movetoworkspacesilent, 8
--- bindd = $mainMod SHIFT, 9, Move window silently to workspace 9, movetoworkspacesilent, 9
--- bindd = $mainMod SHIFT, 0, Move window silently to workspace 10, movetoworkspacesilent, 10
--- bindd = $mainMod SHIFT, M, Move window silently to music workspace, movetoworkspacesilent, special:音楽
--- bindd = $mainMod SHIFT, left, Move window silently to the next workspace, movetoworkspacesilent, -1
--- -- bindd = $mainMod SHIFT, H, Move window silently to the next workspace, movetoworkspacesilent, -1
--- bindd = $mainMod SHIFT, right, Move window silently to the previous workspace, movetoworkspacesilent, +1
--- -- bindd = $mainMod SHIFT, L, Move window silently to the previous workspace, movetoworkspacesilent, +1
--- -- Window actions End #
---
--- -- ======= Workspace Actions =======
---
--- -- Switch workspaces with mainMod + [0-9]
--- bindd = $mainMod, 1, Switch to workspace 1, workspace, 1
--- bindd = $mainMod, 2, Switch to workspace 2, workspace, 2
--- bindd = $mainMod, 3, Switch to workspace 3, workspace, 3
--- bindd = $mainMod, 4, Switch to workspace 4, workspace, 4
--- bindd = $mainMod, 5, Switch to workspace 5, workspace, 5
--- bindd = $mainMod, 6, Switch to workspace 6, workspace, 6
--- bindd = $mainMod, 7, Switch to workspace 7, workspace, 7
--- bindd = $mainMod, 8, Switch to workspace 8, workspace, 8
--- bindd = $mainMod, 9, Switch to workspace 9, workspace, 9
--- bindd = $mainMod, 0, Switch to workspace 10, workspace, 10
--- bindd = $mainMod ALT, 1, Move window silently to workspace 1, moveworkspacetomonitor, 1 current
--- bindd = $mainMod ALT, 1, Switch to workspace 1, workspace, 1
--- bindd = $mainMod ALT, 2, Move window silently to workspace 2, moveworkspacetomonitor, 2 current
--- bindd = $mainMod ALT, 2, Switch to workspace 2, workspace, 2
--- bindd = $mainMod ALT, 3, Move window silently to workspace 3, moveworkspacetomonitor, 3 current
--- bindd = $mainMod ALT, 3, Switch to workspace 3, workspace, 3
--- bindd = $mainMod ALT, 4, Move window silently to workspace 4, moveworkspacetomonitor, 4 current
--- bindd = $mainMod ALT, 4, Switch to workspace 4, workspace, 4
--- bindd = $mainMod ALT, 5, Move window silently to workspace 5, moveworkspacetomonitor, 5 current
--- bindd = $mainMod ALT, 5, Switch to workspace 5, workspace, 5
--- bindd = $mainMod ALT, 6, Move window silently to workspace 6, moveworkspacetomonitor, 6 current
--- bindd = $mainMod ALT, 6, Switch to workspace 6, workspace, 6
--- bindd = $mainMod ALT, 7, Move window silently to workspace 7, moveworkspacetomonitor, 7 current
--- bindd = $mainMod ALT, 7, Switch to workspace 7, workspace, 7
--- bindd = $mainMod ALT, 8, Move window silently to workspace 8, moveworkspacetomonitor, 8 current
--- bindd = $mainMod ALT, 8, Switch to workspace 8, workspace, 8
--- bindd = $mainMod ALT, 9, Move window silently to workspace 9, moveworkspacetomonitor, 9 current
--- bindd = $mainMod ALT, 9, Switch to workspace 9, workspace, 9
--- bindd = $mainMod ALT, 0, Move window silently to workspace 10, moveworkspacetomonitor, 10 current
--- bindd = $mainMod ALT, 0, Switch to workspace 10, workspace, 10
--- -- Scroll through existing workspaces with mainMod + , or .
--- -- bindd = $mainMod, PERIOD, Scroll through workspaces incrementally, workspace, e+1
--- -- bindd = $mainMod, COMMA, Scroll through workspaces decrementally, workspace, e-1
--- -- With $mainMod + scroll
--- bindd = $mainMod, mouse_down, Scroll through workspaces incrementally, workspace, e+1
--- bindd = $mainMod, mouse_up, Scroll through workspaces decrementally, workspace, e-1
--- bindd = $mainMod, slash, Switch to the previous workspace, workspace, previous
--- -- Special workspaces (scratchpads)
--- bindd = $mainMod CTRL, equal, Move active window to Special workspace, movetoworkspace, special:特別
--- bindd = $mainMod SHIFT, equal, Move active window silently to Special workspace, movetoworkspacesilent, special:特別
--- bindd = $mainMod, equal, Toggles the Special workspace, togglespecialworkspace, 特別
--- bindd = $mainMod, M, Toggles the Music workspace, togglespecialworkspace, 音楽
--- bindd = $mainMod, F1, Call special workspace scratchpad, togglespecialworkspace, scratchpad
--- bindd = $mainMod ALT SHIFT, F1, Move active window to special workspace scratchpad, movetoworkspacesilent, special:scratchpad
---
--- -- ======= Others =======
--- bindd = $mainMod SHIFT, P, Open color picker, exec, hyprpicker -a
--- -- ======= Additional Settings =======
---
--- -- https://wiki.hyprland.org/Configuring/Binds
--- binds {
---     hide_special_on_workspace_change = true
---     workspace_back_and_forth = false
---     allow_workspace_cycles = true
---     workspace_center_on = true
---     focus_preferred_method = 1
---     movefocus_cycles_fullscreen = true
---     window_direction_monitor_fallback = true
---     disable_keybind_grabbing = true
---     allow_pin_fullscreen = true
---     drag_threshold = 1
--- }
-
 -- ## Resizing windows ##
 
 -- Activate keyboard window resize mode (left commented out, as in the original)
--- hl.bind(combo(mainMod, "R"), hl.dsp.submap("resize"), { desc = "Activates window resizing mode" })
+-- hl.bind(b.combo(mainMod, "R"), hl.dsp.submap("resize"), { desc = "Activates window resizing mode" })
 
 local resizeSteps = {
 	{ keys = { "right", "l" }, x = 30, y = 0 },
@@ -365,7 +223,7 @@ local resizeSteps = {
 hl.define_submap("resize", function()
 	for _, step in ipairs(resizeSteps) do
 		for _, key in ipairs(step.keys) do
-			hl.bind(key, hl.dsp.window.resize({ x = step.x, y = step.y }), { repeating = true })
+			hl.bind(key, hl.dsp.window.resize({ x = step.x, y = step.y, relative = true }), { repeating = true })
 		end
 	end
 	-- Ends window resizing mode
@@ -376,7 +234,7 @@ end)
 -- (mainMod added since CTRL+SHIFT is used for word selection in text editors)
 for _, step in ipairs(resizeSteps) do
 	for _, key in ipairs(step.keys) do
-		hl.bind(b.combo(mainMod, "CTRL", "SHIFT", key), hl.dsp.window.resize({ x = step.x, y = step.y }), { repeating = true })
+		hl.bind(b.combo(mainMod, "CTRL", "SHIFT", key), hl.dsp.window.resize({ x = step.x, y = step.y, relative = true }), { repeating = true })
 	end
 end
 
@@ -385,43 +243,18 @@ hl.bind(b.combo(mainMod, "mouse:273"), hl.dsp.window.resize(), { drag = true, de
 hl.bind(b.combo(mainMod, "mouse:272"), hl.dsp.window.drag(), { drag = true, desc = "Drag window" })
 -- ## Resizing Windows End ##
 
--- Move active window to a workspace with mainMod + CTRL + [0-9]
-for i = 1, 10 do
-	local key = (i == 10) and "0" or tostring(i)
-	local ws = tostring(i == 10 and 10 or i)
-	hl.bind(b.combo(mainMod, "CTRL", key), hl.dsp.window.move({ workspace = ws }), { desc = "Move window and switch to workspace " .. ws })
-end
-hl.bind(b.combo(mainMod, "CTRL", "M"), hl.dsp.window.move({ workspace = "special:音楽" }), { desc = "Move window and switch to music workspace" })
-hl.bind(b.combo(mainMod, "CTRL", "left"), hl.dsp.window.move({ workspace = "-1" }), { desc = "Move window and switch to the next workspace" })
-hl.bind(b.combo(mainMod, "CTRL", "right"), hl.dsp.window.move({ workspace = "+1" }), { desc = "Move window and switch to the previous workspace" })
-
--- Same as above, but doesn't switch to the workspace
-for i = 1, 10 do
-	local key = (i == 10) and "0" or tostring(i)
-	local ws = tostring(i == 10 and 10 or i)
-	hl.bind(b.combo(mainMod, "SHIFT", key), hl.dsp.window.move({ workspace = ws, follow = false }), { desc = "Move window silently to workspace " .. ws })
-end
-hl.bind(
-	b.combo(mainMod, "SHIFT", "M"),
-	hl.dsp.window.move({ workspace = "special:音楽", follow = false }),
-	{ desc = "Move window silently to music workspace" }
-)
-hl.bind(b.combo(mainMod, "SHIFT", "left"), hl.dsp.window.move({ workspace = "-1", follow = false }), { desc = "Move window silently to the next workspace" })
-hl.bind(
-	b.combo(mainMod, "SHIFT", "right"),
-	hl.dsp.window.move({ workspace = "+1", follow = false }),
-	{ desc = "Move window silently to the previous workspace" }
-)
--- Window actions End #
-
 -- ======= Workspace Actions =======
 
--- Switch workspaces with mainMod + [0-9]
+local window_move = hl.dsp.window.move
 for i = 1, 10 do
-	local key = (i == 10) and "0" or tostring(i)
-	local ws = tostring(i == 10 and 10 or i)
-	hl.bind(b.combo(mainMod, key), hl.dsp.focus({ workspace = ws }), { desc = "Switch to workspace " .. ws })
-
+	local key = i % 10 -- 10 maps to key 0
+	local ws = i
+	-- Switch workspaces with mainMod + [0-9]
+	hl.bind(b.combo(mainMod, key), hl.dsp.focus({ workspace = ws }), { desc = "Focus workspace " .. ws })
+	-- Move active window to a workspace with mainMod + CTRL + [0-9]
+	hl.bind(b.combo(mainMod, "CTRL", key), window_move({ workspace = ws }), { desc = "Move window and switch to workspace " .. ws })
+	-- Same as above, but doesn't switch to the workspace
+	hl.bind(b.combo(mainMod, "SHIFT", key), window_move({ workspace = ws, follow = false }), { desc = "Move window silently to workspace " .. ws })
 	-- Move active workspace to the current monitor and switch to it
 	hl.bind(b.combo(mainMod, "ALT", key), function()
 		hl.dispatch(hl.dsp.workspace.move({ workspace = ws, monitor = "current" }))
@@ -429,31 +262,34 @@ for i = 1, 10 do
 	end, { desc = "Move workspace " .. ws .. " to current monitor and switch to it" })
 end
 
+-- Special workspaces (scratchpads)
+do
+	local ws = "special:音楽"
+	hl.bind(b.combo(mainMod, "CTRL", "M"), window_move({ workspace = ws }), { desc = "Move window and switch to music workspace" })
+	hl.bind(b.combo(mainMod, "SHIFT", "M"), window_move({ workspace = ws, follow = false }), { desc = "Move window silently to music workspace" })
+	hl.bind(b.combo(mainMod, "M"), hl.dsp.workspace.toggle_special("音楽"), { desc = "Toggles the Music workspace" })
+	ws = "special:特別"
+	hl.bind(b.combo(mainMod, "CTRL", "equal"), window_move({ workspace = ws }), { desc = "Move active window to Special workspace" })
+	hl.bind(b.combo(mainMod, "SHIFT", "equal"), window_move({ workspace = ws, follow = false }), { desc = "Move active window silently to Special workspace" })
+	hl.bind(b.combo(mainMod, "equal"), hl.dsp.workspace.toggle_special("特別"), { desc = "Toggles the Special workspace" })
+
+	ws = "-1"
+	hl.bind(b.combo(mainMod, "CTRL", "left"), window_move({ workspace = ws }), { desc = "Move window and switch to the next workspace" })
+	hl.bind(b.combo(mainMod, "SHIFT", "left"), window_move({ workspace = ws, follow = false }), { desc = "Move window silently to the next workspace" })
+	ws = "+1"
+	hl.bind(b.combo(mainMod, "CTRL", "right"), window_move({ workspace = ws }), { desc = "Move window and switch to the previous workspace" })
+	hl.bind(b.combo(mainMod, "SHIFT", "right"), window_move({ workspace = ws, follow = false }), { desc = "Move window silently to the previous workspace" })
+end
+
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(b.combo(mainMod, "mouse_down"), hl.dsp.focus({ workspace = "e+1" }), { desc = "Scroll through workspaces incrementally" })
 hl.bind(b.combo(mainMod, "mouse_up"), hl.dsp.focus({ workspace = "e-1" }), { desc = "Scroll through workspaces decrementally" })
 hl.bind(b.combo(mainMod, "slash"), hl.dsp.focus({ workspace = "previous" }), { desc = "Switch to the previous workspace" })
 
--- Special workspaces (scratchpads)
-hl.bind(b.combo(mainMod, "CTRL", "equal"), hl.dsp.window.move({ workspace = "special:特別" }), { desc = "Move active window to Special workspace" })
-hl.bind(
-	b.combo(mainMod, "SHIFT", "equal"),
-	hl.dsp.window.move({ workspace = "special:特別", follow = false }),
-	{ desc = "Move active window silently to Special workspace" }
-)
-hl.bind(b.combo(mainMod, "equal"), hl.dsp.workspace.toggle_special("特別"), { desc = "Toggles the Special workspace" })
-hl.bind(b.combo(mainMod, "M"), hl.dsp.workspace.toggle_special("音楽"), { desc = "Toggles the Music workspace" })
-hl.bind(b.combo(mainMod, "F1"), hl.dsp.workspace.toggle_special("scratchpad"), { desc = "Call special workspace scratchpad" })
-hl.bind(
-	b.combo(mainMod, "ALT", "SHIFT", "F1"),
-	hl.dsp.window.move({ workspace = "special:scratchpad", follow = false }),
-	{ desc = "Move active window to special workspace scratchpad" }
-)
-
 -- ======= Others =======
 hl.bind(b.combo(mainMod, "SHIFT", "P"), hl.dsp.exec_cmd("hyprpicker -a"), { desc = "Open color picker" })
 
--- ======= Additional Settings =======
+-- ======= BINDINGS CONFIGS =======
 -- https://wiki.hypr.land/Configuring/Basics/Binds/
 hl.config({
 	binds = {
