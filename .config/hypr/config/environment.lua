@@ -5,7 +5,7 @@
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 local function core_env()
 	hl.env("XDG_MENU_PREFIX", "arch-")
-	hl.env("XDG_SCREENSHOTS_DIR", "$HOME/Pictures/Screenshots")
+	hl.env("XDG_SCREENSHOTS_DIR", os.getenv("HOME") .. "/Pictures/Screenshots")
 	hl.env("GSK_RENDERER", "gl")
 end
 
