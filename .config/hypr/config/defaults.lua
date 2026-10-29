@@ -24,7 +24,11 @@ Code_editor = "nvim"
 Email = "betterbird"
 Email_suffix = "--headless"
 Color_picker = "hyprpicker"
-Emoji_picker = "smile"
+Emoji_picker = [[rofi -show emoji -matching normal -theme "~/.config/rofi/theme-overrides/emoji.rasi" -eh 2 -emoji-format \
+"{emoji} <span weight='bold' size='small'>{name}</span>
+<span size='x-small' alpha='70%'>[{group}][ › {subgroup}]</span>"\
+]]
+
 Background_video_class = "bg"
 -- Background_video_title = "[Pp]icture[- ][Ii]n[- ][Pp]icture"
 Background_video_title = "Picture-in-Picture"
