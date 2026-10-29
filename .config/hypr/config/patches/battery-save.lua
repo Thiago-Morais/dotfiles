@@ -7,5 +7,14 @@ hl.config({
 		shadow = {
 			enabled = false,
 		},
+		glow = {
+			enabled = false,
+		},
+		motion_blur = {
+			enabled = false,
+		},
+		wobble = {
+			-- enabled = false,
+		},
 	},
 })

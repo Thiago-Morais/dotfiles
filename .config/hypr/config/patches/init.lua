@@ -1,2 +1,6 @@
+-- require("config.patches.work")
 -- require("config.patches.background-video")
+-- require("config.patches.no-blur")
+-- require("config.patches.extra-focus")
 -- require("config.patches.battery-save")
+-- require("config.patches.disable-dim-around")
