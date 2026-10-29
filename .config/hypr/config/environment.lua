@@ -7,6 +7,8 @@ local function core_env()
 	hl.env("XDG_MENU_PREFIX", "arch-")
 	hl.env("XDG_SCREENSHOTS_DIR", os.getenv("HOME") .. "/Pictures/Screenshots")
 	hl.env("GSK_RENDERER", "gl")
+	-- hl.env("LANG", "pt_BR.UTF-8")
+	hl.env("LANG", "en_US.UTF-8")
 end
 
 local function fix_scaling()
