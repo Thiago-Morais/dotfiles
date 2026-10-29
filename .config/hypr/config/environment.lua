@@ -16,7 +16,7 @@ local function fix_scaling()
 		hl.env("QT_CURSOR_SIZE", "24")
 	end
 	local function gdk_scaling()
-		hl.env("GDK_SCALE", "2") -- integer only
+		hl.env("GDK_SCALE", math.ceil(Monitor_scaling - 0.5)) -- integer only
 		hl.env("GDK_DPI_SCALE", "1") -- overscale firefox also
 		-- hl.env("GDK_DPI_SCALE","1") -- underscale steam also
 	end
@@ -28,15 +28,15 @@ local function fix_scaling()
 		-- hl.env("QT_QPA_PLATFORMTHEME","qt5ct")
 		hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
 		hl.env("QT_WAYLAND_FORCE_DPI", "physical")
-		hl.env("QT_SCREEN_SCALE_FACTOR", "1.6")
+		hl.env("QT_SCREEN_SCALE_FACTOR", Monitor_scaling)
 		-- hl.env("QT_SCREEN_SCALE_FACTOR","1")
 		hl.env("QT_SCALE_FACTOR", "1") -- overscale Dolphin and QDirStat?
 		hl.env("QT_WAYLAND_FORCE_DPI", "96") -- 96 * 1.0 -- overscale Dolphin
 	end
 	local function program_scalings()
-		hl.env("ELM_SCALE", "1.6") -- Elementary OS applications
-		hl.env("_JAVA_OPTIONS", "'-Dsun.java2d.uiScale=1.6'") -- Java applications (Swing/AWT)
-		hl.env("STEAM_FORCE_DESKTOPUI_SCALING", "1.6")
+		hl.env("ELM_SCALE", Monitor_scaling) -- Elementary OS applications
+		hl.env("_JAVA_OPTIONS", ("'-Dsun.java2d.uiScale=%s'"):format(Monitor_scaling)) -- Java applications (Swing/AWT)
+		hl.env("STEAM_FORCE_DESKTOPUI_SCALING", Monitor_scaling)
 	end
 
 	qt_scaling()

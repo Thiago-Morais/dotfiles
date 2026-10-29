@@ -4,6 +4,9 @@
 
 MainMod = "SUPER" -- Sets "Windows" key as main modifier
 
+-- Monitor
+Monitor_scaling = 1.6
+
 -- General
 File_manager = "alacritty -e $SHELL -c 'yazi; $SHELL' & disown"
 App_launcher = "rofi -show combi"
