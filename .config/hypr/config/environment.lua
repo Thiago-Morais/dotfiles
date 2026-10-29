@@ -100,3 +100,5 @@ program_specific_env()
 force_input_method_editor("fcitx")
 force_wayland()
 nvidia_env()
+
+require("env")
