@@ -34,6 +34,7 @@ Background_video_class = "bg"
 Background_video_title = "Picture-in-Picture"
 -- Background_video_title = "Picture in picture"
 Music_player = "youtube-music"
+Notification_provider = "mako"
 
 -- Screenshots
 Shot_region = "grimblast --freeze --notify --openparentdir copysave area"
