@@ -65,6 +65,7 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(all_backlight_devices .. " | xa
 
 -- ======= Others =======
 hl.bind(b.combo(MainMod, "SHIFT", "P"), hl.dsp.exec_cmd("hyprpicker -a"), { desc = "Open color picker" })
+hl.bind(b.combo(MainMod, "SHIFT", "I"), hl.dsp.exec_cmd("hyprpicker -a"), { desc = "Open color picker" })
 hl.bind(b.combo(MainMod, "ALT", "P"), hl.dsp.exec_cmd("hyprlock"), { description = "Lock the screen" })
 hl.bind(b.combo(MainMod, "ALT", "W"), hl.dsp.exec_cmd("killall -SIGUSR2 waybar"), { description = "Reload/restarts Waybar" })
 
