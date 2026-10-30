@@ -3,6 +3,15 @@ local b = require("config.binds-utils")
 local M = {}
 
 local _desc = ""
+local function toggle_keybinds_displayer()
+	local w = hl.get_window("initialtitle:HotKeyHub")
+	if w then
+		hl.dispatch(hl.dsp.window.close({ window = w }))
+	else
+		hl.dispatch(hl.dsp.exec_cmd("hotkeyhub --hyprland"))
+	end
+end
+
 function M.setup()
 	-- ======= Launch Programs =======
 	hl.bind(b.combo(MainMod, "SPACE"), hl.dsp.exec_cmd(App_launcher .. " &"), { description = "Runs your Application Launcher" })
@@ -25,6 +34,7 @@ function M.setup()
 	hl.bind(b.combo(MainMod, "I"), hl.dsp.exec_cmd(Color_picker .. " -ar"), { description = "Open your preferred Color picker (" .. Color_picker .. ")" })
 	hl.bind(b.combo(MainMod, "CTRL", "V"), hl.dsp.exec_cmd(Terminal .. " --class clipse -e 'clipse' &"), { description = "Open Clipboard history" })
 	hl.bind(b.combo(MainMod, "Y"), hl.dsp.exec_cmd(Music_player .. " &"), { description = "Open your preferred Music player (" .. Music_player .. ")" })
+	-- hl.bind(b.combo(MainMod, "Super_L"), toggle_keybinds_displayer, { description = "Open a Hotkeys cheat sheet" })
 
 	-- ======= Screenshot/Printscreen =======
 	hl.bind(b.combo("Print"), hl.dsp.exec_cmd(Shot_screen), { description = "Creates a screenshot of an area" })
