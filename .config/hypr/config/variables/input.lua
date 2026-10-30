@@ -3,6 +3,7 @@
 ---------------
 
 require("config.defaults")
+local b = require("config.binds-utils")
 
 -- Input wiki https://wiki.hypr.land/Configuring/Basics/Variables/#input
 hl.config({
@@ -39,3 +40,4 @@ hl.gesture({ fingers = 3, direction = "up", action = "fullscreen" })
 -- 3-finger swipe left closes active window
 -- hl.gesture({ fingers = 3, direction = "left", action = "close" })
 
+hl.gesture({ fingers = 2, direction = "pinch", mods = b.combo("SHIFT"), action = "cursor_zoom", zoom_level = 1, mode = "live", scale = 1 })
