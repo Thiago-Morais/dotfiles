@@ -82,7 +82,7 @@ hl.config({
 
 		-- https://wiki.hypr.land/Configuring/Basics/Variables/#groupbar
 		groupbar = {
-			font_family = "JetBrainsMonoNL Nerd Font Propo",
+			font_family = System_font,
 			font_size = 14,
 			font_weight_active = "bold",
 			text_offset = 2,
@@ -114,8 +114,8 @@ hl.config({
 hl.config({
 	misc = {
 		disable_hyprland_logo = true,
-		font_family = "JetBrainsMonoNL Nerd Font Propo",
-		splash_font_family = "JetBrainsMonoNL Nerd Font Propo",
+		font_family = System_font,
+		splash_font_family = System_font,
 		vrr = 2,
 		mouse_move_enables_dpms = true,
 		key_press_enables_dpms = true,

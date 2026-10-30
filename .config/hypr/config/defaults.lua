@@ -8,6 +8,7 @@ MainMod = "SUPER" -- Sets "Windows" key as main modifier
 Monitor_scaling = 1.6
 
 -- General
+System_font = "JetBrainsMonoNL Nerd Font Propo"
 File_manager = "alacritty -e $SHELL -c 'yazi; $SHELL' & disown"
 App_launcher = "rofi -show combi"
 Window_switcher = "rofi -show window"
