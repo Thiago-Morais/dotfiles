@@ -43,6 +43,9 @@ hl.bind(b.combo(MainMod, "SHIFT", "R"), hl.dsp.exec_cmd(Record_screen), { descri
 -- ======= Grouping Windows =======
 hl.bind(b.combo(MainMod, "G"), hl.dsp.group.toggle(), { description = "Toggles  current window group mode (ungroup all related)" })
 hl.bind(b.combo(MainMod, "Tab"), hl.dsp.group.next(), { description = "Switches to the next window in the group", repeating = true })
+hl.bind(b.combo(MainMod, "T"), hl.dsp.group.move_window(), { description = "Switches to the next window in the group", repeating = true })
+_desc = "Switches to the next window in the group"
+hl.bind(b.combo(MainMod, "SHIFT", "T"), hl.dsp.group.move_window({ forward = false }), { description = _desc, repeating = true })
 hl.bind(b.combo(MainMod, "SHIFT", "Tab"), hl.dsp.group.prev(), { description = "Switches to the next window in the group", repeating = true })
 
 -- -- ======= Toggle Gaps =======
