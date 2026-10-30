@@ -45,6 +45,7 @@ function start_secondary_process()
 	hl.exec_cmd(Idle_handler)
 	-- hl.exec_cmd("seanime &")
 	hl.exec_cmd("xsettingsd &")
+	hl.exec_cmd("dosage-tracker --startup")
 end
 
 function single_trigger_commands()
