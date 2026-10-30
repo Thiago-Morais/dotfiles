@@ -62,3 +62,5 @@ Start_all_services = "$start-docker; $start-mariadb"
 Start_dolibarr = "docker start dolibarr-mariadb-1  dolibarr-web-1"
 Start_all_docker = "$start-dolibarr"
 Wob_path = "/tmp/" .. os.getenv("HYPRLAND_INSTANCE_SIGNATURE") .. ".wob"
+
+Colors = require("colors")
