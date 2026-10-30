@@ -54,7 +54,7 @@ local function program_specific_env()
 	-- hl.env("MOZ_USE_XINPUT2","1")
 	hl.env("YAZI_CONFIG_HOME", "$HOME/.config/yazi")
 	hl.env("LESS", " -R")
-	hl.env("PACCACHE_ARGS", "'-rk1'")
+	hl.env("PACCACHE_ARGS", "'-rk0'")
 	hl.env("EDITOR", "nvim")
 end
 
