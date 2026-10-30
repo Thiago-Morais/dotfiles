@@ -28,19 +28,18 @@ notify_power_mode() {
 
 set_power_mode() {
     local power_mode=$1
+    local message=""
     if [[ $power_mode == $POWER_SAVE ]]; then
-        # hyprctl keyword decoration:blur:enabled false # > /dev/null
-        # hyprctl keyword decoration:shadow:enabled false # > /dev/null
-        hyprctl keyword source $HYPR_CONF_DIR/config/variables/battery-save.conf
-        notify_power_mode "Switched to Battery (Power Save)" # > /dev/null
+        hyprctl eval "dofile('$HYPR_CONF_DIR/config/patches/battery-save.lua')"
+        message="Switched to Battery (Power Save)"
     elif [[ $power_mode == $STANDARD ]]; then
-        # hyprctl keyword decoration:blur:enabled true # > /dev/null
-        # hyprctl keyword decoration:shadow:enabled true # > /dev/null
-        hyprctl keyword source $HYPR_CONF_DIR/config/variables/init.conf
-        notify_power_mode "Switched to AC (Standard)" # > /dev/null
+        hyprctl eval "dofile('$HYPR_CONF_DIR/config/variables/decoration.lua')"
+        hyprctl eval "dofile('$HYPR_CONF_DIR/config/variables/init.lua')"
+        message="Switched to AC (Standard)"
     fi
+    notify_power_mode "$message"
 }
 
 set_hyprland_environment_variables
 echo "power_mode = $power_mode"
-set_power_mode $power_mode
+set_power_mode "$power_mode"

@@ -45,6 +45,7 @@ hl.config({
 		dim_strength = 0.3,
 		dim_special = 0.4,
 
+		-- We manually se most variables so that set_power_mode.sh uses this to revert the battery-save patch
 		-- https://wiki.hyprland.org/Configuring/Variables/#blur
 		blur = {
 			enabled = true,
@@ -53,7 +54,7 @@ hl.config({
 			-- ignore_opacity = false
 			xray = false,
 			special = true,
-			new_optimizations = true,
+			-- new_optimizations = true,
 		},
 
 		-- https://wiki.hyprland.org/Configuring/Variables/#shadow
@@ -64,6 +65,23 @@ hl.config({
 			color = Colors.shadow,
 			offset = { 1.5, 1.5 },
 		},
+
+		glow = {
+			enabled = true,
+			range = 300,
+			render_power = 4,
+			color = "#00000000",
+			color_inactive = "#000",
+		},
+
+		motion_blur = {
+			enabled = true,
+			samples = 10,
+		},
+
+		-- wobble = {
+		-- 	-- enabled = true,
+		-- },
 	},
 })
 
@@ -96,7 +114,7 @@ hl.config({
 				active = Colors.tertiary,
 				inactive = Colors.tertiary_container,
 			},
-			gaps_in = 2,
+			gaps_in = 4,
 			gaps_out = 0,
 			keep_upper_gap = false,
 		},
