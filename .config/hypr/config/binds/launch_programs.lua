@@ -9,6 +9,7 @@ function M.setup()
 	hl.bind(b.combo(MainMod, "CTRL", "SPACE"), hl.dsp.exec_cmd(Window_switcher .. " &"), { description = "Runs your Window Switcher" })
 	_desc = "Opens your preferred Terminal emulator (" .. Terminal .. ")"
 	hl.bind(b.combo(MainMod, "RETURN"), hl.dsp.exec_cmd(Terminal .. " &"), { description = _desc })
+	hl.bind(b.combo("ALT", "RETURN"), hl.dsp.exec_cmd(Terminal .. " &"), { description = _desc })
 	hl.bind(b.combo(MainMod, "PERIOD"), hl.dsp.exec_cmd(Emoji_picker .. " &"), { description = "Open Emoji picker (" .. Emoji_picker .. ")" })
 	hl.bind(b.combo(MainMod, "E"), hl.dsp.exec_cmd(File_manager .. " &"), { description = "Opens your preferred File Manager (" .. File_manager .. ")" })
 	_desc = "Open your preferred Browser (" .. Browser .. ")"
