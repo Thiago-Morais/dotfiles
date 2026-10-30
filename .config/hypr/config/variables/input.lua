@@ -39,4 +39,3 @@ hl.gesture({ fingers = 3, direction = "up", action = "fullscreen" })
 -- 3-finger swipe left closes active window
 -- hl.gesture({ fingers = 3, direction = "left", action = "close" })
 
-hl.gesture({ fingers = 2, direction = "pinch", action = "resize" })
