@@ -107,7 +107,7 @@ hl.config({
 ----  MISC  ----
 ----------------
 
--- https://wiki.hypr.land/Configuring/Basics/Variables/#misc
+-- https://wiki.hypr.land/configuring/core/config-options/#misc
 hl.config({
 	misc = {
 		disable_hyprland_logo = true,
@@ -117,7 +117,8 @@ hl.config({
 		mouse_move_enables_dpms = true,
 		key_press_enables_dpms = true,
 		enable_swallow = true,
-		swallow_regex = "^(nautilus|nemo|thunar|btrfs-assistant.)$",
+		swallow_regex = ("(%s|Alacritty|Kitty)"):format(Terminal),
+		swallow_exception_regex = "wev",
 		focus_on_activate = true,
 		background_color = Colors.surface,
 		on_focus_under_fullscreen = 1,
