@@ -38,7 +38,7 @@ _desc = "Toggles bluetooth on/off"
 hl.bind(b.combo(MainMod, "ALT", "B"), hl.dsp.exec_cmd("/home/thiago/.config/hypr/scripts/bluetooth-toggle.sh"), { description = _desc, release = true })
 
 -- ======= Screen Recording =======
-hl.bind(b.combo(MainMod, "SHIFT", "R"), hl.dsp.exec_cmd(Shot_screen), { description = "Records screen" })
+hl.bind(b.combo(MainMod, "SHIFT", "R"), hl.dsp.exec_cmd(Record_screen), { description = "Records screen" })
 
 -- ======= Grouping Windows =======
 hl.bind(b.combo(MainMod, "G"), hl.dsp.group.toggle(), { description = "Toggles  current window group mode (ungroup all related)" })
