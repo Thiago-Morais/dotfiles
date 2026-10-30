@@ -14,7 +14,7 @@ hl.monitor({
 	output = "eDP-2",
 	mode = "highres@highrr",
 	position = "0x0",
-	scale = "1.6",
+	scale = Monitor_scaling,
 })
 
 hl.monitor({
