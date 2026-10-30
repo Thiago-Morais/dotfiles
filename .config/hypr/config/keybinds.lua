@@ -23,9 +23,9 @@ _desc = "Toggles current window maximize mode"
 hl.bind(b.combo(MainMod, "SHIFT", "F"), hl.dsp.window.fullscreen({ mode = "fullscreen" }), { description = _desc })
 _desc = "Resize window to the size of the screen (floating)"
 hl.bind(b.combo(MainMod, "ALT", "F"), function()
-	local monitor = hl.get_active_monitor() or { width = 1920, height = 1080 }
-	hl.dispatch(hl.dsp.window.resize({ x = monitor.width, y = monitor.height }))
-	hl.dispatch(hl.dsp.window.center())
+	local monitor = hl.get_active_monitor()
+	hl.dispatch(hl.dsp.window.resize({ x = monitor.width / Monitor_scaling, y = monitor.height / Monitor_scaling }))
+	hl.dispatch(hl.dsp.window.move({ x = 0, y = 0 }))
 end, { description = _desc })
 hl.bind(b.combo(MainMod, "SHIFT", "slash"), hl.dsp.window.center(), { desc = "Center active window downwards (floating)" })
 
