@@ -3,7 +3,7 @@
 -------------------
 require("config.defaults")
 
-local start_core_processes, start_secondary_process, fix_power_usage, single_trigger_commands, start_programs_in_workspaces
+local start_core_processes, start_secondary_process, fix_power_usage, single_trigger_commands, start_programs_in_workspaces, other
 
 local function main()
 	-- See https://wiki.hypr.land/Configuring/Basics/Autostart/
@@ -24,6 +24,7 @@ local function main()
 		hl.exec_cmd("dbus-update-activation-environment --systemd &")
 
 		start_programs_in_workspaces()
+		other()
 	end)
 end
 
@@ -70,6 +71,11 @@ function start_programs_in_workspaces()
 	hl.exec_cmd("[workspace 8 silent] " .. Email .. " &")
 	-- hl.exec_cmd("[workspace special:音楽 silent] youtube-music" .. " &")
 	hl.exec_cmd("[workspace special:特別 silent] " .. Terminal .. " &")
+end
+
+function other()
+	-- Remove after successful print
+	hl.exec_cmd("~/repos/third-party/oci-arm-catcher/run-in-background.sh")
 end
 
 -- **** Ignore ****
