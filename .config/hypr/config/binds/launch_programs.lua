@@ -25,6 +25,13 @@ function M.setup()
 	hl.bind(b.combo(MainMod, "I"), hl.dsp.exec_cmd(Color_picker .. " -ar"), { description = "Open your preferred Color picker (" .. Color_picker .. ")" })
 	hl.bind(b.combo(MainMod, "CTRL", "V"), hl.dsp.exec_cmd(Terminal .. " --class clipse -e 'clipse' &"), { description = "Open Clipboard history" })
 	hl.bind(b.combo(MainMod, "Y"), hl.dsp.exec_cmd(Music_player .. " &"), { description = "Open your preferred Music player (" .. Music_player .. ")" })
+
+	-- ======= Screenshot/Printscreen =======
+	hl.bind(b.combo("Print"), hl.dsp.exec_cmd(Shot_screen), { description = "Creates a screenshot of an area" })
+	hl.bind(b.combo(MainMod, "SHIFT", "S"), hl.dsp.exec_cmd(Shot_region), { description = "Creates a screenshot of an area" })
+	hl.bind(b.combo(MainMod, "SHIFT", "ALT", "S"), hl.dsp.exec_cmd(Alt_Shot), { description = "Use and alternative screenshot command" })
+	hl.bind(b.combo("CTRL", "Print"), hl.dsp.exec_cmd(Shot_window), { description = "Creates a screenshot of the active window" })
+	hl.bind(b.combo("ALT", "Print"), hl.dsp.exec_cmd(Shot_screen), { description = "Creates a screenshot of the active display" })
 end
 
 return M

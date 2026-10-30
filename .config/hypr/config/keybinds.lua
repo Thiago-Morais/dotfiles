@@ -37,12 +37,6 @@ hl.bind(b.combo(MainMod, "ALT", "S"), hl.dsp.exec_cmd(Terminal .. " -e " .. Sync
 _desc = "Toggles bluetooth on/off"
 hl.bind(b.combo(MainMod, "ALT", "B"), hl.dsp.exec_cmd("/home/thiago/.config/hypr/scripts/bluetooth-toggle.sh"), { description = _desc, release = true })
 
--- ======= Screenshot/Printscreen =======
-hl.bind(b.combo("Print"), hl.dsp.exec_cmd(Shot_region), { description = "Creates a screenshot of an area" })
-hl.bind(b.combo(MainMod, "SHIFT", "S"), hl.dsp.exec_cmd(Shot_region), { description = "Creates a screenshot of an area" })
-hl.bind(b.combo("CTRL", "Print"), hl.dsp.exec_cmd(Shot_window), { description = "Creates a screenshot of the active window" })
-hl.bind(b.combo("ALT", "Print"), hl.dsp.exec_cmd(Shot_screen), { description = "Creates a screenshot of the active display" })
-
 -- ======= Screen Recording =======
 hl.bind(b.combo(MainMod, "SHIFT", "R"), hl.dsp.exec_cmd(Shot_screen), { description = "Records screen" })
 

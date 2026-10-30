@@ -40,6 +40,7 @@ Notification_provider = "mako"
 Shot_region = "grimblast --freeze --notify --openparentdir copysave area"
 Shot_window = "grimblast --freeze --notify --openparentdir copysave active"
 Shot_screen = "grimblast --freeze --notify --openparentdir copysave output"
+Alt_Shot = "flameshot gui"
 
 -- Commands
 Sync_obsidian = "rclone bisync --create-empty-src-dirs --compare size,modtime,checksum --slow-hash-sync-only --resilient -MvP --drive-skip-gdocs --fix-case --transfers 16 --checkers 16 "
