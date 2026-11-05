@@ -116,7 +116,7 @@ function video_player()
 		match = { class = "^(vlc|imv|mpv|danmufloat|termfloat|nemo|ncmpcpp)$" },
 		float = 1,
 		size = { 960, 540 },
-		move = { "monitor_w*0.5-window_w*0.5", "monitor_h*0.5-window_h*0.5" },
+		center = true,
 	})
 end
 
