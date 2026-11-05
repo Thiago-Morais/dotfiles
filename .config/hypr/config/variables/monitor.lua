@@ -26,3 +26,7 @@ hl.monitor({
 hl.config({ xwayland = {
 	force_zero_scaling = true,
 } })
+
+hl.on("monitor.layout_changed", function()
+	hl.dispatch(hl.dsp.reload_config())
+end)

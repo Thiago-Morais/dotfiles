@@ -9,8 +9,9 @@
 local colors = require("colors")
 
 local DEFAULT_FLOATING_SIZE = { "960", "540" }
-local default_rules, float_necessary_windows, set_base_opacity, general_window_rules, bind_windows_to_workspace, prevent_idle, layer_rules
-local decorations, video_player, terminal, specific_applications, floatin_windows, fullscreen_windows, background_windows
+local default_rules, float_necessary_windows, set_base_opacity, general_window_rules, decorations, bind_windows_to_workspace, prevent_idle, layer_rules, workspace_rules
+local video_player, terminal, specific_applications, floatin_windows, fullscreen_windows
+local set_special_gaps
 
 local function main()
 	default_rules()
@@ -21,6 +22,7 @@ local function main()
 	bind_windows_to_workspace()
 	prevent_idle()
 	layer_rules()
+	workspace_rules()
 end
 
 function default_rules()
@@ -198,6 +200,18 @@ function layer_rules()
 	hl.layer_rule({ blur = true, match = { namespace = "^(rofi)$" } })
 	hl.layer_rule({ dim_around = true, match = { namespace = "^(rofi)$" } })
 	hl.layer_rule({ no_anim = true, match = { namespace = "^(rofi)$" } })
+end
+
+function workspace_rules()
+	set_special_gaps(0.2)
+end
+
+function set_special_gaps(factor)
+	for _, m in ipairs(hl.get_monitors()) do
+		local x = math.floor(m.width / m.scale * (factor / 2))
+		local y = math.floor(m.height / m.scale * (factor / 2))
+		hl.workspace_rule({ workspace = "s[true] m[" .. m.name .. "]", gaps_out = { top = y, right = x, bottom = y, left = x } })
+	end
 end
 
 main()

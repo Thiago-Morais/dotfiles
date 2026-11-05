@@ -25,7 +25,6 @@ hl.config({
 hl.config({
 	dwindle = {
 		preserve_split = true,
-		special_scale_factor = 0.8,
 		split_bias = 1,
 	},
 })
@@ -34,7 +33,6 @@ hl.config({
 	-- See https://wiki.hypr.land/Configuring/Layouts/Master-Layout/ for more
 	master = {
 		new_status = "master",
-		special_scale_factor = 0.8,
 	},
 })
 
