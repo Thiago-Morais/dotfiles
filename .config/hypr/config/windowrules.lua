@@ -12,6 +12,7 @@ local DEFAULT_FLOATING_SIZE = { "960", "540" }
 local default_rules, float_necessary_windows, set_base_opacity, general_window_rules, decorations, bind_windows_to_workspace, prevent_idle, layer_rules, workspace_rules
 local video_player, terminal, specific_applications, floatin_windows, fullscreen_windows
 local set_special_gaps
+local PICTURE_IN_PICTURE = "[Pp]icture[- ][Ii]n[- ][Pp]icture"
 
 local function main()
 	default_rules()
@@ -108,7 +109,6 @@ function decorations()
 	specific_applications()
 	floatin_windows()
 	fullscreen_windows()
-	background_windows()
 end
 
 function video_player()
@@ -128,7 +128,7 @@ function specific_applications()
 	hl.window_rule({ match = { class = ".*(01KCKFKMNJ6CYVWDH0TA87FX47)" }, no_dim = 1, opaque = 1 })
 	hl.window_rule({ match = { title = "^(danmufloat)$" }, pin = 1, rounding = 5 })
 	hl.window_rule({ match = { title = "^(termfloat)$" }, rounding = 5 })
-	hl.window_rule({ match = { title = "^([Pp]icture[- ][Ii]n[- ][Pp]icture)$" }, no_dim = 1, opaque = 1, float = 1, pin = 1, size = { "800", "450" } })
+	hl.window_rule({ match = { title = ("^(%s)$"):format(PICTURE_IN_PICTURE) }, no_dim = 1, opaque = 1, float = 1, pin = 1, size = { "800", "450" } })
 	hl.window_rule({ match = { class = "^(com.github.wwmm.easyeffects)" }, maximize = 1 })
 	hl.window_rule({ match = { class = "ueberzugpp_.*" }, no_dim = 1, opaque = 1, float = 1, no_anim = 1 })
 	hl.window_rule({ match = { class = "^(mpv|vlc)$" }, no_dim = 1, opaque = 1, pin = 1 })
@@ -152,44 +152,20 @@ function fullscreen_windows()
 	hl.window_rule({ match = { fullscreen = 1 }, border_size = 0, no_dim = 1, opaque = 1 })
 end
 
-function background_windows()
-	hl.window_rule({
-		match = { class = Background_video_class },
-		border_size = 0,
-		no_dim = 1,
-		opaque = 1,
-		float = 1,
-		center = 1,
-		rounding = 0,
-		size = { "monitor_w", "monitor_h" },
-	})
-	hl.window_rule({
-		match = { title = Background_video_title },
-		border_size = 0,
-		no_dim = 1,
-		opaque = 1,
-		float = 1,
-		center = 1,
-		rounding = 0,
-		size = { "monitor_w", "monitor_h" },
-	})
-end
-
 function bind_windows_to_workspace()
-	hl.window_rule({ workspace = 2, match = { class = ("(%s|obsidian|github-desktop-plus)"):format(Note_taker) } })
+	hl.window_rule({ workspace = 2, match = { class = ("(%s|obsidian|md.Obsidian|md.obsidian.Obsidian|github-desktop-plus|desktop-plus)"):format(Note_taker) } })
 	hl.window_rule({ workspace = 3, match = { class = ("^(%s|nvim|code)$"):format(Code_editor) } })
 	hl.window_rule({ workspace = 4, match = { class = ("^(%s|zen-browser|firefox|chrome|zen)$"):format(Browser) } })
 	hl.window_rule({ workspace = 5, match = { initial_title = "(WhatsApp Web|whatsapp-web).*" } })
+	hl.window_rule({ workspace = 5, match = { title = ".*(WhatsApp Web — ).*" } })
 	hl.window_rule({ workspace = 8, match = { class = "(eu.betterbird.Betterbird).*" } })
 	hl.window_rule({ workspace = "special:音楽", match = { class = "^(com.github.th[_-]ch.youtube[_-]music|org.kde.kasts)$" } })
 end
 
 function prevent_idle()
-	hl.window_rule({
-		idle_inhibit = "always",
-		match = { class = ("^(mpv|[Pp]icture[- ][Ii]n[- ][Pp]icture|bg|%s)$"):format(Background_video_class) },
-	})
-	hl.window_rule({ idle_inhibit = "always", match = { title = ("^(mpv|[Pp]icture[- ][Ii]n[- ][Pp]icture)$"):format(Background_video_title) } })
+	local match = "mpv|%s|bg|%s|Anydesk"
+	hl.window_rule({ idle_inhibit = "always", match = { class = ("^(" .. match .. ")$"):format(PICTURE_IN_PICTURE, Background_video_class) } })
+	hl.window_rule({ idle_inhibit = "always", match = { title = ("^(" .. match .. ")$"):format(PICTURE_IN_PICTURE, Background_video_title) } })
 end
 
 function layer_rules()
