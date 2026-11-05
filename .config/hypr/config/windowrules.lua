@@ -142,6 +142,7 @@ function specific_applications()
 		hl.window_rule({ match = { title = "^(.* - Inkscape)$" }, float = 0 })
 	end
 	inkscape_rules()
+	hl.window_rule({ match = { class = "flameshot" }, float = 1, opaque = 1, center = false })
 end
 
 function floatin_windows()
