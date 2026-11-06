@@ -96,3 +96,8 @@
 .config/waybar/themes/extra-colors.css
 .config/rofi/colors.rasi
 .config/mako/mako-colors
+
+# Inkscape state and logs
+.config/inkscape/dialogs-state-ex.ini
+.config/inkscape/extension-errors.log
+.config/inkscape/fontcollections/recently_used_fonts.log
