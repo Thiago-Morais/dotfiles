@@ -68,7 +68,7 @@ hl.config({
 
 		glow = {
 			enabled = true,
-			range = 300,
+			range = 100,
 			render_power = 4,
 			color = "#00000000",
 			color_inactive = "#000",
