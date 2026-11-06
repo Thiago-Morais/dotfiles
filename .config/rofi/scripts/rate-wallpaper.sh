@@ -159,7 +159,7 @@ fi
 # Second pass at input
 get_valid_current_image_path() {
     local image_path="$(get_image_path_from_wallpaper_service)"
-    if [[ $follow_link_when_not_found ]] && [[ -z "$image_path" || ! -f "$image_path" ]]; then
+    if (( follow_link_when_not_found )) && [[ -z "$image_path" || ! -f "$image_path" ]]; then
         log_error "Image not found at '$image_path'"
         log "following link"
         local image_path=$(readlink -f "$(get_link_path)")
