@@ -1,4 +1,6 @@
 monitors.conf
+monitors.lua
+hyprmon.lua
 workspaces.conf
 colors.lua
 env.lua
