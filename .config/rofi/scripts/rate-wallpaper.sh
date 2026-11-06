@@ -200,7 +200,7 @@ if (($kb_custom == 11)); then
 fi
 kb_custom_is_within_allowed_range=$(( allow_rating_outside_1_to_10_range || kb_custom - 1 <= 10 ))
 if (( ! kb_custom_is_within_allowed_range )) ; then
-    throw "kb-custom '$kb_custom' outside allowed range; Set \`allow_rating_outside_0_to_10_range\` to \`true\`"
+    throw "kb-custom '$kb_custom' outside allowed range; Set \`allow_rating_outside_1_to_10_range\` to \`1\`"
 fi
 
 current_image_path=$(get_valid_current_image_path)
