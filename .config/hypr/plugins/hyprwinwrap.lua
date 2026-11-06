@@ -32,7 +32,7 @@ hl.window_rule({
 	no_dim = 1,
 	opaque = 1,
 	float = 1,
-	center = 1,
+	center = true,
 	rounding = 0,
 	size = { "monitor_w", "monitor_h" },
 })
@@ -42,7 +42,7 @@ hl.window_rule({
 	no_dim = 1,
 	opaque = 1,
 	float = 1,
-	center = 1,
+	center = true,
 	rounding = 0,
 	size = { "monitor_w", "monitor_h" },
 })
