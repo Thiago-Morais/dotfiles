@@ -1,8 +1,8 @@
 [config]
 caching = true
 
-[config.wallpaper]
-set = true
+# [config.wallpaper]
+# set = true
 # command = "hyprctl"
 # arguments = ["hyprpaper", "reload", ","]
 
@@ -100,10 +100,10 @@ input_path = '~/.config/matugen/templates/gtk-colors.css'
 output_path = '~/.config/gtk-4.0/colors.css'
 # output_path = '~/.config/gtk-4.0/gtk.css'
 
-[templates.pywalfox]
-input_path = '~/.config/matugen/templates/pywalfox-colors.json'
-output_path = '~/.cache/wal/colors.json'
-post_hook = 'pywalfox update'
+# [templates.pywalfox]
+# input_path = '~/.config/matugen/templates/pywalfox-colors.json'
+# output_path = '~/.cache/wal/colors.json'
+# post_hook = 'pywalfox update'
 
 [templates.wlogout]
 input_path = '~/.config/matugen/templates/colors.css'
@@ -117,10 +117,10 @@ output_path = '~/.config/wleave/colors.css'
 input_path = '~/.config/matugen/templates/alacritty.toml'
 output_path = '~/.config/alacritty/colors.toml'
 
-[templates.ghostty]
-input_path = '~/.config/matugen/templates/ghostty'
-output_path = '~/.config/ghostty/themes/Matugen'
-post_hook = 'pkill -SIGUSR2 ghostty'
+# [templates.ghostty]
+# input_path = '~/.config/matugen/templates/ghostty'
+# output_path = '~/.config/ghostty/themes/Matugen'
+# post_hook = 'pkill -SIGUSR2 ghostty'
 
 [templates.yazi]
 input_path = '~/.config/matugen/templates/yazi-theme.toml'
