@@ -100,7 +100,7 @@ function set_base_opacity()
 end
 
 function general_window_rules()
-	hl.window_rule({ match = { class = ".*" }, center = 1 })
+	hl.window_rule({ match = { class = ".*" }, center = true })
 end
 
 function decorations()

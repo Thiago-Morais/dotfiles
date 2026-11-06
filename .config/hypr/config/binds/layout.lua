@@ -13,7 +13,6 @@ function M.setup()
 	hl.bind(b.combo(MainMod, "P"), hl.dsp.window.pin(), { description = "Pin current window (shows on all workspaces)" })
 	hl.bind(b.combo(MainMod, "U"), hl.dsp.layout("togglesplit"), { description = "Toggles current window split mode" })
 	hl.bind(b.combo(MainMod, "SHIFT", "U"), hl.dsp.layout("swapsplit"), { description = "Swap current window position within work tree" })
-	hl.bind(b.combo(MainMod, "mouse:272"), hl.dsp.window.drag(), { drag = true, desc = "Move the window towards a direction" })
 
 	local function move_window_or_focus_towards_direction()
 		for _, d in ipairs(b.DIRECTIONS) do
@@ -51,8 +50,8 @@ function M.setup()
 		end
 
 		-- Resize / move window with mainMod + LMB/RMB and dragging
-		hl.bind(b.combo(MainMod, "mouse:273"), hl.dsp.window.resize(), { drag = true, desc = "Resize the window towards a direction" })
-		hl.bind(b.combo(MainMod, "mouse:272"), hl.dsp.window.drag(), { drag = true, desc = "Drag window" })
+		hl.bind(b.combo(MainMod, "mouse:273"), hl.dsp.window.resize(), { mouse = true, desc = "Resize the window towards a direction" })
+		hl.bind(b.combo(MainMod, "mouse:272"), hl.dsp.window.drag(), { mouse = true, desc = "Drag window" })
 
 		-- Activate keyboard window resize mode (left commented out, as in the original)
 		-- hl.bind(b.combo(mainMod, "R"), hl.dsp.submap("resize"), { desc = "Activates window resizing mode" })
