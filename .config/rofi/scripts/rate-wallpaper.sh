@@ -212,7 +212,7 @@ log "filename = '$filename'"
 fullpath="$destination_base_dir/$dest_dir_name/$filename"
 log "fullpath = '$fullpath'"
 
-if (("$current_image_path" == "$fullpath")); then
+if [[ "$current_image_path" == "$fullpath" ]]; then
     log "wallpaper directory is already '$dest_dir_name'"
     notify "wallpaper directory is already '$dest_dir_name'" -u low
     exit 0
