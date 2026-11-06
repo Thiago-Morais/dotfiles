@@ -136,7 +136,8 @@ hl.config({
 		key_press_enables_dpms = true,
 		enable_swallow = true,
 		swallow_regex = ("(%s|Alacritty|Kitty)"):format(Terminal),
-		swallow_exception_regex = ".* - (wev|neovim|nvim|mpv|mpvbg)",
+		-- This is the parent new name on launch
+		swallow_exception_regex = ".* - (wev|neovim|nvim|mpv|mpvbg)|^Yazi: .*",
 		focus_on_activate = true,
 		background_color = Colors.surface,
 		on_focus_under_fullscreen = 1,
