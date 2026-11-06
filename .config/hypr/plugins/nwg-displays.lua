@@ -1,1 +1,1 @@
-require("monitors")
+pcall(require, "monitors")
