@@ -34,31 +34,31 @@ get_rated_mapped_dir_name() {
             local rated_dir_name="quality-01"
             ;;
         2)
-            local rated_dir_name="quality-01/quality-02"
+            local rated_dir_name="quality-02"
             ;;
         3)
-            local rated_dir_name="quality-01/quality-02/quality-03"
+            local rated_dir_name="quality-03"
             ;;
         4)
-            local rated_dir_name="quality-01/quality-02/quality-03/quality-04"
+            local rated_dir_name="quality-04"
             ;;
         5)
-            local rated_dir_name="quality-01/quality-02/quality-03/quality-04/quality-05"
+            local rated_dir_name="quality-05"
             ;;
         6)
-            local rated_dir_name="quality-01/quality-02/quality-03/quality-04/quality-05/quality-06"
+            local rated_dir_name="quality-06"
             ;;
         7)
-            local rated_dir_name="quality-01/quality-02/quality-03/quality-04/quality-05/quality-06/quality-07"
+            local rated_dir_name="quality-07"
             ;;
         8)
-            local rated_dir_name="quality-01/quality-02/quality-03/quality-04/quality-05/quality-06/quality-07/quality-08"
+            local rated_dir_name="quality-08"
             ;;
         9)
-            local rated_dir_name="quality-01/quality-02/quality-03/quality-04/quality-05/quality-06/quality-07/quality-08/quality-09"
+            local rated_dir_name="quality-09"
             ;;
         10)
-            local rated_dir_name="quality-01/quality-02/quality-03/quality-04/quality-05/quality-06/quality-07/quality-08/quality-09/quality-10"
+            local rated_dir_name="quality-10"
             ;;
         *)
             local rated_dir_name="quality-$padded_rating"
