@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=GTK_IM_MODULE=fcitx zen-browser
+Exec=zen-browser
 MimeType=application/pdf;
 Name=zen-browser
 NoDisplay=true
