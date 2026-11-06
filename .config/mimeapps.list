@@ -79,3 +79,4 @@ x-scheme-handler/webcal=userapp-Thunderbird-Y10UM3.desktop
 x-scheme-handler/webcals=userapp-Thunderbird-Y10UM3.desktop
 x-scheme-handler/x-github-client=desktop-plus.desktop
 x-scheme-handler/x-github-desktop-auth=desktop-plus.desktop
+x-scheme-handler/rpi-imager=com.raspberrypi.rpi-imager-uri-handler.desktop
