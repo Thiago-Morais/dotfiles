@@ -2,6 +2,60 @@
 <keys
    name="User Shortcuts">
   <bind
+     gaction="app.org.inkstitch.params"
+     keys="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;p" />
+  <bind
+     gaction="app.org.inkstitch.fill-to-satin.noprefs"
+     keys="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;f" />
+  <bind
+     gaction="app.org.inkstitch.auto-run.noprefs"
+     keys="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;u" />
+  <bind
+     gaction="app.org.inkstitch.reorder.noprefs"
+     keys="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;l" />
+  <bind
+     gaction="app.org.inkstitch.simulator"
+     keys="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;i" />
+  <bind
+     gaction="win.path-reverse"
+     keys="&lt;Primary&gt;&lt;Alt&gt;r" />
+  <bind
      gaction="app.selection-hide"
      keys="&lt;Shift&gt;h" />
+  <bind
+     gaction="app.org.inkstitch.auto-satin.noprefs"
+     keys="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;a" />
+  <bind
+     gaction="app.org.inkstitch.jump-to-stroke"
+     keys="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;j" />
+  <bind
+     gaction="app.org.inkstitch.zigzag-line-to-satin.noprefs"
+     keys="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;z" />
+  <bind
+     gaction="app.org.inkstitch.commands"
+     keys="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;c" />
+  <bind
+     gaction="app.org.inkstitch.stitch-plan-preview"
+     keys="&lt;Primary&gt;&lt;Alt&gt;at" />
+  <bind
+     gaction="app.org.inkstitch.redwork.noprefs"
+     keys="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;r" />
+  <bind
+     gaction="app.org.inkstitch.stitch-plan-preview.noprefs"
+     keys="&lt;Primary&gt;&lt;Alt&gt;numbersign" />
+  <bind
+     gaction="win.canvas-zoom-absolute"
+     keys="8" />
+  <modifier
+     action="select-add-to"
+     modifiers="Shift" />
+  <modifier
+     action="select-first-hit"
+     modifiers="Ctrl" />
+  <modifier
+     action="select-force-drag"
+     modifiers="Ctrl" />
+  <modifier
+     action="move-confine"
+     modifiers="Ctrl" />
 </keys>
