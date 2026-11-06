@@ -3,11 +3,11 @@
 
 <svg
    width="59cm"
-   height="200cm"
-   viewBox="0 0 590 2000"
+   height="25cm"
+   viewBox="0 0 59 25"
    version="1.1"
    id="svg1"
-   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@
      inkscape:groupmode="layer"
      id="layer1" />
   <inkscape:templateinfo>
-    <inkscape:name>default-heko-template</inkscape:name>
-    <inkscape:date>2026-01-20</inkscape:date>
+    <inkscape:name>Heko DTF</inkscape:name>
+    <inkscape:date>2026-07-14</inkscape:date>
   </inkscape:templateinfo>
 </svg>
