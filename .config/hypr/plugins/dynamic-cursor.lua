@@ -34,7 +34,7 @@ hl.config({
 
 				-- controls how powerful the tilt is, the lower, the more power
 				-- this value controls at which speed (px/s) the full tilt is reached
-				limit = 50,
+				limit = 500,
 
 				-- relationship between speed and tilt, supports these values:
 				-- linear             - a linear function is used
