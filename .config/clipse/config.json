@@ -1,59 +1,50 @@
 {
-  "allowDuplicates": false,
-  "historyFile": "clipboard_history.json",
-  "maxHistory": 100,
-  "deleteAfter": 0,
-  "logFile": "clipse.log",
-  "pollInterval": 50,
-  "maxEntryLength": 65,
-  "themeFile": "custom_theme.json",
-  "tempDir": "tmp_files",
-  "keyBindings": {
-    "up": "k",
-    "down": "j",
-    "nextPage": "l",
-    "prevPage": "h",
-    "selectSingle": "s",
-    "clearSelected": "S",
-    "selectUp": "K",
-    "selectDown": "J",
+    "allowDuplicates": false,
+    "historyFile": "clipboard_history.json",
+    "maxHistory": 1000,
+    "deleteAfter": 0,
+    "logFile": "clipse.log",
+    "pollInterval": 50,
+    "maxEntryLength": 65,
+    "themeFile": "custom_theme.json",
+    "tempDir": "tmp_files",
+    "keyBindings": {
+        "up": "k",
+        "down": "j",
+        "nextPage": "l",
+        "prevPage": "h",
+        "selectSingle": "s",
+        "clearSelected": "S",
+        "selectUp": "K",
+        "selectDown": "J",
 
-    "filter": "/",
-    "preview": " ",
-    "choose": "enter",
+        "filter": "/",
+        "preview": " ",
+        "choose": "enter",
 
-    "quit": "esc",
-    "forceQuit": "Q",
+        "quit": "esc",
+        "forceQuit": "Q",
 
-    "end": "$",
-    "home": "^",
-    "more": "?",
-    "remove": "x",
-    "togglePin": "p",
-    "togglePinned": "tab",
-    "yankFilter": "ctrl+s"
-  },
-  "imageDisplay": {
-    "type": "basic",
-    "scaleX": 9,
-    "scaleY": 9,
-    "heightCut": 2
-  },
-  "excludedApps": [
-    "1Password",
-    "Bitwarden",
-    "KeePassXC",
-    "LastPass",
-    "Dashlane",
-    "Password Safe",
-    "Keychain Access"
-  ],
-  "autoPaste": {
-    "enabled": false,
-    "keybind": "ctrl+v",
-    "buffer": 10
-  },
-  "enableMouse": true,
-  "enableDescription": true
+        "end": "$",
+        "home": "^",
+        "more": "?",
+        "remove": "x",
+        "togglePin": "p",
+        "togglePinned": "tab",
+        "yankFilter": "ctrl+s"
+    },
+    "imageDisplay": {
+        "type": "basic",
+        "scaleX": 9,
+        "scaleY": 9,
+        "heightCut": 2
+    },
+    "excludedApps": ["1Password", "Bitwarden", "KeePassXC", "LastPass", "Dashlane", "Password Safe", "Keychain Access"],
+    "autoPaste": {
+        "enabled": false,
+        "keybind": "ctrl+v",
+        "buffer": 10
+    },
+    "enableMouse": true,
+    "enableDescription": true
 }
-
