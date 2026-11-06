@@ -67,7 +67,7 @@ function start_programs_in_workspaces()
 	hl.exec_cmd("[workspace 3 silent] " .. Terminal_preffix .. " cd ~/.config/hypr/ && " .. Code_editor .. " -S " .. Terminal_suffix .. " &")
 	-- hl.exec_cmd("[workspace 4 silent] " .. Browser .. " &")
 	-- Launch WhatsApp
-	-- hl.exec_cmd("[workspace 5 silent] firefoxpwa site launch 01K7N2EPSD39A4MS7ZFD78HVCC" .. " &")
+	hl.exec_cmd("[workspace 5 silent] gtk-launch chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default" .. " &")
 	hl.exec_cmd("[workspace 8 silent] " .. Email .. " &")
 	-- hl.exec_cmd("[workspace special:音楽 silent] youtube-music" .. " &")
 	hl.exec_cmd("[workspace special:特別 silent] " .. Terminal .. " &")
