@@ -12,6 +12,7 @@
         "equalizer#0": {
             "balance": 0.0,
             "bypass": false,
+            "decramp": "Off",
             "input-gain": 0.0,
             "left": {
                 "band0": {
@@ -354,12 +355,45 @@
             },
             "split-channels": false
         },
+        "level_meter#0": {
+            "bypass": false
+        },
+        "level_meter#1": {
+            "bypass": false
+        },
+        "limiter#0": {
+            "alr": true,
+            "alr-attack": 0.10000000149011612,
+            "alr-knee": 11.99999713897705,
+            "alr-knee-smooth": -5.0,
+            "alr-release": 1000.0,
+            "attack": 0.25,
+            "bypass": false,
+            "dithering": "None",
+            "gain-boost": true,
+            "input-gain": 0.0,
+            "input-to-link": -80.01,
+            "input-to-sidechain": -80.01,
+            "link-to-input": -80.01,
+            "link-to-sidechain": -80.01,
+            "lookahead": 20.0,
+            "mode": "Herm Wide",
+            "output-gain": -6.0,
+            "oversampling": "None",
+            "release": 20.0,
+            "sidechain-preamp": 0.0,
+            "sidechain-to-input": -80.01,
+            "sidechain-to-link": -80.01,
+            "sidechain-type": "Internal",
+            "stereo-link": 0.0,
+            "threshold": -6.0
+        },
         "maximizer#0": {
             "bypass": false,
             "input-gain": 0.0,
             "output-gain": 0.0,
             "release": 25.0,
-            "threshold": 0.0
+            "threshold": -7.0
         },
         "multiband_compressor#0": {
             "band0": {
@@ -603,7 +637,10 @@
             "bass_loudness#0",
             "equalizer#0",
             "multiband_compressor#0",
-            "maximizer#0"
+            "maximizer#0",
+            "level_meter#0",
+            "limiter#0",
+            "level_meter#1"
         ]
     }
 }
