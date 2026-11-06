@@ -36,8 +36,7 @@
 window {
     children:         ["wallpaper-panel","mainbox"];
     width:            55%;
-    location:         south;
-    y-offset:         -25%;
+    location:         center;
     padding:          5px;
     spacing:          5px;
     border:           1px;

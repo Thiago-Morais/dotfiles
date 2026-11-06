@@ -1,0 +1,10 @@
+@import "../theme.rasi"
+listview {
+	columns: 2;
+	lines: 4;
+	lines: 8;
+}
+
+window {
+    width: 80%;
+}

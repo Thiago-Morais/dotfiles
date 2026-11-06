@@ -1,7 +1,7 @@
 @theme "~/.config/rofi/theme.rasi"
 
 configuration {
-    modes: "combi,drun,window,run,ssh,rate-wallpaper";
+    modes: "combi,drun,window,emoji,run,ssh,rate-wallpaper";
     combi-modes: "rate-wallpaper,drun,window";
     font: "JetBrainsMono NFP 22";
     show-icons: true;
