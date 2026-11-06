@@ -19,4 +19,5 @@ require("config.environment")
 require("config.keybinds")
 require("config.windowrules")
 require("config.plugins")
-require("config.patches")
+-- Run :!cp config/patches/init.example.lua config/patches/init.lua
+pcall(require, "config.patches")

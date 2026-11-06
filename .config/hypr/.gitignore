@@ -4,3 +4,4 @@ hyprmon.lua
 workspaces.conf
 colors.lua
 env.lua
+config/patches/init.lua
