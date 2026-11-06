@@ -136,7 +136,7 @@ hl.config({
 		key_press_enables_dpms = true,
 		enable_swallow = true,
 		swallow_regex = ("(%s|Alacritty|Kitty)"):format(Terminal),
-		swallow_exception_regex = "wev",
+		swallow_exception_regex = ".* - (wev|neovim|nvim|mpv|mpvbg)",
 		focus_on_activate = true,
 		background_color = Colors.surface,
 		on_focus_under_fullscreen = 1,
