@@ -149,7 +149,7 @@ vim.api.nvim_set_hl(0, "MsgArea", {
 	fg = "{{ colors.primary.default.hex }}",
 })
 
-vim.api.nvim_set_hl(0, "DiffText", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "DiffText", { bg = "{{ colors.orange_container.default.hex | auto_lightness: 10.0 }}" })
 vim.api.nvim_set_hl(0, "DiffAdd", { bg = "{{ colors.lime_container.default.hex }}" })
 vim.api.nvim_set_hl(0, "DiffDelete", { bg = "{{ colors.red_container.default.hex }}" })
 vim.api.nvim_set_hl(0, "DiffChange", { bg = "{{ colors.orange_container.default.hex | auto_lightness: -5.0 }}" })
