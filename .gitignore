@@ -48,7 +48,7 @@
 !.config/mimeapps.list
 !.config/youtube-music-flags.conf
 !.config/kdeglobals
-!.gnupg/dirmng.conf
+!.gnupg/dirmngr.conf
 !.local/share/applications/nwg-displays.desktop
 **/*[Cc]ache*
 
