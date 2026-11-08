@@ -76,6 +76,9 @@ pkgbuilds/*/*
 !.config/Code/User/settings.json
 !.config/Code/User/keybindings.json
 !.config/Code/User/snippets
+!.config/gh/
+.config/gh/*
+!.config/gh/config.yml
 
 # Allow specific files
 !.gtkrc-2.0
