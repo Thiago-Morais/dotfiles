@@ -105,3 +105,6 @@
 
 # Vim session files
 **/Session.vim
+
+# Yazi plugins are installed from package.toml with `ya pkg install`
+.config/yazi/plugins/
