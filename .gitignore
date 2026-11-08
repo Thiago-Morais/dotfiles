@@ -101,3 +101,6 @@
 .config/inkscape/dialogs-state-ex.ini
 .config/inkscape/extension-errors.log
 .config/inkscape/fontcollections/recently_used_fonts.log
+
+# Vim session files
+**/Session.vim
