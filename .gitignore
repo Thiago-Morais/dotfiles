@@ -108,3 +108,7 @@
 
 # Yazi plugins are installed from package.toml with `ya pkg install`
 .config/yazi/plugins/
+
+# Thread palettes installed by Ink/Stitch (custom Setta Lumina ones stay tracked)
+.config/inkscape/palettes/InkStitch *
+!.config/inkscape/palettes/InkStitch [Ss]etta*
