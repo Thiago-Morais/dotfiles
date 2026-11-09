@@ -185,9 +185,15 @@ end
 
 function set_special_gaps(factor)
 	for _, m in ipairs(hl.get_monitors()) do
-		local x = math.floor(m.width / m.scale * (factor / 2))
-		local y = math.floor(m.height / m.scale * (factor / 2))
-		hl.workspace_rule({ workspace = "s[true] m[" .. m.name .. "]", gaps_out = { top = y, right = x, bottom = y, left = x } })
+		local x_out = math.floor(m.width / m.scale * (factor / 2))
+		local y_out = math.floor(m.height / m.scale * (factor / 2))
+		local x_in = math.floor(m.width / m.scale * (factor / 4))
+		local y_in = math.floor(m.height / m.scale * (factor / 4))
+		hl.workspace_rule({
+			workspace = "s[true] m[" .. m.name .. "] f[-1]",
+			gaps_out = { top = y_out, right = x_out, bottom = y_out, left = x_out },
+			gaps_in = { top = y_in, right = x_in, bottom = y_in, left = x_in },
+		})
 	end
 end
 
