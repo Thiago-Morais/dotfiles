@@ -47,6 +47,7 @@ function start_secondary_process()
 	-- hl.exec_cmd("seanime &")
 	hl.exec_cmd("xsettingsd &")
 	hl.exec_cmd("dosage-tracker --startup")
+	hl.exec_cmd("~/.config/hypr/scripts/bedtime.sh daemon &")
 end
 
 function single_trigger_commands()
