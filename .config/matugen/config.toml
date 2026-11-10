@@ -53,6 +53,7 @@ caching = true
 "red_to_lime_9"  = "#65f000"
 "red_to_lime_10" = "#00ff00"
 
+# Find more themes at https://github.com/InioX/matugen-themes
 [templates.copy_colors]
 input_path = '~/.config/matugen/templates/copy_colors'
 output_path = '~/.config/matugen/cached_colors'
@@ -172,3 +173,8 @@ output_path = '~/.config/YouTube Music/themes/colors.css'
 input_path = '~/.config/matugen/templates/mako'
 output_path = '~/.config/mako/mako-colors'
 post_hook = 'makoctl reload'
+
+[templates.xsettingsd]
+input_path = '~/.config/matugen/templates/xsettingsd.conf'
+output_path = '~/.config/xsettingsd/xsettingsd.conf'
+post_hook = 'pkill -HUP -x xsettingsd'
