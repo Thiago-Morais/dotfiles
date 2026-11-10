@@ -21,3 +21,5 @@ require("config.windowrules")
 require("config.plugins")
 -- Run :!cp config/patches/init.example.lua config/patches/init.lua
 pcall(require, "config.patches")
+-- Last, so the bedtime level wins over patches
+require("config.bedtime")
