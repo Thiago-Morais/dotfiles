@@ -57,6 +57,12 @@ caching = true
 "red_to_lime_10" = "#00ff00"
 
 # Find more themes at https://github.com/InioX/matugen-themes
+
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+post_hook = 'pkill -USR2 btop || true'
+
 [templates.copy_colors]
 input_path = '~/.config/matugen/templates/copy_colors'
 output_path = '~/.config/matugen/cached_colors'
