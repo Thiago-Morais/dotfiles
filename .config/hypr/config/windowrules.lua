@@ -1,6 +1,7 @@
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
+local M = {}
 
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
@@ -9,24 +10,22 @@
 local colors = require("colors")
 
 local DEFAULT_FLOATING_SIZE = { "960", "540" }
-local default_rules, float_necessary_windows, set_base_opacity, general_window_rules, decorations, bind_windows_to_workspace, prevent_idle, layer_rules, workspace_rules
-local video_player, terminal, specific_applications, floatin_windows, fullscreen_windows
 local set_special_gaps
 local PICTURE_IN_PICTURE = "[Pp]icture[- ][Ii]n[- ][Pp]icture"
 
-local function main()
-	default_rules()
-	float_necessary_windows()
-	set_base_opacity()
-	general_window_rules()
-	decorations()
-	bind_windows_to_workspace()
-	prevent_idle()
-	layer_rules()
-	workspace_rules()
+function M.setup()
+	M.default_rules()
+	M.float_necessary_windows()
+	M.set_base_opacity()
+	M.general_window_rules()
+	M.decorations()
+	M.bind_windows_to_workspace()
+	M.prevent_idle()
+	M.layer_rules()
+	M.workspace_rules()
 end
 
-function default_rules()
+function M.default_rules()
 	---@diagnostic disable-next-line: unused-local
 	local suppressMaximizeRule = hl.window_rule({
 		-- Ignore maximize requests from all apps. You'll probably like this.
@@ -67,7 +66,7 @@ function default_rules()
 	})
 end
 
-function float_necessary_windows()
+function M.float_necessary_windows()
 	hl.window_rule({
 		float = 1,
 		size = DEFAULT_FLOATING_SIZE,
@@ -87,7 +86,7 @@ function float_necessary_windows()
 	hl.window_rule({ float = 1, size = DEFAULT_FLOATING_SIZE, match = { title = "^(Steam - Self Updater)$" } })
 end
 
-function set_base_opacity()
+function M.set_base_opacity()
 	hl.window_rule({ opacity = 0.95, match = { float = 0, fullscreen = 0 } })
 	hl.window_rule({ opacity = 1.00, match = { fullscreen = 1 } })
 	-- hl.window_rule({ opacity = 1.00, match = { class = "^(org.inkscape.Inkscape|inkstitch|.* - Inkscape)$" } })
@@ -99,19 +98,19 @@ function set_base_opacity()
 	hl.window_rule({ opacity = 0.92, match = { class = "^(thunar|nemo)$" } })
 end
 
-function general_window_rules()
+function M.general_window_rules()
 	hl.window_rule({ match = { class = ".*" }, center = true })
 end
 
-function decorations()
-	video_player()
-	terminal()
-	specific_applications()
-	floatin_windows()
-	fullscreen_windows()
+function M.decorations()
+	M.video_player()
+	M.terminal()
+	M.specific_applications()
+	M.floatin_windows()
+	M.fullscreen_windows()
 end
 
-function video_player()
+function M.video_player()
 	hl.window_rule({
 		match = { class = "^(vlc|imv|mpv|danmufloat|termfloat|nemo|ncmpcpp)$" },
 		float = 1,
@@ -120,11 +119,11 @@ function video_player()
 	})
 end
 
-function terminal()
+function M.terminal()
 	hl.window_rule({ match = { class = "^(kitty|Alacritty)$" }, animation = "slide right" })
 end
 
-function specific_applications()
+function M.specific_applications()
 	hl.window_rule({ match = { class = ".*(01KCKFKMNJ6CYVWDH0TA87FX47)" }, no_dim = 1, opaque = 1 })
 	hl.window_rule({ match = { title = "^(danmufloat)$" }, pin = 1, rounding = 5 })
 	hl.window_rule({ match = { title = "^(termfloat)$" }, rounding = 5 })
@@ -145,15 +144,15 @@ function specific_applications()
 	hl.window_rule({ match = { class = "flameshot" }, float = 1, opaque = 1, center = false })
 end
 
-function floatin_windows()
+function M.floatin_windows()
 	hl.window_rule({ border_color = colors.outline, match = { float = 1 }, border_size = 2, no_dim = 1, rounding = 8 })
 end
 
-function fullscreen_windows()
+function M.fullscreen_windows()
 	hl.window_rule({ match = { fullscreen = 1 }, border_size = 0, no_dim = 1, opaque = 1 })
 end
 
-function bind_windows_to_workspace()
+function M.bind_windows_to_workspace()
 	hl.window_rule({ workspace = 2, match = { class = ("(%s|obsidian|md.Obsidian|md.obsidian.Obsidian|github-desktop-plus|desktop-plus)"):format(Note_taker) } })
 	hl.window_rule({ workspace = 3, match = { class = ("^(%s|nvim|code)$"):format(Code_editor) } })
 	hl.window_rule({ workspace = 4, match = { class = ("^(%s|zen-browser|firefox|chrome|zen)$"):format(Browser) } })
@@ -163,13 +162,13 @@ function bind_windows_to_workspace()
 	hl.window_rule({ workspace = "special:音楽", match = { class = "^(com.github.th[_-]ch.youtube[_-]music|org.kde.kasts)$" } })
 end
 
-function prevent_idle()
+function M.prevent_idle()
 	local match = "mpv|%s|bg|%s|Anydesk"
 	hl.window_rule({ idle_inhibit = "always", match = { class = ("^(" .. match .. ")$"):format(PICTURE_IN_PICTURE, Background_video_class) } })
 	hl.window_rule({ idle_inhibit = "always", match = { title = ("^(" .. match .. ")$"):format(PICTURE_IN_PICTURE, Background_video_title) } })
 end
 
-function layer_rules()
+function M.layer_rules()
 	hl.layer_rule({ animation = "slide top", match = { namespace = "logout_dialog" } })
 	-- hllayerw_rule({ animation = "popin 50%", match = { class = "waybar" } })
 	hl.layer_rule({ animation = "slide down", match = { namespace = "waybar" } })
@@ -179,11 +178,11 @@ function layer_rules()
 	hl.layer_rule({ no_anim = true, match = { namespace = "^(rofi)$" } })
 end
 
-function workspace_rules()
-	set_special_gaps(0.2)
+function M.workspace_rules()
+	M.set_special_gaps(0.2)
 end
 
-function set_special_gaps(factor)
+function M.set_special_gaps(factor)
 	for _, m in ipairs(hl.get_monitors()) do
 		local x_out = math.floor(m.width / m.scale * (factor / 2))
 		local y_out = math.floor(m.height / m.scale * (factor / 2))
@@ -197,4 +196,4 @@ function set_special_gaps(factor)
 	end
 end
 
-main()
+M.setup()
