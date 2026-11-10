@@ -106,6 +106,7 @@
 .config/rofi/colors.rasi
 .config/mako/mako-colors
 .config/xsettingsd/xsettingsd.conf
+.config/btop/themes/matugen.theme
 
 # Inkscape state and logs
 .config/inkscape/dialogs-state-ex.ini
