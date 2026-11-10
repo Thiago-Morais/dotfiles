@@ -105,6 +105,7 @@
 .config/waybar/themes/extra-colors.css
 .config/rofi/colors.rasi
 .config/mako/mako-colors
+.config/xsettingsd/xsettingsd.conf
 
 # Inkscape state and logs
 .config/inkscape/dialogs-state-ex.ini

@@ -1,4 +1,7 @@
 [config]
+version_check = true
+fallback_color = "black"
+prefer = "saturation"
 caching = true
 
 # [config.wallpaper]
@@ -58,11 +61,6 @@ caching = true
 input_path = '~/.config/matugen/templates/copy_colors'
 output_path = '~/.config/matugen/cached_colors'
 
-# [templates.kitty]
-# input_path = '~/.config/matugen/templates/kitty-colors.conf'
-# output_path = '~/.config/kitty/colors-matugen.conf'
-# post_hook = 'pkill -SIGUSR1 kitty'
-
 [templates.hyprland-lua]
 input_path = '~/.config/matugen/templates/hyprland-colors.lua'
 output_path = '~/.config/hypr/colors.lua'
@@ -118,47 +116,9 @@ output_path = '~/.config/wleave/colors.css'
 input_path = '~/.config/matugen/templates/alacritty.toml'
 output_path = '~/.config/alacritty/colors.toml'
 
-# [templates.ghostty]
-# input_path = '~/.config/matugen/templates/ghostty'
-# output_path = '~/.config/ghostty/themes/Matugen'
-# post_hook = 'pkill -SIGUSR2 ghostty'
-
 [templates.yazi]
 input_path = '~/.config/matugen/templates/yazi-theme.toml'
 output_path = '~/.config/yazi/theme.toml'
-
-[templates.swaync]
-input_path = '~/.config/matugen/templates/colors.css'
-output_path = '~/.config/swaync/colors.css'
-
-[templates.walker]
-input_path = '~/.config/matugen/templates/colors.css'
-output_path = '~/.config/walker/colors.css'
-
-[templates.nwgdock]
-input_path = '~/.config/matugen/templates/colors.css'
-output_path = '~/.config/nwg-dock-hyprland/colors.css'
-
-[templates.sequences]
-input_path = '~/.config/matugen/templates/sequences'
-output_path = '~/.cache/wal/sequences'
-
-[templates.primary]
-input_path = '~/.config/matugen/templates/primary'
-output_path = '~/.config/ml4w/colors/primary'
-
-[templates.secondary]
-input_path = '~/.config/matugen/templates/secondary'
-output_path = '~/.config/ml4w/colors/secondary'
-
-[templates.on_surface]
-input_path = '~/.config/matugen/templates/onsurface'
-output_path = '~/.config/ml4w/colors/onsurface'
-
-[templates.ohmyposh]
-input_path = '~/.config/matugen/templates/ohmyposh-colors.json'
-output_path = '~/.config/ohmyposh/colors.json'
-post_hook = "jq --slurpfile palette ~/.config/ohmyposh/colors.json '. + $palette[0]' ~/.config/ohmyposh/EDM115-newline.omp.json > /tmp/new_theme.json && mv /tmp/new_theme.json ~/.config/ohmyposh/EDM115-newline.omp.json"
 
 [templates.neovim]
 input_path = '~/.config/matugen/templates/neovim.lua'

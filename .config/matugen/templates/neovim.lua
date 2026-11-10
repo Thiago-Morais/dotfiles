@@ -189,5 +189,5 @@ vim.api.nvim_set_hl(0, "DiffviewLineChangeDiffDelete", {
 	bg = "{{ colors.red_container.default.hex | auto_lightness: -10.0 }}",
 })
 vim.api.nvim_set_hl(0, "DiffviewLineChangeDiffAdd", {
-	bg = "{{ colors.lime_container.default.hex | auto_lightness: -07.0 }}",
+	bg = "{{ colors.lime_container.default.hex | auto_lightness: -7.0 }}",
 })
