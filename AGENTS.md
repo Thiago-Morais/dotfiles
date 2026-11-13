@@ -60,8 +60,8 @@ Separate repositories. Change them in their own repo, then bump the pointer here
 
 - **Lua config (Hyprland 0.55+)** with the `hl.*` API, not hyprlang. Entry point `.config/hypr/hyprland.lua`;
   type stubs in `/usr/share/hypr/stubs`.
-- Layout: `config/variables/` (options), `config/binds/` (one file per group, each exposing `setup()`),
-  `config/windowrules.lua`, `config/autostart.lua`, `config/patches/`, `plugins/`, `scripts/`.
+- Bind groups live in their own files under `config/binds/`, each exposing a `setup()` that
+  `config/keybinds.lua` calls; a new group must be added there.
 - Style: `stylua` with `.config/hypr/stylua.toml` (**tabs**, double quotes, call parentheses always).
   The Neovim repo uses a different style.
 - Some lines are CachyOS defaults left from the original install; don't remove them without saying why.
