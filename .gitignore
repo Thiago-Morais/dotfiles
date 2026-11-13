@@ -3,6 +3,8 @@
 # Allow standard github files
 !.gitignore
 !README.md
+!AGENTS.md
+!CLAUDE.md
 
 # Allow directories without their children
 !.config/
